@@ -9,7 +9,7 @@ let UserSchema = new Schema ({
     },
     email : {
         type: string,
-        required: "email is missing",
+        required: "email is required",
         unique: true
     },
     password: {  
