@@ -1,34 +1,44 @@
 'use strict';
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose'),
+      uniqueValidator = require('mongoose-unique-validator');
 
-let UserSchema = new Schema ({
+//define the attributes for user
+let userSchema = new mongoose.Schema ({
     username : {
-        type: string,
+        type: String,
         required: "username is missing"
     },
     email : {
-        type: string,
-        required: "email is required",
+        type: String,
+        required: "email is missing",
         unique: true
     },
     password: {  
-        type: string,
+        type: String,
         required: "password is missing"
     },
-    videos: [{
-        type : Schema.Types.ObjectId,
-        ref: 'Video'
-    }],
-    favorites: [{
-        type: Schema.Types.ObjectId,
-        ref: 'Video'
-    }],
-
+    // videos: [{
+    //     type : Schema.Types.ObjectId,
+    //     ref: 'Video'
+    // }],
+    // favorites: [{
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'Video'
+    // }],
 }, {
     versionKey: false
 });
 
-UserSchema.virtual('id').get(function(){
+userSchema.virtual('id').get(function(){
     return this._id.toHexString();
-})
+});
+
+//add mongoose unique validator
+userSchema.plugin(uniqueValidator);
+
+userSchema.set('toJSON', {
+    virtuals: true
+});
+
+//create user model
+module.exports = mongoose.model('User', userSchema);

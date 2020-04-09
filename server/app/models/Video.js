@@ -14,3 +14,5 @@ let VideoSchema = new Schema({
 VideoSchema.virtual('id').get(function(){
     return this._id.toHexString();
 })
+
+module.exports = mongoose.model('Video', VideoSchema);
