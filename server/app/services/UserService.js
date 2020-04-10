@@ -17,6 +17,6 @@ exports.getUserById = (userId) => {
 
 //find a user by email
 exports.getUserByEmail = (userEmail) => {
-    const promise = User.findOne(userEmail).exec();
+    const promise = User.findOne({email: userEmail});
     return promise;
 }

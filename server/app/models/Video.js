@@ -6,7 +6,12 @@ let VideoSchema = new Schema({
     user_id : {
         type: String,
         required: "user_id is missing"
-    }
+    },
+    video_title: {
+        type: String,
+        required: true
+    },
+    
 }, {
     versionKey: false
 });

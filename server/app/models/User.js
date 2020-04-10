@@ -17,14 +17,6 @@ let userSchema = new mongoose.Schema ({
         type: String,
         required: "password is missing"
     },
-    // videos: [{
-    //     type : Schema.Types.ObjectId,
-    //     ref: 'Video'
-    // }],
-    // favorites: [{
-    //     type: Schema.Types.ObjectId,
-    //     ref: 'Video'
-    // }],
 }, {
     versionKey: false
 });

@@ -2,7 +2,8 @@
 const userService = require('../services/UserService'),
       User = require('../models/User'),
       bcrypt = require('bcrypt'),
-      jwt = require('jsonwebtoken');
+      jwt = require('jsonwebtoken'),
+      checkAuth = require("../middleware/check-auth");
 
 exports.signup = (req, res, next) => {
     let newUser = {};
@@ -22,10 +23,10 @@ exports.signup = (req, res, next) => {
                     });
                 })
                 .catch(err => {
+                    console.log(res);
                     res.status(500).json({
                         error: err
                     });
-                    console.log("got error");
                 });
         });
 };
@@ -34,6 +35,7 @@ exports.signup = (req, res, next) => {
 exports.login = (req, res, next) => {
     let fetchedUser;
     //find the user by email
+    
     userService.getUserByEmail(req.body.email)
         .then(user => {
             //if user not exist
@@ -43,8 +45,8 @@ exports.login = (req, res, next) => {
                 });
             }
             //else compare bcrypt password with user password in db
-            bcrypt.compare(req.body.email, user.passowrd);
             fetchedUser = user;
+            return bcrypt.compare(req.body.password, user.password);
         })
         //catch the result
         .then(result => {
@@ -59,11 +61,14 @@ exports.login = (req, res, next) => {
                 {email: fetchedUser.email, userId: fetchedUser._id}, 
                 'secret_this_should_be_longer',
                 { expiresIn: "1h"});
+            console.log("in res status");
             res.status(200).json({
+                message: "login successfully",
                 token: token
             });
         })
         .catch(err => {
+            console.log(err);
             return res.status(401).json({
                 message: "Auth failed"
             });

@@ -20,10 +20,7 @@ export class SignupComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    if (form.value.password !== form.value.comfirmPass) {
-      return;
-    }
-    let username:string = form.value.usernmae;
+    let username:string = form.value.username;
     let email:string = form.value.email;
     let password:string = form.value.password;
     this.userService.createUser({username, email, password} as User);
