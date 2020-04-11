@@ -4,6 +4,7 @@ import { LoginComponent } from './auth/login/login.component';
 import { SignupComponent } from './auth/signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthGuard } from './services/auth.guard';
+import { BmiComponent } from './bmi/bmi.component';
 
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
+  {path: 'bmi', component: BmiComponent},
 ];
 
 @NgModule({
