@@ -1,1 +1,40 @@
-<p>bmi works!</p>
+<div class="page">
+
+	<h2>BMI Calculator</h2>
+
+	<p>Add weight input, then combine with height and convert to a computed BMI.</p>
+	<div class="playground">
+		<div class="inputs">
+			<div class="height">
+				<label>Height:</label>
+				<p>
+					<input type="range" #heightSlider min="50" max="250" [value]="heightValue$ | async">
+				</p>
+				<p>
+					<input type="number" #heightField [value]="heightValue$ | async">
+				</p>
+				<p>
+					{{heightValue$ | async}} cm
+				</p>
+			</div>
+			<div class="weight">
+
+				<label>Weight:</label>
+				<p>
+					<input type="range" #weightSlider min="10" max="300" [value]="weightValue$ | async">
+				</p>
+				<p>
+					<input type="number" #weightField [value]="weightValue$ | async">
+				</p>
+				<p>
+					{{weightValue$ | async}} kg
+				</p>
+			</div>
+		</div>
+		<div class="bmi">
+
+			<strong>
+    BMI: {{ bmi$ | async }}
+</strong>
+		</div>
+	</div>
