@@ -1,5 +1,6 @@
 <mat-card>
-    <form (submit)="onSignup(signupForm)" #signupForm="ngForm">
+    <mat-progress-spinner *ngIf="isLoading"></mat-progress-spinner>
+    <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
         <mat-form-field>
             <input matInput name="email" type="email" placeholder="email" ngModel #emailInput="ngModel" required email>
             <mat-error *ngIf="emailInput.invalid">Please enter your email</mat-error>
@@ -14,9 +15,9 @@
         </mat-form-field>
         <mat-form-field>
             <input matInput name="confirmPass" type="password" placeholder="confirm password" ngModel #confirmPassInput="ngModel" required>
-            <mat-error *ngIf="confirmPassInput !== passwordInput">Two password do not match</mat-error>
+            <mat-error *ngIf="confirmPassInput.value !== passwordInput.value">Two password do not match</mat-error>
         </mat-form-field>
         <br><br><br>
-        <button mat-raised-button color="accent" type="submit">sign up</button>
+        <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">sign up</button>
     </form>
 </mat-card>

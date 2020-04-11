@@ -1,1 +1,16 @@
-<p>header works!</p>
+<mat-toolbar color="primary">
+    <span>
+        <a routerLink="/">Evolution Club</a>
+    </span>
+    <ul>
+        <li *ngIf="!userIsAuthenticated">
+          <a mat-button routerLink="" routerLinkActive="mat-accent">Login</a>
+        </li>
+        <li *ngIf="!userIsAuthenticated" >
+          <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
+        </li>
+        <li *ngIf="userIsAuthenticated">
+          <button mat-button (click)="onLogout()">Logout</button>
+        </li>
+      </ul>
+</mat-toolbar>

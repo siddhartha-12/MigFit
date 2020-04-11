@@ -11,6 +11,8 @@ import { User } from 'src/app/models/user.model';
 })
 export class SignupComponent implements OnInit {
 
+  isLoading = false;
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
@@ -20,6 +22,7 @@ export class SignupComponent implements OnInit {
     if (form.invalid) {
       return;
     }
+    this.isLoading = true;
     let username:string = form.value.username;
     let email:string = form.value.email;
     let password:string = form.value.password;

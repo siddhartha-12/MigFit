@@ -2,8 +2,6 @@
 const userController = require('../controllers/UserController');
 
 module.exports = (app) => {
-    app.route('/user/signup')
-       .post(userController.signup);
-    app.route('/user/login')
-        .post(userController.login);
+    app.post('/user/signup', userController.signup);
+    app.post('/user/login', userController.login);
 }
