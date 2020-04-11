@@ -17,6 +17,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthInterceptor } from './services/auth-interceptor';
+import { BmiComponent } from './bmi/bmi.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { AuthInterceptor } from './services/auth-interceptor';
     SignupComponent,
     HeaderComponent,
     LandingComponent,
+    BmiComponent,
   ],
   imports: [
     BrowserModule,
