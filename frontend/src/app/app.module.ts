@@ -19,6 +19,12 @@ import { LandingComponent } from './landing/landing.component';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { BmiComponent } from './bmi/bmi.component';
 
+//store
+import { StoreModule } from '@ngrx/store';
+import { reducers } from './store/reducers';
+import { environment } from '../environments/environment';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+
 
 @NgModule({
   declarations: [
@@ -42,6 +48,9 @@ import { BmiComponent } from './bmi/bmi.component';
     MatCardModule,
     ReactiveFormsModule,
     MatButtonModule,
+     // Here is configuration for set up of store module
+     StoreModule.forRoot(reducers),
+     StoreDevtoolsModule.instrument(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
