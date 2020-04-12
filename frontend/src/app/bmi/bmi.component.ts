@@ -1,5 +1,6 @@
+// http://www.calculator.net/bmi-calculator.html
 //import { Component, OnInit } from '@angular/core';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { fromEvent, Observable, merge, combineLatest } from 'rxjs';
 import { map, startWith, share, tap } from 'rxjs/operators';
 
@@ -8,7 +9,7 @@ import { map, startWith, share, tap } from 'rxjs/operators';
   templateUrl: './bmi.component.html',
   styleUrls: ['./bmi.component.scss']
 })
-export class BmiComponent implements OnInit {
+export class BmiComponent implements AfterViewInit {
 
   @ViewChild('heightSlider') heightSlider: ElementRef;
   @ViewChild('heightField') heightField: ElementRef;
@@ -24,13 +25,13 @@ export class BmiComponent implements OnInit {
   weightValue$: Observable<number>;
 
   bmi$: Observable<number>;
-  bmiLegend$: Observable<any>;
+
 
   constructor() { }
 
-  // ngOnInit(): void {
+  // ngOnInit(): void { 
   // }
-  ngOnInit() {
+  ngAfterViewInit() {
     this.heightSliderChanges$ = fromEvent(this.heightSlider.nativeElement, 'input');
     this.heightFieldChanges$ = fromEvent(this.heightField.nativeElement, 'input');
 
@@ -69,25 +70,6 @@ export class BmiComponent implements OnInit {
     return Number(bmi.toFixed(2));
   }
 
-  private bmiToIndex(bmi: number): number {
-    if (bmi < 16) {
-      return 0;
-    } else if (bmi < 17) {
-      return 1;
-    } else if (bmi < 18.5) {
-      return 2;
-    } else if (bmi < 25) {
-      return 3;
-    } else if (bmi < 30) {
-      return 4;
-    } else if (bmi < 35) {
-      return 5;
-    } else if (bmi < 40) {
-      return 6;
-    } else {
-      return 7;
-    }
-  }
 
 }
 
