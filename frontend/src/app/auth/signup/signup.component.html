@@ -1,23 +1,35 @@
-<mat-card>
-    <mat-progress-spinner *ngIf="isLoading"></mat-progress-spinner>
-    <form (submit)="onSignup(signupForm)" #signupForm="ngForm" *ngIf="!isLoading">
-        <mat-form-field>
-            <input matInput name="email" type="email" placeholder="email" ngModel #emailInput="ngModel" required email>
-            <mat-error *ngIf="emailInput.invalid">Please enter your email</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput name="username" type="username" placeholder="username" ngModel #usernameInput="ngModel" required>
-            <mat-error *ngIf="usernameInput.invalid">Please enter your username</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput name="password" type="password" placeholder="password" ngModel #passwordInput="ngModel" required>
-            <mat-error *ngIf="passwordInput.invalid">Please enter your password</mat-error>
-        </mat-form-field>
-        <mat-form-field>
-            <input matInput name="confirmPass" type="password" placeholder="confirm password" ngModel #confirmPassInput="ngModel" required>
-            <mat-error *ngIf="confirmPassInput.value !== passwordInput.value">Two password do not match</mat-error>
-        </mat-form-field>
-        <br><br><br>
-        <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">sign up</button>
-    </form>
-</mat-card>
+<div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
+    <mat-card class="box">
+        <mat-card-header>
+            <mat-card-title>Register</mat-card-title>
+        </mat-card-header>
+        <mat-progress-spinner *ngIf="isLoading"></mat-progress-spinner>
+        <form (submit)="onSignup(signupForm)" class="example-form" #signupForm="ngForm" *ngIf="!isLoading">
+            <mat-card-content>
+                <mat-form-field>
+                    <input matInput name="email" type="email" placeholder="email" ngModel #emailInput="ngModel" required
+                        email>
+                    <mat-error *ngIf="emailInput.invalid">Please enter your email</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="username" type="username" placeholder="username" ngModel
+                        #usernameInput="ngModel" required>
+                    <mat-error *ngIf="usernameInput.invalid">Please enter your username</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="password" type="password" placeholder="password" ngModel
+                        #passwordInput="ngModel" required>
+                    <mat-error *ngIf="passwordInput.invalid">Please enter your password</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput name="confirmPass" type="password" placeholder="confirm password" ngModel
+                        #confirmPassInput="ngModel" required>
+                    <mat-error *ngIf="confirmPassInput.value !== passwordInput.value">Two password do not match
+                    </mat-error>
+                </mat-form-field>
+                <br><br><br>
+            </mat-card-content>
+            <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">sign up</button>
+        </form>
+    </mat-card>
+</div>
