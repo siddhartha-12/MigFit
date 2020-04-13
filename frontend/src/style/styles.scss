@@ -29,7 +29,13 @@ $frontend-theme: mat-light-theme($frontend-primary, $frontend-accent, $frontend-
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }  
+body 
+{ 
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-image:url(https://aws1.discourse-cdn.com/pocketgems/uploads/episodeinteractive/original/3X/9/1/91cf2d96b6f71c752fd3d372436c0ed1a56c1bb8.jpeg);
+}  
   h1 {
     text-align: center;
   }
+
