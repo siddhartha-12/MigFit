@@ -1,0 +1,43 @@
+<mat-card>
+    <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <form [formGroup] = "form" (submit) = "onSaveUpload()" *ngIf="!isLoading">
+        <mat-form-field>
+            <input
+                matInput
+                type = "text"  
+                formControlName = "title"
+                placeholder="Upload Title">
+                <mat-error *ngIf="form.get('title').invalid">Please enter a upload title.</mat-error>
+        </mat-form-field>
+        <div>
+            <button mat-stroked-button type = "button" (click) = "filePicker.click()">Pick Video</button>
+            <input type="file" #filePicker (change) = "onImagePicked($event)">
+        </div>
+        <div class = "image-preview" *ngIf="imagePreview !== '' && imagePreview && form.get('image').valid"> 
+            <img [src] = "imagePreview" [alt]="form.value.title">
+        </div>
+<!-- here is the video upload -->
+        <!-- <div class="video" *ngIf="artwork.artworkdetail.artworktype === 'input-youtube'" (click)=handleclick(artwork._id) >
+            <iframe width="480" height="320" [src]="artwork.artworkdetail.url | ArtworkpipeComponent" frameborder="0" allowfullscreen="0" ></iframe>
+        </div>
+        <div class="video" *ngIf="artwork.artworkdetail.artworktype === 'input-video'" (click)=handleclick(artwork._id) >
+            <video  onmouseover="this.play()" onmouseout="this.load()" class="video-js vjs-default-skin" loop  data-setup='{}' poster="{{artwork.artworkdetail.poster}}" >
+                <source src='{{artwork.artworkdetail.url}} ' type="video/mp4">
+            </video>
+        </div>  -->
+
+        <mat-form-field>
+            <textarea 
+            matInput 
+            rows="6" 
+            formControlName="content"
+            placeholder="Upload Content"
+            ></textarea>
+            <mat-error *ngIf="form.get('content').invalid">Please enter a upload Description</mat-error>
+        </mat-form-field>
+        <button
+            mat-raised-button
+            color="accent"
+            type = "submit">Save Upload</button>
+    </form>
+</mat-card>

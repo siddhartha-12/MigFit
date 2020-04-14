@@ -5,6 +5,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatExpansionModule} from "@angular/material/expansion";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -18,6 +19,11 @@ import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthInterceptor } from './services/auth-interceptor';
 import { BmiComponent } from './bmi/bmi.component';
+import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
+import { UploadSrcListComponent } from './uploads/upload-src-list/upload-src-list.component';
+import { UploadViewAllComponent } from './upload-view-all/upload-view-all.component';
+
+
 
 //store
 import { StoreModule } from '@ngrx/store';
@@ -34,6 +40,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     HeaderComponent,
     LandingComponent,
     BmiComponent,
+    UploadSrcComponent,
+    UploadSrcListComponent,
+    UploadViewAllComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +55,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     FormsModule,
     HttpClientModule,
     MatCardModule,
+    MatExpansionModule,
     ReactiveFormsModule,
     MatButtonModule,
      // Here is configuration for set up of store module

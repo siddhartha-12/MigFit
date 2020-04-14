@@ -5,6 +5,9 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthGuard } from './services/auth.guard';
 import { BmiComponent } from './bmi/bmi.component';
+import { UploadViewAllComponent } from './upload-view-all/upload-view-all.component';
+import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
+
 
 
 const routes: Routes = [
@@ -14,6 +17,8 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
   {path: 'bmi', component: BmiComponent},
+  { path: 'fitness/uploads', component: UploadViewAllComponent },
+  { path: 'edit/:uploadId', component: UploadSrcComponent },
 ];
 
 @NgModule({
