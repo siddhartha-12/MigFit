@@ -1,11 +1,17 @@
-<mat-spinner *ngIf="!isLoading"></mat-spinner>
+<mat-spinner *ngIf="isLoading"></mat-spinner>
 <mat-accordion multi="true" *ngIf = "uploads.length > 0 && !isLoading">
     <mat-expansion-panel *ngFor="let upload of uploads">
         <mat-expansion-panel-header>
             {{upload.title}}
         </mat-expansion-panel-header>
-        <div class="upload-image">
-            <img [src]="upload.imagePath" [alt]="upload.title">
+          <div class="upload-image" *ngIf="upload.contentType == 'image'">
+            <img [src]="upload.mediaPath" [alt]="upload.title">
+          </div>
+          <div class="upload-image"  *ngIf="upload.contentType == 'video'">
+            <video controls="controls" [src]="upload.mediaPath" width="250" height="180"></video>
+          </div>
+          <div class="upload-image"  *ngIf="upload.contentType == 'link'">
+            <a [href]="upload.mediaPath">Link to : {{upload.title}}</a>
           </div>
         <p>{{ upload.content }}</p>
         <mat-action-row>

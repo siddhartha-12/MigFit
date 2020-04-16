@@ -30,6 +30,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import {MatSelectModule} from '@angular/material/select';
 
 
 @NgModule({
@@ -58,9 +59,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     MatExpansionModule,
     ReactiveFormsModule,
     MatButtonModule,
-     // Here is configuration for set up of store module
-     StoreModule.forRoot(reducers),
-     StoreDevtoolsModule.instrument(),
+    // Here is configuration for set up of store module
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument(),
+    MatSelectModule,
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }

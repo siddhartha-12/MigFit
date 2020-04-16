@@ -5,22 +5,32 @@ const Upload = require("../models/upload");
 const uploadService = require('../services/UploadService');
 
 const multer = require("multer");
-
+const fs = require('fs');
+const public_path = './public';
+const media_dir = public_path+'/media';
 const MIME_TYPE_MAP = {
     "image/png": "png",
     "image/jpeg": "jpg",
-    "image/jpg": "jpg"
+    "video/mp4": "mp4",
+    "video/x-flv": "flv",
+    "video/3gpp": "3gp",
+    "video/x-ms-wmv": "wmv",
+    "video/x-msvideo": "avi",
+    "video/quicktime": "mov"
   };
   
 
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
-      const isValid = MIME_TYPE_MAP[file.mimetype];
+      const isValid = true; //MIME_TYPE_MAP[file.mimetype];
       let error = new Error("Invalid mime type");
       if (isValid) {
         error = null;
       }
-      cb(error, "backend/images");
+        if (!fs.existsSync(media_dir)){
+            fs.mkdir(media_dir, {recursive: true}, err => {})
+        }
+      cb(error, media_dir);
     },
     filename: (req, file, cb) => {
       const name = file.originalname
@@ -32,19 +42,26 @@ const MIME_TYPE_MAP = {
     }
   });
 
-
-exports.post = ("", multer({storage: storage }).single("image"),
-    (req, res, next) => {
-    const url = req.protocol + "://" + req.get("host");
+exports.post = (req, res, next) => {
+    console.log('req.file')
+    console.log(req.file)
+  const url = req.protocol + "://" + req.get("host");
     let newUpload = {};
     newUpload.title = req.body.title;
     newUpload.content = req.body.content;
-    newUpload.imagePath = url + "/image/" + req.file.filename;
+    newUpload.contentType = req.body.contentType;
+    if(req.body.contentType == 'link'){
+        newUpload.mediaPath = req.body.linkData;
+    }else{
+        newUpload.mediaPath = url + "/public/media/" + req.file.filename;
+    }
+
     uploadService.createUploadSRC(newUpload)
         .then(createdUpload => {
-            res.status(201).json({
+            res.status(200).json({
               message: "upload added successfully",
-              uploadId: createdUpload._id
+              uploadId: createdUpload._id,
+              upload: createdUpload
             });
         })
         .catch((err) => {
@@ -53,23 +70,26 @@ exports.post = ("", multer({storage: storage }).single("image"),
                 message: "created fail"
             })
         });
-    }
-);
+  };
+
+
 
 exports.update =(
     "/:id",
-    multer({ storage: storage }).single("image"),
+    multer({ storage: storage }).single("media"),
     (req, res, next) => {
     const uploadId = req.params.id;
     let imagePath = req.body.imagePath;
     const upload = Object.assign({}, req.body);
     if (req.file) {
         const url = req.protocol + "://" + req.get("host");
-        upload.imagePath = url + "/images/" + req.file.filename
+        upload.imagePath = url + "/public/media/" + req.file.filename
     }
     upload.id = uploadId;
     upload.title = req.body.title;
     upload.content = req.body.content;
+    upload.contentType = req.body.contentType;
+    upload.contentType = req.body.contentType;
     
     uploadService.updateUpload(upload)
         .then(result => {

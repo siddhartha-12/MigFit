@@ -16,8 +16,8 @@ const routes: Routes = [
   { path: '', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
-  {path: 'bmi', component: BmiComponent},
-  { path: 'fitness/uploads', component: UploadViewAllComponent },
+  { path: 'bmi', component: BmiComponent},
+  { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
 ];
 

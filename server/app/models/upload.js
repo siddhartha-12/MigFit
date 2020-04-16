@@ -4,7 +4,9 @@ const uniqueValidator = require('mongoose-unique-validator');
 const uploadSchema = mongoose.Schema({
   title: { type: String, required: true },
   content: { type: String, required: true },
-  imagePath: { type: String, required: true }
+  imagePath: { type: String },
+  mediaPath: { type: String },
+  contentType: { type: String, required: true }
 });
 
 uploadSchema.virtual('id').get(function(){

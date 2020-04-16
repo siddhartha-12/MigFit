@@ -1,6 +1,8 @@
 export interface Upload {
-    id: string;
-    title: string;
-    content: string;
-    imagePath: string;
+    id: string | any;
+    title: string | any;
+    content: string | any;
+    contentType: string | any;
+    mediaPath: string | any;
+    imagePath: string   | any;
 }

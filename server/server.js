@@ -3,7 +3,7 @@ const express = require('express'),
       bodyParser = require('body-parser'),
       mongoose = require('mongoose'),
       port = process.env.port || 3030;
-
+const path = require('path');
 const app = express();
 
 app.use(bodyParser.json());
@@ -21,14 +21,12 @@ app.use((req, res, next) => {
 mongoose.connect('mongodb://localhost:27017/final_project_evolution', {})
     .then(() => {
         console.log('Connect to database');
-    })
-    .catch(() => {
+    }).catch(() => {
         console.log('Connect failed');
     });
 mongoose.Promise = global.Promise;
-
+app.use("/public", express.static(path.join(__dirname, 'public')));
 const initApp = require('./app/app');
 initApp(app);
-
 app.listen(port);
 console.log('server started on: ' + port);
