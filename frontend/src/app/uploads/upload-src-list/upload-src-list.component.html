@@ -4,9 +4,9 @@
         <mat-expansion-panel-header>
             {{upload.title}}
         </mat-expansion-panel-header>
-          <div class="upload-image" *ngIf="upload.contentType == 'image'">
+          <!-- <div class="upload-image" *ngIf="upload.contentType == 'image'">
             <img [src]="upload.mediaPath" [alt]="upload.title">
-          </div>
+          </div> -->
           <div class="upload-image"  *ngIf="upload.contentType == 'video'">
             <video controls="controls" [src]="upload.mediaPath" width="250" height="180"></video>
           </div>
