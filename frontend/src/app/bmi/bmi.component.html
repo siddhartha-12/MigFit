@@ -29,10 +29,13 @@
 				<p>
 					{{weightValue$ | async}} kg
 				</p>
+				<br><br><br>
 			</div>
 		</div>
 		<div class="bmi">
 
-		<strong>BMI: {{ bmi$ | async }}</strong>
+		<p>BMI: {{ bmi$ | async }}</p> <br><br>
+		<p>Healthy BMI range: 18.5 kg/m2 - 25 kg/m2</p>
 		</div>
+		<button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/fitness/home']"> Back to Home Page</button>
 	</div>
