@@ -12,9 +12,12 @@ export class ProfileComponent implements OnInit {
 
   @Input() user: User = {
     _id: '',
-    email: '',
-    username: '',
-    password: '',
+        email: '',
+        username: '',
+        password: '',
+        gender: '',
+        weight: 0,
+        height: 0
   };
 
   isChangePassword = false;

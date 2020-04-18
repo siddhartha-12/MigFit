@@ -20,6 +20,9 @@ export class UserService {
         email: '',
         username: '',
         password: '',
+        gender: '',
+        weight: 0,
+        height: 0
     };
 
     constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {

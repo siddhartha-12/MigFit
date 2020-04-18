@@ -29,7 +29,10 @@ export class SignupComponent implements OnInit, OnDestroy {
     let username:string = form.value.username;
     let email:string = form.value.email;
     let password:string = form.value.password;
-    this.userService.createUser({username, email, password} as User);
+    let gender: string = form.value.gender;
+    let weight: number = form.value.weight;
+    let height: number = form.value.height;
+    this.userService.createUser({username, email, password, gender, weight, height} as User);
   }
 
   ngOnDestroy():void {

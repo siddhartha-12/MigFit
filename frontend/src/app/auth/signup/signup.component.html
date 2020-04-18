@@ -16,6 +16,25 @@
                     <mat-error *ngIf="usernameInput.invalid">Please enter your username</mat-error>
                 </mat-form-field>
                 <mat-form-field>
+                    <mat-label>gender</mat-label>
+                    <mat-select name="gender" ngModel #genderSelector="ngModel" required>
+                        <mat-option value="male">male</mat-option>
+                        <mat-option value="female">female</mat-option>
+                        <mat-option value="non-binary gender">non-binary gender</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <div class="same_line">
+                    <mat-form-field class="half">
+                        <input matInput name="height" type="number" placeholder="height(cm)" ngModel
+                            #passwordInput="ngModel">
+                    </mat-form-field>
+                    <mat-form-field class="half_right">
+                        <input matInput name="weight" type="number" placeholder="weight(kg)" ngModel
+                            #passwordInput="ngModel">
+                        <!-- <mat-error *ngIf="passwordInput.invalid">Please enter your password</mat-error> -->
+                    </mat-form-field>
+                </div>
+                <mat-form-field>
                     <input matInput name="password" type="password" placeholder="password" ngModel
                         #passwordInput="ngModel" required>
                     <mat-error *ngIf="passwordInput.invalid">Please enter your password</mat-error>

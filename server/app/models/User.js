@@ -17,6 +17,15 @@ let userSchema = new mongoose.Schema ({
         type: String,
         required: "password is missing"
     },
+    height: {
+        type: Number
+    },
+    weight: {
+        type: Number
+    },
+    gender: {
+        type: String
+    }
 }, {
     versionKey: false
 });
