@@ -1,5 +1,5 @@
 import { Injectable, Input } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 
 import { User } from 'src/app/models/user.model';
 import { Router } from '@angular/router';
@@ -104,26 +104,16 @@ export class UserService {
     }
 
     updateProfile(username: string, email: string, newPassword: string, originPassword: string) {
-        let userMap = new Map([
-            ["id", this.userId],
-            ["username", username],
-            ['email', email],
-            ["newPassword", newPassword],
-            ['originPassword', originPassword]
-        ]);
-        let user : FormData;
-        user = new FormData();
-        console.log(user);
-        user.append("id", this.userId);
-        user.append("username", username);
-        user.append('email', email);
-        user.append("newPassword", newPassword);
-        user.append('originPassword', originPassword);
-        console.log(user);
+        
+        let updateUser = new HttpParams();
+        updateUser = updateUser.append("id", this.userId);
+        updateUser = updateUser.append("username", username);
+        updateUser = updateUser.append('email', email);
+        updateUser = updateUser.append("newPassword", newPassword);
+        updateUser = updateUser.append('originPassword', originPassword);
 
-        console.log(userMap);
         this.http
-         .put("http://localhost:3030/user/userProfile/" + this.userId, userMap)
+         .put<{id: string, username: string, email: string, newPassword: string, originPassword: string}>("http://localhost:3030/user/userProfile/" + this.userId, updateUser)
          .subscribe(response => {
              this.snackBar.open("Update successfully!", "OK", {duration: 2000,});
          }, error => {
