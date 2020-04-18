@@ -1,5 +1,6 @@
 'use strict';
 const uploadController = require('../controllers/UploadController');
+const checkAuth = require('../middleware/check-auth');
 const multer = require("multer");
 const fs = require('fs');
 const public_path = './public';

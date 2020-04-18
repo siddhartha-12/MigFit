@@ -8,18 +8,22 @@ import { AuthGuard } from './services/auth.guard';
 import { BmiComponent } from './bmi/bmi.component';
 import { UploadViewAllComponent } from './upload-view-all/upload-view-all.component';
 import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
+import { ProfileComponent } from './profile/profile.component';
+import {HomeComponent} from './home/home.component'
 
 
 
 const routes: Routes = [
   //if you want to add route guard within the page, add canActivate:[AuthGuard]
   //e.g. {path: 'profile/edit', component: ProfileComponent, canActivate:[AuthGuard]}
-  { path: '', component: LoginComponent},
+  { path: '', component:HomeComponent },
+  { path: 'signin', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
   { path: 'bmi', component: BmiComponent},
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
+  { path: 'fitness/profile', component: ProfileComponent },
 ];
 
 @NgModule({

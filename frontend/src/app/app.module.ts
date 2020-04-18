@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule} from "@angular/material/expansion";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -37,6 +39,9 @@ import { EditFoodComponent } from './meals/edit-food/edit-food.component';
 import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
 import { FooterComponent } from './meals/footer/footer.component';
 import { FilterPipe } from './meals/filter.pipe';
+import { ProfileComponent } from './profile/profile.component';
+import { ErrorComponent } from './error/error.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -55,7 +60,10 @@ import { FilterPipe } from './meals/filter.pipe';
     EditFoodComponent,
     ResultPaneComponent,
     FooterComponent,
-    FilterPipe
+    FilterPipe,
+    ProfileComponent,
+    ErrorComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,6 +79,8 @@ import { FilterPipe } from './meals/filter.pipe';
     MatExpansionModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatMenuModule,
+    MatSnackBarModule,
     // Here is configuration for set up of store module
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),

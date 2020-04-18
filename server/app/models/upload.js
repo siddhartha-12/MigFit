@@ -6,7 +6,8 @@ const uploadSchema = mongoose.Schema({
   content: { type: String, required: true },
   imagePath: { type: String },
   mediaPath: { type: String },
-  contentType: { type: String, required: true }
+  contentType: { type: String, required: true },
+  userId: { type: mongoose.Schema.Types.ObjectId, ref: "User", required: true}
 });
 
 uploadSchema.virtual('id').get(function(){

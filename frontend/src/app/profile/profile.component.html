@@ -1,0 +1,33 @@
+<div class="profile_width">
+    <mat-card>
+        <form #updateForm="ngForm" (submit)="updateProfile(updateForm)">
+            <mat-form-field>
+                <mat-label>username</mat-label>
+                <input matInput name="username" type="text" value="{{user.username}}" ngModel #usernameInput="ngModel">
+              </mat-form-field>  
+            <mat-form-field>
+                <mat-label>email</mat-label>
+                <input matInput name="email" type="email" value="{{user.email}}" ngModel #emailInput="ngModel">
+              </mat-form-field> 
+              <br *ngIf="!isChangePassword">
+              <br *ngIf="!isChangePassword">
+              <a *ngIf="!isChangePassword" href="javascript:void(0);" (click)="changePassword()">Change password?</a>
+              <br *ngIf="!isChangePassword"><br *ngIf="!isChangePassword">
+              <mat-form-field *ngIf="isChangePassword">
+                  <mat-label>New password</mat-label>
+                  <input matInput name="newPassword" type="password" ngModel #nPassInput="ngModel">
+              </mat-form-field>
+              <mat-form-field *ngIf="isChangePassword">
+                <mat-label>Confirm new password</mat-label>
+                <input matInput name="confirmNewPassword" type="password" ngModel #comfirmNewPassInput="ngModel">
+             </mat-form-field>
+              <mat-form-field>
+                  <mat-label>To save change. please enter your current password</mat-label>
+                  <input matInput name="currentPassword" type="password" ngModel #currentPassInput="ngModel">
+              </mat-form-field>
+              <br><br><br>
+              <button mat-raised-button color="basic" type="submit">Save Change</button>&nbsp;&nbsp;
+              <button mat-raised-button color="warn">Cancel</button>
+          </form>
+      </mat-card>
+</div>
