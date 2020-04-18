@@ -7,6 +7,7 @@ import { AuthGuard } from './services/auth.guard';
 import { BmiComponent } from './bmi/bmi.component';
 import { UploadViewAllComponent } from './upload-view-all/upload-view-all.component';
 import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
+import { ProfileComponent } from './profile/profile.component';
 
 
 
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'bmi', component: BmiComponent},
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
+  { path: 'fitness/profile', component: ProfileComponent },
 ];
 
 @NgModule({

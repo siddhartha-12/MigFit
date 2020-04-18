@@ -57,6 +57,7 @@ exports.login = (req, res, next) => {
                 });
             }
             //authenticate successfully, use token to store this user
+            //send token to frontend
             const token = jwt.sign(
                 {email: fetchedUser.email, userId: fetchedUser._id}, 
                 'secret_this_should_be_longer',
@@ -71,6 +72,42 @@ exports.login = (req, res, next) => {
             console.log(err);
             return res.status(401).json({
                 message: "Auth failed"
+            });
+        });
+}
+
+exports.getUser = (req, res, next) => {
+    let userId = req.params.id;
+    userService.getUserById(userId)
+        .then((user) => {
+            res.status(200).json({
+                message: "get the user"
+            });
+            res.json(user);
+        })
+        .catch((err) => {
+            console.log(err);
+            return res.status(500).json({
+                message: "get the user failed!"
+            })
+        })
+}
+
+exports.updateUser = (req,res,next) => {
+    const userId = req.params.id;
+    const updatedUser = Object.assign({}, req.body);
+    updatedUser.id = userId;
+    userService.updateUser(updatedUser)
+        .then((user) => {
+            res.status(200).json({
+                message: "update seccessfully",
+                result: user
+            });
+        })
+        .catch((err) => {
+            console.log(err);
+            return res.status(500).json({
+                message: "update failed"
             });
         });
 }

@@ -20,3 +20,8 @@ exports.getUserByEmail = (userEmail) => {
     const promise = User.findOne({email: userEmail});
     return promise;
 }
+
+exports.updateUser = (user) => {
+    const promise = User.findByIdAndUpdate(user.id, user).exec();
+    return promise;
+}

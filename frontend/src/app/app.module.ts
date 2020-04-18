@@ -30,7 +30,7 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import {MatSelectModule} from '@angular/material/select';
+import { ProfileComponent } from './profile/profile.component';
 
 
 @NgModule({
@@ -44,6 +44,7 @@ import {MatSelectModule} from '@angular/material/select';
     UploadSrcComponent,
     UploadSrcListComponent,
     UploadViewAllComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,10 +60,9 @@ import {MatSelectModule} from '@angular/material/select';
     MatExpansionModule,
     ReactiveFormsModule,
     MatButtonModule,
-    // Here is configuration for set up of store module
-    StoreModule.forRoot(reducers),
-    StoreDevtoolsModule.instrument(),
-    MatSelectModule,
+     // Here is configuration for set up of store module
+     StoreModule.forRoot(reducers),
+     StoreDevtoolsModule.instrument(),
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
