@@ -10,6 +10,10 @@ import { UploadViewAllComponent } from './upload-view-all/upload-view-all.compon
 import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
 import { ProfileComponent } from './profile/profile.component';
 import {HomeComponent} from './home/home.component'
+import { MealsComponent } from './meals/meals.component';
+import { AddFoodComponent } from './meals/add-food/add-food.component';
+import { EditFoodComponent } from './meals/edit-food/edit-food.component';
+import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
 
 
 
@@ -24,6 +28,10 @@ const routes: Routes = [
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
   { path: 'fitness/profile', component: ProfileComponent },
+  {path: 'meal', component: MealsComponent },
+  { path: 'meal/add', component: AddFoodComponent },
+  { path: 'edit/:id', component: EditFoodComponent},
+  { path: 'list', component: ResultPaneComponent }  
 ];
 
 @NgModule({
