@@ -1,10 +1,10 @@
-<h2 style="color: orange;">
+<h2>
 	The List of Meals
 </h2>
 
 <div class="form-group">
 
-          <form style="margin-left:90px;">
+          <form>
             <select class="form-control" (change)="onChange($event.target.value)">
 							<option value="all" selected="selected">All Calories</option>
 							<option value="high">High Calories</option>
@@ -41,23 +41,3 @@
 			</li>
 		</ul>
 	</div>
-
-
-<!-- 
- <h3> Edit Meal</h3>
-<form>
-	<div>
-		<label for="name">Name: </label><br>
-		<input type="text" [(ngModel)]="foodName" name="name">
-	</div>
-	<div>
-		<label for="calories">Calories: </label><br>
-		<input type="number" [(ngModel)]="calories" name="calories">
-	</div>
-	<div>
-		<label for="details">Details: </label><br>
-		<input type="text" [(ngModel)]="details" name="details">
-	</div>
-	<div>
-		<button class="btn btn-success"></button>
-	</div> -->
