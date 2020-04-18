@@ -50,6 +50,7 @@ exports.post = (req, res, next) => {
     newUpload.title = req.body.title;
     newUpload.content = req.body.content;
     newUpload.contentType = req.body.contentType;
+    // newUpload.userId = 
     if(req.body.contentType == 'link'){
         newUpload.mediaPath = req.body.linkData;
     }else{
@@ -61,7 +62,8 @@ exports.post = (req, res, next) => {
             res.status(200).json({
               message: "upload added successfully",
               uploadId: createdUpload._id,
-              upload: createdUpload
+              upload: createdUpload,
+              userId: createdUpload.userId,
             });
         })
         .catch((err) => {
@@ -102,7 +104,6 @@ exports.update =(
             });
         });
 });
-//5e91fbdf4f4a7173eb2a5682
 
 exports.getTotal = (req, res, next) => {
     uploadService.getAll()

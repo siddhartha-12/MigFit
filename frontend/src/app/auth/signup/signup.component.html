@@ -3,8 +3,7 @@
         <mat-card-header>
             <mat-card-title>Register</mat-card-title>
         </mat-card-header>
-        <mat-progress-spinner *ngIf="isLoading"></mat-progress-spinner>
-        <form (submit)="onSignup(signupForm)" class="example-form" #signupForm="ngForm" *ngIf="!isLoading">
+        <form (submit)="onSignup(signupForm)" class="example-form" #signupForm="ngForm">
             <mat-card-content>
                 <mat-form-field>
                     <input matInput name="email" type="email" placeholder="email" ngModel #emailInput="ngModel" required
@@ -29,7 +28,7 @@
                 </mat-form-field>
                 <br><br><br>
             </mat-card-content>
-            <button mat-raised-button color="accent" type="submit" *ngIf="!isLoading">sign up</button>
+            <button mat-raised-button color="accent" type="submit">sign up</button>
         </form>
     </mat-card>
 </div>

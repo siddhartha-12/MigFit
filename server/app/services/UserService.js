@@ -11,7 +11,7 @@ exports.createUser = (user) => {
 
 //find a user by id
 exports.getUserById = (userId) => {
-    const promise = User.findById(userId).exec();
+    const promise = User.findById(userId);
     return promise;
 }
 
@@ -22,6 +22,6 @@ exports.getUserByEmail = (userEmail) => {
 }
 
 exports.updateUser = (user) => {
-    const promise = User.findByIdAndUpdate(user.id, user).exec();
+    const promise = User.findByIdAndUpdate(user.id, user);
     return promise;
 }

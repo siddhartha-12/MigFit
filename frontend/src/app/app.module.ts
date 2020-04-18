@@ -7,6 +7,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatExpansionModule} from "@angular/material/expansion";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -32,6 +34,8 @@ import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {MatSelectModule} from '@angular/material/select';
 import { MealsComponent } from './meals/meals.component';
+import { ProfileComponent } from './profile/profile.component';
+import { ErrorComponent } from './error/error.component';
 
 
 @NgModule({
@@ -46,6 +50,8 @@ import { MealsComponent } from './meals/meals.component';
     UploadSrcListComponent,
     UploadViewAllComponent,
     MealsComponent,
+    ProfileComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +67,8 @@ import { MealsComponent } from './meals/meals.component';
     MatExpansionModule,
     ReactiveFormsModule,
     MatButtonModule,
+    MatMenuModule,
+    MatSnackBarModule,
     // Here is configuration for set up of store module
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
