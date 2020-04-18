@@ -14,17 +14,17 @@
                 matInput
                 formControlName = "contentType"
                 placeholder="Type"  [(value)]="contentType" >
-              <mat-option value="image" aria-selected="true">Image</mat-option>
+              <!-- <mat-option value="image" aria-selected="true">Image</mat-option> -->
               <mat-option value="video" aria-selected="true">Video</mat-option>
               <mat-option value="link" aria-selected="true">Link</mat-option>
             </mat-select>
                 <mat-error *ngIf="form.get('title').invalid">Please enter a content type.</mat-error>
         </mat-form-field>
-        <div *ngIf="contentType == 'image'">
+        <!-- <div *ngIf="contentType == 'image'">
             <button mat-stroked-button type = "button" (click) = "filePicker.click()">Pick Media</button>
             <input type="file" #filePicker (change) = "onImagePicked($event)" accept=".png, .jpg, .jpeg, .gif" >
           <mat-error *ngIf="form.get('media').invalid">Please select media.</mat-error>
-        </div>
+        </div> -->
         <div *ngIf="contentType == 'link'">
           <mat-form-field>
             <input

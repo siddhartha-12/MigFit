@@ -1,0 +1,19 @@
+
+.meal {
+  width: 100%;
+  padding: 0;
+
+  }
+
+
+.ingredients {
+  width: 100%;
+  margin: 0 auto;
+
+  & th, td {
+    padding: .1rem;
+    text-align: left;
+  }
+}
+
+

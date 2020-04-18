@@ -30,7 +30,8 @@ import { StoreModule } from '@ngrx/store';
 import { reducers } from './store/reducers';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ProfileComponent } from './profile/profile.component';
+import {MatSelectModule} from '@angular/material/select';
+import { MealsComponent } from './meals/meals.component';
 
 
 @NgModule({
@@ -44,7 +45,7 @@ import { ProfileComponent } from './profile/profile.component';
     UploadSrcComponent,
     UploadSrcListComponent,
     UploadViewAllComponent,
-    ProfileComponent,
+    MealsComponent,
   ],
   imports: [
     BrowserModule,
@@ -60,9 +61,11 @@ import { ProfileComponent } from './profile/profile.component';
     MatExpansionModule,
     ReactiveFormsModule,
     MatButtonModule,
-     // Here is configuration for set up of store module
-     StoreModule.forRoot(reducers),
-     StoreDevtoolsModule.instrument(),
+    // Here is configuration for set up of store module
+    StoreModule.forRoot(reducers),
+    StoreDevtoolsModule.instrument(),
+    MatSelectModule,
+  !environment.production ? StoreDevtoolsModule.instrument({ name: 'Fitness Dev Tools'}) : []
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
