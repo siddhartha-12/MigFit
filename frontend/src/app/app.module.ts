@@ -36,6 +36,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { MealsComponent } from './meals/meals.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ErrorComponent } from './error/error.component';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -52,6 +53,7 @@ import { ErrorComponent } from './error/error.component';
     MealsComponent,
     ProfileComponent,
     ErrorComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
