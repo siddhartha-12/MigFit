@@ -32,6 +32,11 @@ import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {MatSelectModule} from '@angular/material/select';
 import { MealsComponent } from './meals/meals.component';
+import { AddFoodComponent } from './meals/add-food/add-food.component'
+import { EditFoodComponent } from './meals/edit-food/edit-food.component';
+import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
+import { FooterComponent } from './meals/footer/footer.component';
+import { FilterPipe } from './meals/filter.pipe';
 
 
 @NgModule({
@@ -46,6 +51,11 @@ import { MealsComponent } from './meals/meals.component';
     UploadSrcListComponent,
     UploadViewAllComponent,
     MealsComponent,
+    AddFoodComponent,
+    EditFoodComponent,
+    ResultPaneComponent,
+    FooterComponent,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
