@@ -31,6 +31,7 @@ import { reducers } from './store/reducers';
 import { environment } from '../environments/environment';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import {MatSelectModule} from '@angular/material/select';
+import { MealsComponent } from './meals/meals.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import {MatSelectModule} from '@angular/material/select';
     UploadSrcComponent,
     UploadSrcListComponent,
     UploadViewAllComponent,
+    MealsComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import {MatSelectModule} from '@angular/material/select';
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
     MatSelectModule,
+  !environment.production ? StoreDevtoolsModule.instrument({ name: 'Fitness Dev Tools'}) : []
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
