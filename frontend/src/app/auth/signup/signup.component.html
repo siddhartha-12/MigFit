@@ -26,9 +26,10 @@
                     <mat-error *ngIf="confirmPassInput.value !== passwordInput.value">Two password do not match
                     </mat-error>
                 </mat-form-field>
-                <br><br><br>
             </mat-card-content>
-            <button mat-raised-button color="accent" type="submit">sign up</button>
+            <button mat-raised-button color="accent" type="submit">Register</button>
+            <br><br>
+            <p class="home-screen__login">Have an account? <a routerLink="/signin" class="home-screen__login-link">Log In</a></p>
         </form>
     </mat-card>
 </div>
