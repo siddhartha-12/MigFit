@@ -89,7 +89,7 @@ export class UserService {
               }
               this.router.navigate(['/fitness/home']);
           }, error => {
-              this.router.navigate(['']);
+              this.router.navigate(['/signin']);
               this.userStatusListener.next(false);
           });
     }

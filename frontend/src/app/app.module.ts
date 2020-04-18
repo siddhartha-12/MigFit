@@ -20,6 +20,7 @@ import { SignupComponent } from './auth/signup/signup.component';
 import { HeaderComponent } from './header/header.component';
 import { LandingComponent } from './landing/landing.component';
 import { AuthInterceptor } from './services/auth-interceptor';
+import { ErrorInterceptor } from './error/error-interceptor';
 import { BmiComponent } from './bmi/bmi.component';
 import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
 import { UploadSrcListComponent } from './uploads/upload-src-list/upload-src-list.component';
@@ -88,7 +89,8 @@ import { HomeComponent } from './home/home.component';
   !environment.production ? StoreDevtoolsModule.instrument({ name: 'Fitness Dev Tools'}) : []
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })
