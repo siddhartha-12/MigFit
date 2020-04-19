@@ -1,3 +1,29 @@
 <p>landing works!</p>
 <a routerLinkActive="active" routerLink="/bmi">BMI Calculator</a> <br> <br>
 <a routerLinkActive="active" routerLink="/meal">Meal Tracker</a>
+<div class="container">
+    <mat-grid-list cols="3" rowHeight="8:3">
+        <mat-grid-tile>
+            <mat-card>
+            <img mat-card-image src="../../assets/img/LandingPage/user-profile-default.png"
+                alt="Profile">
+            <mat-card-content>
+                <p>
+                    Profile Section
+                </p>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-button routerLink="/bmi">Profile</button>
+            </mat-card-actions>
+            </mat-card>
+        </mat-grid-tile>
+        <mat-grid-tile>2</mat-grid-tile>
+        <mat-grid-tile>3</mat-grid-tile>
+    </mat-grid-list>
+    <br>
+    <mat-grid-list cols="3" rowHeight="8:3">
+        <mat-grid-tile>1</mat-grid-tile>
+        <mat-grid-tile>2</mat-grid-tile>
+        <mat-grid-tile>3</mat-grid-tile>
+    </mat-grid-list>
+</div>

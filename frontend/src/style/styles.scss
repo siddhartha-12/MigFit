@@ -1,11 +1,7 @@
+@import "../../node_modules/bootstrap/scss/functions.scss";
+@import "../../node_modules/bootstrap/scss/variables.scss";
+@import "../../node_modules/bootstrap/scss/bootstrap.scss";
 
-@import "node_modules/bootstrap/scss/functions";
-@import "node_modules/bootstrap/scss/mixins";
-@import "node_modules/bootstrap/scss/variables";
-@import "node_modules/bootstrap/scss/forms";
-@import "node_modules/bootstrap/scss/buttons";
-@import "node_modules/bootstrap/scss/tables";
-@import "node_modules/bootstrap/scss/grid";
 
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
@@ -41,7 +37,7 @@ body
 { 
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  background-image:url(https://cdn.pizap.com/pizapfiles/images/photo_backgrounds_textures_app05.jpg);
+  //background-image:url(https://st2.depositphotos.com/1747568/11982/v/950/depositphotos_119822948-stock-illustration-polygonal-light-background-can-be.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 

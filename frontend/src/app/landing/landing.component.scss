@@ -1,0 +1,21 @@
+.container
+{
+    padding-left: 15px;
+}
+mat-grid-tile {
+    background-color:#da3b2f;
+    position: absolute;
+    top:20%;
+    opacity:1;
+    left:25px;
+    width: 15px;
+    border-radius:10px;
+    transform:scale(1);
+    -webkit-transform:scale(1);
+    -ms-transform:scale(1);
+    z-index:5;max-width:330px;
+}
+img
+{
+    height: 10px;
+}
