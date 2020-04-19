@@ -1,13 +1,33 @@
 <div class="profile_width">
     <mat-card>
         <form #updateForm="ngForm" (submit)="updateProfile(updateForm)">
+            <h2>Fitness Information</h2>
+            <mat-form-field>
+                <mat-label>height(cm)</mat-label>
+                <input matInput name="height" ngModel #heightInput="ngModel">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>weight(kg)</mat-label>
+                <input matInput name="weight" ngModel #weightInput="ngModel">
+            </mat-form-field>
+            <mat-form-field>
+                <mat-label>gender</mat-label>
+                <mat-select title="gender"  name="gender" ngModel #genderSelector="ngModel" required>
+                    <mat-option>male</mat-option>
+                    <mat-option>female</mat-option>
+                    <mat-option>no-binary gender</mat-option>
+                </mat-select>
+            </mat-form-field>
+            <mat-divider [inset]="true"></mat-divider>
+            <br>
+            <h2>Identity Information</h2>
             <mat-form-field>
                 <mat-label>username</mat-label>
-                <input matInput name="username" type="text" value="{{user.username}}" ngModel #usernameInput="ngModel">
+                <input matInput name="username" type="text" value="{{user.username}}" ngModel #usernameInput="ngModel" required>
               </mat-form-field>  
             <mat-form-field>
                 <mat-label>email</mat-label>
-                <input matInput name="email" type="email" value="{{user.email}}" ngModel #emailInput="ngModel">
+                <input matInput name="email" type="email" value="{{user.email}}" ngModel #emailInput="ngModel" required>
               </mat-form-field> 
               <br *ngIf="!isChangePassword">
               <br *ngIf="!isChangePassword">
@@ -28,6 +48,6 @@
               <br><br><br>
               <button mat-raised-button color="basic" type="submit">Save Change</button>&nbsp;&nbsp;
               <button mat-raised-button color="warn">Cancel</button>
-          </form>
+        </form>
       </mat-card>
 </div>

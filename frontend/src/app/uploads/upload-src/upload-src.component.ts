@@ -7,6 +7,7 @@ import { Upload } from '../upload.model';
 import { mimeType} from "./mime-type.validator"
 import { from } from 'rxjs';
 import {stringify} from 'querystring';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -29,7 +30,8 @@ export class UploadSrcComponent implements OnInit {
   constructor(
     public uploadsService: UploadService,
     public route: ActivatedRoute,
-    public sanitizer: DomSanitizer
+    public sanitizer: DomSanitizer,
+    private userService: UserService
     ) { }
   // uploadCreated = new EventEmitter<Upload>();
 
@@ -81,9 +83,10 @@ export class UploadSrcComponent implements OnInit {
             content: uploadData.content,
             contentType: uploadData.contentType,
             mediaPath: uploadData.mediaPath,
-            imagePath: null
+            imagePath: null,
+            userId: this.userService.getUserId()
           };
-          this.form.setValue({
+          this.form.patchValue({
             title: this.upload.title,
             content: this.upload.content,
             contentType: this.upload.contentType,
@@ -122,8 +125,8 @@ export class UploadSrcComponent implements OnInit {
       return;
     }
 
-    console.log('I am here')
-    console.log(this.form)
+    console.log('I am here');
+    console.log(this.form);
     this.isLoading = true;
     if (this.mode === 'create') {
       this.uploadsService.addUpload(
@@ -132,7 +135,8 @@ export class UploadSrcComponent implements OnInit {
         this.form.value.contentType,
         this.form.value.image,
         this.form.value.media,
-        this.form.value.link
+        this.form.value.link,
+        this.userService.getUserId()
       );
     } else {
     this.uploadsService.updateUpload(
@@ -142,7 +146,8 @@ export class UploadSrcComponent implements OnInit {
       this.form.value.contentType,
       this.form.value.image,
       this.form.value.media,
-      this.form.value.link
+      this.form.value.link,
+      this.userService.getUserId()
       );
     }
     this.form.reset();

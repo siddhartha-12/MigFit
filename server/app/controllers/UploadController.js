@@ -43,13 +43,13 @@ const MIME_TYPE_MAP = {
   });
 
 exports.post = (req, res, next) => {
-    console.log('req.file')
-    console.log(req.file)
+    console.log(req.body.userId);
   const url = req.protocol + "://" + req.get("host");
     let newUpload = {};
     newUpload.title = req.body.title;
     newUpload.content = req.body.content;
     newUpload.contentType = req.body.contentType;
+    newUpload.userId = req.body.userId;
     // newUpload.userId = 
     if(req.body.contentType == 'link'){
         newUpload.mediaPath = req.body.linkData;
@@ -87,11 +87,16 @@ exports.update =(
         const url = req.protocol + "://" + req.get("host");
         upload.imagePath = url + "/public/media/" + req.file.filename
     }
+    console.log(req.body);
+    console.log(req.body.title);
+    console.log(req.body.content);
+    console.log(req.body.contentType);
+    console.log(req.body.userId);
     upload.id = uploadId;
     upload.title = req.body.title;
     upload.content = req.body.content;
     upload.contentType = req.body.contentType;
-    upload.contentType = req.body.contentType;
+    upload.userId = req.body.userId;
     
     uploadService.updateUpload(upload)
         .then(result => {

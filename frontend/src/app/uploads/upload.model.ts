@@ -5,4 +5,5 @@ export interface Upload {
     contentType: string | any;
     mediaPath: string | any;
     imagePath: string   | any;
+    userId: string;
 }
