@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators} from "@angular/forms";
 import { Subscription } from 'rxjs';
-import { UploadService } from 'src/app/uploads/uploads.service';
+import { VideoService } from 'src/app/video-library/video.service';
 
 import { Upload } from 'src/app/uploads/upload.model';
 
@@ -16,11 +16,11 @@ export class VideoLibraryComponent implements OnInit, OnDestroy {
   uploads: Upload[] = [];
   private uploadsSub: Subscription;
  
-  constructor(public uploadsService: UploadService) {}
+  constructor(public videosService: VideoService) {}
 
   ngOnInit() {
-    this.uploadsService.getUploads();
-    this.uploadsSub = this.uploadsService.getUploadUpdateListener()
+    this.videosService.getUploads();
+    this.uploadsSub = this.videosService.getUploadUpdateListener()
       .subscribe((uploads : Upload[]) => {
           this.uploads = uploads;
       });
