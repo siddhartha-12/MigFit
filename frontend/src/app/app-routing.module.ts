@@ -14,7 +14,7 @@ import { MealsComponent } from './meals/meals.component';
 import { AddFoodComponent } from './meals/add-food/add-food.component';
 import { EditFoodComponent } from './meals/edit-food/edit-food.component';
 import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
-
+import {Landingpage2Component} from './landingpage2/landingpage2.component'
 
 
 const routes: Routes = [
@@ -24,6 +24,7 @@ const routes: Routes = [
   { path: 'signin', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
+  { path: 'fitness/l2', component: Landingpage2Component },
   { path: 'bmi', component: BmiComponent},
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
