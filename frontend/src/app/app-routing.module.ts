@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'signin', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
-  { path: '/home', component: Landingpage2Component },
+  { path: 'home', component: Landingpage2Component },
   { path: 'bmi', component: BmiComponent},
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
