@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   userIsAuthenticated = false;
   private userListenerSubs: Subscription;
+  username: string;
 
   constructor(private userService: UserService) { }
 
@@ -20,6 +21,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
       .getUserStatusListener()
       .subscribe(isAuthenticated => {
         this.userIsAuthenticated = isAuthenticated;
+        this.username = this.userService.getUsername();
       });
   }
 

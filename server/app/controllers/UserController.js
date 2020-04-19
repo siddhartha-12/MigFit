@@ -14,6 +14,9 @@ exports.signup = (req, res, next) => {
             newUser.username = req.body.username;
             newUser.email = req.body.email;
             newUser.password = hash;
+            newUser.gender = req.body.gender;
+            newUser.height = req.body.height;
+            newUser.weight = req.body.weight;
             //use createUser in Services
             userService.createUser(newUser)
                 .then(result => {
