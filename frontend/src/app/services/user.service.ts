@@ -65,7 +65,6 @@ export class UserService {
             this.router.navigate(['/signup']);
             this.userStatusListener.next(false);
         });
-        
     }
 
     login(user: User) {
@@ -99,10 +98,13 @@ export class UserService {
             this.user.password = response.user.password;
             this.user.email = response.user.email;
             this.user.username = response.user.username;
+            this.user.weight = response.user.weight;
+            this.user.height = response.user.height;
+            this.user.gender = response.user.gender;
             // this.user = response.user;
         }, error => {
-            this.router.navigate(['']);
-            this.userStatusListener.next(false);
+            // this.router.navigate(['']);
+            // this.userStatusListener.next(false);
         });
     }
 

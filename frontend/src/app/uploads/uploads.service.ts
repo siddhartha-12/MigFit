@@ -46,11 +46,12 @@ export class UploadService{
         );
       }
 
-    addUpload(title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null){
+    addUpload(title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string){
         const uploadData = new FormData();
         uploadData.append('title', title);
         uploadData.append('content', content);
         uploadData.append('contentType', contentType);
+        uploadData.append('userId', userId);
         if (image){
           uploadData.append('image', image, title);
         }
@@ -60,7 +61,7 @@ export class UploadService{
         if (link){
           uploadData.append('linkData', link);
         }
-        this.http.post<{message: string; upload: Upload; uploadId: any, title: any, content: any, contentType: any}>(
+        this.http.post<{message: string; upload: Upload; uploadId: any, title: any, content: any, contentType: any, userId: string}>(
             'http://localhost:3030/fitness/upload',
             uploadData
             )
@@ -72,7 +73,8 @@ export class UploadService{
                     content: responseData.content,
                     contentType: responseData.contentType,
                     mediaPath: null,
-                    imagePath: responseData.upload.imagePath
+                    imagePath: responseData.upload.imagePath,
+                    userId: responseData.userId,
                   };
                 console.log('addUpload !important...')
                 this.uploads.push(upload);
@@ -84,10 +86,12 @@ export class UploadService{
             });
     }
 
-    updateUpload(id: string, title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null) {
+    updateUpload(id: string, title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string) {
+
+      console.log(id + ' ' + title + ' ' + content + ' ' + contentType + ' ' + image + ' ');
         let uploadData: Upload | FormData;
 
-        if (typeof image === 'object') {
+        // if (typeof image === 'object') {
             uploadData = new FormData();
             uploadData.append('id', id);
             uploadData.append('title', title);
@@ -102,17 +106,18 @@ export class UploadService{
             if (link){
               uploadData.append('linkData', link);
             }
-          } else {
-            uploadData = {
-              id: id,
-              title: title,
-              content: content,
-              imagePath: image,
-              mediaPath: '',
-              contentType: ''
-
-            };
-          }
+          // } 
+          // else {
+          //   uploadData = {
+          //     id: id,
+          //     title: title,
+          //     content: content,
+          //     imagePath: image,
+          //     mediaPath: '',
+          //     contentType: '',
+          //     userId: userId
+          //   };
+          // }
 
         this.http
           .put("http://localhost:3030/fitness/upload/" + id, uploadData)
@@ -125,7 +130,8 @@ export class UploadService{
               content: content,
               imagePath: image,
               mediaPath: '',
-              contentType: ''
+              contentType: '',
+              userId: userId
               };
             updatedUploads[oldUploadIndex] = upload;
             this.uploads = updatedUploads;
@@ -143,4 +149,5 @@ export class UploadService{
             this.uploadsUpdated.next([...this.uploads]);
           });
       }
+
 }

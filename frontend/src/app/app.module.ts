@@ -9,6 +9,7 @@ import { MatExpansionModule} from "@angular/material/expansion";
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -84,6 +85,7 @@ import { VideoLibraryComponent } from './video-library/video-library.component';
     MatButtonModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatDividerModule,
     // Here is configuration for set up of store module
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),
