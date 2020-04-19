@@ -1,4 +1,12 @@
 
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/mixins";
+@import "node_modules/bootstrap/scss/variables";
+@import "node_modules/bootstrap/scss/forms";
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/tables";
+@import "node_modules/bootstrap/scss/grid";
+
 // Custom Theming for Angular Material
 // For more information: https://material.angular.io/guide/theming
 @import '~@angular/material/theming';
@@ -33,8 +41,10 @@ body
 { 
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
-  //background-image:url(https://i.ya-webdesign.com/images/vector-market-background-13.png);
-  
+  background-image:url(https://cdn.pizap.com/pizapfiles/images/photo_backgrounds_textures_app05.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+
 }  
   h1 {
     text-align: center;
