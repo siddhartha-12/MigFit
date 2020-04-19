@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators} from "@angular/forms";
-import { ActivatedRoute, ParamMap } from "@angular/router";
-import { DomSanitizer } from '@angular/platform-browser';
+import { Subscription } from 'rxjs';
+import { UploadService } from 'src/app/uploads/uploads.service';
 
-
+import { Upload } from 'src/app/uploads/upload.model';
 
 
 @Component({
@@ -11,11 +11,21 @@ import { DomSanitizer } from '@angular/platform-browser';
   templateUrl: './video-library.component.html',
   styleUrls: ['./video-library.component.scss']
 })
-export class VideoLibraryComponent implements OnInit {
+export class VideoLibraryComponent implements OnInit, OnDestroy {
 
-  constructor() { }
+  uploads: Upload[] = [];
+  private uploadsSub: Subscription;
+ 
+  constructor(public uploadsService: UploadService) {}
 
-  ngOnInit(): void {
-  }
-
+  ngOnInit() {
+    this.uploadsService.getUploads();
+    this.uploadsSub = this.uploadsService.getUploadUpdateListener()
+      .subscribe((uploads : Upload[]) => {
+          this.uploads = uploads;
+      });
+    }
+      ngOnDestroy(){
+        this.uploadsSub.unsubscribe();
+      }
 }
