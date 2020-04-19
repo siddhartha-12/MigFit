@@ -25,7 +25,7 @@ export class MealsComponent implements OnInit {
 	showFood(newFoodFromChild:Food){
     this.masterFoodsList.push(newFoodFromChild);
   }
-  //editting the a selected meal in the list
+  //editting the selected meal in the list
   selectedFood:Food=null; //no food selected
 
   deleteFoodButton(deleteMeal:Food){

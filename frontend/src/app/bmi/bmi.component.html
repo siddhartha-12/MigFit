@@ -2,7 +2,7 @@
 
 	<h2>BMI Calculator</h2>
 
-	<p>Add weight input, then combine with height and convert to a computed BMI.</p> <br><br>
+	<p>Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women..</p> <br><br>
 	<div class="playground">
 		<div class="inputs">
 			<div class="height">
@@ -34,8 +34,15 @@
 		</div>
 		<div class="bmi">
 
-		<p>BMI: {{ bmi$ | async }}</p> <br><br>
+		<p>YOUR BMI: {{ bmi$ | async }}</p> <br><br>
 		<p>Healthy BMI range: 18.5 kg/m2 - 25 kg/m2</p>
+		<p>BMI Categories:</p>
+		<ul>
+			<li><span>Underweight = <18.5</span></li>
+			<li><span>Normal weight = 18.5–24.9</span></li>
+			<li><span>Overweight = 25–29.9</span></li>
+			<li><span>Obesity = BMI of 30 or greater</span></li>
+		</ul>
 		</div>
-		<button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/fitness/home']"> Back to Home Page</button>
+		<button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/home']"> Back to Home Page</button>
 	</div>

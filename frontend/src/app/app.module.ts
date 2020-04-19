@@ -13,6 +13,7 @@ import { MatDividerModule } from '@angular/material/divider';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +46,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { VideoLibraryComponent } from './video-library/video-library.component';
+import { Landingpage2Component } from './landingpage2/landingpage2.component';
 
 
 @NgModule({
@@ -68,6 +70,7 @@ import { VideoLibraryComponent } from './video-library/video-library.component';
     ErrorComponent,
     HomeComponent,
     VideoLibraryComponent,
+    Landingpage2Component,
   ],
   imports: [
     BrowserModule,
@@ -85,6 +88,7 @@ import { VideoLibraryComponent } from './video-library/video-library.component';
     MatButtonModule,
     MatMenuModule,
     MatSnackBarModule,
+    MatGridListModule,
     MatDividerModule,
     // Here is configuration for set up of store module
     StoreModule.forRoot(reducers),

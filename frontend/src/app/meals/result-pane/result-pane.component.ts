@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Input,Output, EventEmitter} from '@angular/core';
 import {Food} from '../../models/food';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-result-pane',
   templateUrl: './result-pane.component.html',

@@ -1,15 +1,9 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="warn">
     <span>
         <a routerLink="/">Migfit</a>
     </span>
     <span class="spacer"></span>
     <ul>
-        <!-- <li *ngIf="!userIsAuthenticated">
-          <a mat-button routerLink="" routerLinkActive="mat-accent">Login</a>
-        </li>
-        <li *ngIf="!userIsAuthenticated" >
-          <a mat-button routerLink="/signup" routerLinkActive="mat-accent">Signup</a>
-        </li> -->
         <li *ngIf="userIsAuthenticated">
           <button mat-button [matMenuTriggerFor]="userMenu"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="36" height="36"

@@ -8,7 +8,7 @@ import {Food} from '../../models/food'; //imports the interface of the class foo
   styleUrls: ['./add-food.component.scss']
 })
 export class AddFoodComponent implements OnInit {
-  @Output()  addNewFood= new EventEmitter();//to  take the listed food to the sibing component for listing
+  @Output()  addNewFood= new EventEmitter();//to  take the ng serve listed food to the sibing component for listing
 
   constructor() { }
 
