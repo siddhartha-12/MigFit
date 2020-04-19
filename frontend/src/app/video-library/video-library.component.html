@@ -1,0 +1,18 @@
+<p>video-library works!</p>
+
+
+<mat-expansion-panel *ngFor="let upload of uploads">
+    <mat-expansion-panel-header>
+        {{video.title}}
+    </mat-expansion-panel-header>
+      <!-- <div class="upload-image" *ngIf="upload.contentType == 'image'">
+        <img [src]="upload.mediaPath" [alt]="upload.title">
+      </div> -->
+      <div class="video"  *ngIf="upload.contentType == 'video'">
+        <video controls="controls" [src]="upload.mediaPath" width="250" height="180"></video>
+      </div>
+      <div class="video"  *ngIf="upload.contentType == 'link'">
+        <a [href]="upload.mediaPath">Link to : {{video.title}}</a>
+      </div>
+    <p>{{ video.content }}</p>
+</mat-expansion-panel>
