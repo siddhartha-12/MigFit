@@ -2,6 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 
 import { UserService } from '../services/user.service';
 import { Subscription } from 'rxjs';
+import { UploadService } from '../uploads/uploads.service';
 
 @Component({
   selector: 'app-header',
@@ -14,7 +15,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   private userListenerSubs: Subscription;
   username: string;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private uploadService: UploadService) { }
 
   ngOnInit(): void {
     this.userListenerSubs = this.userService
@@ -31,6 +32,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
 
   onProfile() {
     this.userService.showProfile();
+  }
+
+  onUploadVideo() {
+    this.userService.showUpload();
   }
 
   ngOnDestroy(): void {
