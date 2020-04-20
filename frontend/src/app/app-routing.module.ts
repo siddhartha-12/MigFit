@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'list', component: ResultPaneComponent },  
   {path: 'viewDetails', component:ViewDetailsComponent}
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],

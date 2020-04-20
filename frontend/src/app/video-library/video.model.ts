@@ -4,4 +4,5 @@ export interface Video {
     content: string | any;
     contentType: string | any;
     mediaPath: string | any;
+    userId: string;
 }

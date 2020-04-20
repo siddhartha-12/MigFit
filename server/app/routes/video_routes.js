@@ -4,6 +4,6 @@ const uploadController = require('../controllers/UploadController');
 module.exports = (app) => {
     
 
-    app.get('/fitness/video_library/', uploadController.getTotal);
+    app.get('/fitness/video_library', uploadController.getTotal);
     
 };

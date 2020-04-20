@@ -5,6 +5,8 @@
   
   .height, .weight {
     flex: auto;
+    font-weight: bolder;
+    font-size: larger;
   }
   
   .bmi {
@@ -13,11 +15,14 @@
   
   h2{
     text-align: center;
-   color:#c6ff40;
+    color:#c6ff40;
+    font-weight: bolder;
+    font-size: xx-large;
   }
 
   p{
     color:#ff4081;
+    font-size: large;
   }
 
   .height label{
@@ -35,6 +40,11 @@
       font-size: larger;
   }
 
-  .bmi p{
-    color:#c6ff40;
+  ul li{
+    color:#ff4081;
+    list-style-type:none;
+  }
+
+  li span{
+    background-color:#c6ff40;
   }
