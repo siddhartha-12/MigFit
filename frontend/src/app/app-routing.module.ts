@@ -32,7 +32,7 @@ const routes: Routes = [
   { path: 'edit/:uploadId', component: UploadSrcComponent },
   { path: 'fitness/profile', component: ProfileComponent },
   { path: 'fitness/video_library', component: VideoLibraryComponent},
-  {path: 'meal', component: MealsComponent },
+  { path: 'meal', component: MealsComponent },
   { path: 'meal/add', component: AddFoodComponent },
   { path: 'edit/:id', component: EditFoodComponent},
   { path: 'list', component: ResultPaneComponent },  

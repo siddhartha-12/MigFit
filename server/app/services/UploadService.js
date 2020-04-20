@@ -8,7 +8,9 @@ exports.createUploadSRC = (upload) => {
 }
 
 exports.updateUpload = (updateUpload) => {
-    const promise = Upload.findByIdAndUpdate(updateUpload._id, updateUpload);
+    console.log(updateUpload);
+    // const promise = Upload.findByIdAndUpdate(updateUpload.id, updateUpload);
+    const promise = Upload.updateOne({_id: updateUpload.id, userId: updateUpload.userId}, updateUpload);
     // console.log(promise);
     return promise;
 }
