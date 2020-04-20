@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LoginComponent } from './auth/login/login.component';
@@ -14,7 +13,9 @@ import { MealsComponent } from './meals/meals.component';
 import { AddFoodComponent } from './meals/add-food/add-food.component';
 import { EditFoodComponent } from './meals/edit-food/edit-food.component';
 import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
-import {Landingpage2Component} from './landingpage2/landingpage2.component'
+import {Landingpage2Component} from './landingpage2/landingpage2.component';
+import {ViewDetailsComponent} from './view-details/view-details.component';
+import { VideoLibraryComponent } from './video-library/video-library.component';
 
 
 const routes: Routes = [
@@ -24,15 +25,17 @@ const routes: Routes = [
   { path: 'signin', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
-  { path: '/home', component: Landingpage2Component },
+  { path: 'home', component: Landingpage2Component },
   { path: 'bmi', component: BmiComponent},
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
   { path: 'fitness/profile', component: ProfileComponent },
+  { path: 'fitness/video_library', component: VideoLibraryComponent},
   {path: 'meal', component: MealsComponent },
   { path: 'meal/add', component: AddFoodComponent },
   { path: 'edit/:id', component: EditFoodComponent},
-  { path: 'list', component: ResultPaneComponent }  
+  { path: 'list', component: ResultPaneComponent },  
+  {path: 'viewDetails', component:ViewDetailsComponent}
 ];
 
 @NgModule({
