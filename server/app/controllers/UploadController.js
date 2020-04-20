@@ -76,10 +76,7 @@ exports.post = (req, res, next) => {
 
 
 
-exports.update =(
-    "/:id",
-    multer({ storage: storage }).single("media"),
-    (req, res, next) => {
+exports.update = (req, res, next) => {
     const uploadId = req.params.id;
     let imagePath = req.body.imagePath;
     const upload = Object.assign({}, req.body);
@@ -87,16 +84,14 @@ exports.update =(
         const url = req.protocol + "://" + req.get("host");
         upload.imagePath = url + "/public/media/" + req.file.filename
     }
-    console.log(req.body);
-    console.log(req.body.title);
-    console.log(req.body.content);
-    console.log(req.body.contentType);
-    console.log(req.body.userId);
+    // upload.id = uploadId;
+    // upload.title = req.body.title;
+    // upload.content = req.body.content;
+    // upload.contentType = req.body.contentType;
+    // upload.userId = req.body.userId;
     upload.id = uploadId;
-    upload.title = req.body.title;
-    upload.content = req.body.content;
-    upload.contentType = req.body.contentType;
-    upload.userId = req.body.userId;
+    console.log(upload);
+
     
     uploadService.updateUpload(upload)
         .then(result => {
@@ -108,7 +103,7 @@ exports.update =(
                 message:"upload fail"
             });
         });
-});
+};
 
 exports.getTotal = (req, res, next) => {
     uploadService.getAll()
