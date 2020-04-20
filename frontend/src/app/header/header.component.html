@@ -4,7 +4,7 @@
     </span>
     <span class="spacer"></span>
     <ul>
-        <li>
+        <li *ngIf="userIsAuthenticated">
           <button mat-button [matMenuTriggerFor]="userMenu"><svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
             width="36" height="65"
             viewBox="0 0 200 200"
@@ -17,7 +17,12 @@
             <button mat-button (click)="onLogout()">Logout</button>
           </mat-menu>
         </li>
-        <li></li>
+        <li *ngIf="!userIsAuthenticated" class="nav-item">
+          <a class="nav-link" routerLink="/signup">Sign Up</a>
+        </li>
+        <li *ngIf="!userIsAuthenticated" class="nav-item">
+          <a class="nav-link" routerLink="/signin">Log In</a>
+        </li>
     </ul>
 </mat-toolbar>
 <br><br>
