@@ -87,7 +87,8 @@ import { MealListComponent } from './meal-list/meal-list.component';
     MealCreateComponent,
     MealEditComponent,
     MealItemComponent,
-    MealListComponent
+    MealListComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,

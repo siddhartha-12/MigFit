@@ -36,8 +36,8 @@
       </div>
     </mat-card-content>   
     <div class="hover-menu down">{{upload.content}}
-        <a class="button detail" (click)=handleclick(upload._id) >Detail</a>
-      </div>
+        <a class="button detail" (click)="handleclick(upload.id)" >Detail</a>
+    </div>
     <!-- <mat-card-content>{{ upload.content }}</mat-card-content> -->
     <p>{{ upload.userId}}</p>
 <!-- </mat-expansion-panel>  -->
