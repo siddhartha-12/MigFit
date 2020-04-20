@@ -79,7 +79,8 @@ import { CommentComponent } from './comment/comment.component';
     Landingpage2Component,
     ViewDetailsComponent,
     VideoDetailComponent,
-    Header2Component
+    Header2Component,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

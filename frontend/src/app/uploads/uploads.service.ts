@@ -41,7 +41,7 @@ export class UploadService{
     }
 
     getUpload(id: string) {
-        return this.http.get<{ _id: string; title: string; content: string, imagePath: string, mediaPath: string, contentType: string }>(
+        return this.http.get<{ _id: string; title: string; content: string, imagePath: string, mediaPath: string, contentType: string, userId: string }>(
           "http://localhost:3030/fitness/upload/" + id
         );
       }

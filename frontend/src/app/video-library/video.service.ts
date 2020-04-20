@@ -38,6 +38,8 @@ export class VideoService{
         });
     }
 
+    
+
     getUploadUpdateListener(){
         return this.uploadsUpdated.asObservable();
     }
