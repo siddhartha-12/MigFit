@@ -88,12 +88,12 @@ export class UploadService{
 
     updateUpload(id: string, title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string) {
 
-      console.log(id + ' ' + title + ' ' + content + ' ' + contentType + ' ' + image + ' ');
+      console.log(id + ' ' + title + ' ' + content + ' ' + contentType + ' ' + media + ' ');
         let uploadData: Upload | FormData;
 
-        // if (typeof image === 'object') {
+        if (typeof media === 'object' || typeof image === 'object') {
             uploadData = new FormData();
-            uploadData.append('id', id);
+            uploadData.append('id', userId);
             uploadData.append('title', title);
             uploadData.append('content', content);
             uploadData.append('contentType', contentType);
@@ -101,23 +101,25 @@ export class UploadService{
               uploadData.append('image', image, title);
             }
             if (media){
+              console.log("what media?");
               uploadData.append('media', media, title);
             }
             if (link){
               uploadData.append('linkData', link);
             }
-          // } 
-          // else {
-          //   uploadData = {
-          //     id: id,
-          //     title: title,
-          //     content: content,
-          //     imagePath: image,
-          //     mediaPath: '',
-          //     contentType: '',
-          //     userId: userId
-          //   };
-          // }
+          } 
+          else {
+            console.log("what hell?");
+            uploadData = {
+              id: id,
+              title: title,
+              content: content,
+              imagePath: image,
+              mediaPath: media,
+              contentType: '',
+              userId: userId
+            };
+          }
 
         this.http
           .put("http://localhost:3030/fitness/upload/" + id, uploadData)
@@ -129,9 +131,9 @@ export class UploadService{
               title: title,
               content: content,
               imagePath: image,
-              mediaPath: '',
+              mediaPath: media,
               contentType: '',
-              userId: userId
+              userId: userId,
               };
             updatedUploads[oldUploadIndex] = upload;
             this.uploads = updatedUploads;

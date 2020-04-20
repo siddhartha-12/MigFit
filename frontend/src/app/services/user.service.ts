@@ -108,7 +108,7 @@ export class UserService {
         });
     }
 
-    updateProfile(username: string, email: string, newPassword: string, originPassword: string) {
+    updateProfile(username: string, email: string, newPassword: string, originPassword: string, gender: string, height: number, weight: number) {
         
         let updateUser = new HttpParams();
         updateUser = updateUser.append("id", this.userId);
@@ -116,9 +116,12 @@ export class UserService {
         updateUser = updateUser.append('email', email);
         updateUser = updateUser.append("newPassword", newPassword);
         updateUser = updateUser.append('originPassword', originPassword);
+        updateUser = updateUser.append("gender", gender);
+        updateUser = updateUser.append("height", height.toString());
+        updateUser = updateUser.append("weight", weight.toString());
 
         this.http
-         .put<{id: string, username: string, email: string, newPassword: string, originPassword: string}>("http://localhost:3030/user/userProfile/" + this.userId, updateUser)
+         .put<{id: string, username: string, email: string, newPassword: string, originPassword: string, gender: string, height: number, weight: number}>("http://localhost:3030/user/userProfile/" + this.userId, updateUser)
          .subscribe(response => {
              this.snackBar.open("Update successfully!", "OK", {duration: 2000,});
          }, error => {

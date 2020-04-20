@@ -1,10 +1,10 @@
 <p>video-library works!</p>
 
 
-<mat-expansion-panel *ngFor="let upload of uploads">
-    <mat-expansion-panel-header>
+<mat-card *ngFor="let upload of uploads">
+    <mat-card-title>
         {{upload.title}}
-    </mat-expansion-panel-header>
+    </mat-card-title>
       <div class="upload-image" *ngIf="upload.contentType == 'image'">
         <img [src]="upload.mediaPath" [alt]="upload.title">
       </div> -->
@@ -14,5 +14,6 @@
       <div class="video"  *ngIf="upload.contentType == 'link'">
         <a [href]="upload.mediaPath">Link to : {{upload.title}}</a>
       </div>
-    <p>{{ upload.content }}</p>
-</mat-expansion-panel> 
+    <mat-card-content>{{ upload.content }}</mat-card-content>
+    <p>{{ upload.userId}}</p>
+</mat-card> 

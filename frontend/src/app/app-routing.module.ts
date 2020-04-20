@@ -16,6 +16,7 @@ import { EditFoodComponent } from './meals/edit-food/edit-food.component';
 import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
 import {Landingpage2Component} from './landingpage2/landingpage2.component';
 import {ViewDetailsComponent} from './view-details/view-details.component';
+import { VideoLibraryComponent } from './video-library/video-library.component';
 
 
 const routes: Routes = [
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
   { path: 'fitness/profile', component: ProfileComponent },
+  { path: 'fitness/video_library', component: VideoLibraryComponent},
   {path: 'meal', component: MealsComponent },
   { path: 'meal/add', component: AddFoodComponent },
   { path: 'edit/:id', component: EditFoodComponent},
