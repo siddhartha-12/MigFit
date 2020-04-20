@@ -15,6 +15,7 @@ import { EditFoodComponent } from './meals/edit-food/edit-food.component';
 import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
 import {Landingpage2Component} from './landingpage2/landingpage2.component';
 import {ViewDetailsComponent} from './view-details/view-details.component';
+import {Header2Component} from './header2/header2.component'
 import { VideoLibraryComponent } from './video-library/video-library.component';
 
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent},
   { path: 'fitness/home', component: LandingComponent },
   { path: 'home', component: Landingpage2Component },
+  { path: 'header2', component: Header2Component },
   { path: 'bmi', component: BmiComponent},
   { path: 'fitness/upload', component: UploadViewAllComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },

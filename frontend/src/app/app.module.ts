@@ -48,6 +48,7 @@ import { HomeComponent } from './home/home.component';
 import { VideoLibraryComponent } from './video-library/video-library.component';
 import { Landingpage2Component } from './landingpage2/landingpage2.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
+import { Header2Component } from './header2/header2.component';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
     VideoLibraryComponent,
     Landingpage2Component,
     ViewDetailsComponent,
+    Header2Component,
   ],
   imports: [
     BrowserModule,

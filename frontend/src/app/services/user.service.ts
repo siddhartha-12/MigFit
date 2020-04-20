@@ -135,7 +135,7 @@ export class UserService {
         this.token = null;
         this.isAuthenticated = false;
         this.userStatusListener.next(false);
-        this.router.navigate(['/fitness/home']);
+        this.router.navigate(['/']);
         this.userId = null;
         this.user = null;
     }
