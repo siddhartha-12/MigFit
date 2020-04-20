@@ -21,6 +21,11 @@ export class ProfileComponent implements OnInit {
   };
 
   isChangePassword = false;
+  isHeightChange = false;
+  isWeightChange = false;
+  isEmailChange = false;
+  isUsernameChange = false;
+  isGenderChange = false;
 
   constructor(private userService: UserService) { }
 
@@ -38,20 +43,43 @@ export class ProfileComponent implements OnInit {
     if (form.invalid) {
       return;
     }
-    let username: string = form.value.username;
-    let email: string = form.value.email;
+    let username: string = this.isUsernameChange ? form.value.username : this.user.username;
+    let email: string = this.isEmailChange ? form.value.email : this.user.email;
     let newPassword: string = form.value.newPassword;
     let originPassword: string = form.value.currentPassword;
+    let gender: string = this.isGenderChange? form.value.gender : this.user.gender;
+    let height: number = this.isHeightChange ? form.value.height : this.user.height;
+    let weight: number = this.isWeightChange ? form.value.weight : this.user.weight;
     if (newPassword === undefined) {
       console.log("empty new password");
       console.log(originPassword);
-      this.userService.updateProfile(username, email, originPassword, originPassword);
+      this.userService.updateProfile(username, email, originPassword, originPassword, gender, height, weight);
     }
     else {
       console.log("have new password");
       console.log(newPassword);
-      this.userService.updateProfile(username, email, newPassword, originPassword);
+      this.userService.updateProfile(username, email, newPassword, originPassword, gender, height, weight);
     }
+  }
+
+  heightChange() {
+    this.isHeightChange = true;
+  }
+
+  weightChange() {
+    this.isWeightChange = true;
+  }
+
+  genderChange() {
+    this.isGenderChange = true;
+  }
+
+  emailChange() {
+    this.isEmailChange = true;
+  }
+
+  usernameChange() {
+    this.isUsernameChange = true;
   }
  
 }
