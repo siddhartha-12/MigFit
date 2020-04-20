@@ -1,59 +1,46 @@
-import { Injectable, Input } from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import {HttpClient,HttpHeaders} from '@angular/common/http'
+import {Meal} from '../models/meal';
+import { Observable } from 'rxjs';
 
-import { Food } from 'src/app/models/food';
-import { Router } from '@angular/router';
-import { Subject, Observable } from 'rxjs';
-import { MatSnackBar } from '@angular/material/snack-bar';
+@Injectable({
+  providedIn: 'root'
+})
+export class MealService {
+  //API Path
+  base_path = 'http://localhost:3030/meal'
 
-@Injectable({ providedIn: 'root'}) 
-export class MealsService {
+  constructor(private http:HttpClient) { }
 
-    private token: string;
-    private isAuthenticated = false;
-    private userId: string;
-    private username: string;
-    private description : string;
-    private calories : number;
-    private userStatusListener = new Subject<boolean>();
+  //HTTP option and setting header
+  httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
 
-    @Input() private meal: Food = {
-        _id:'',
-        name: '',
-        description: '',
-        calories: null
-    };
+  //Creating a new todo
+  createItem(item):Observable<Meal>
+  {
+    return this.http
+    .post<Meal>(this.base_path, JSON.stringify(item),this.httpOptions)
+  }
 
-    constructor(private http: HttpClient, private router: Router, private snackBar: MatSnackBar) {
-    }
+  //Get Single todo
+  getItem(id):Observable<Meal>{
+    return this.http
+    .get<Meal>(this.base_path + '/'+id)
+  }
 
-    HttpOptions = {
-        headers : new HttpHeaders({'content-type': 'application/json'})
-    };
+  getItems():Observable<Meal>{
+    return this.http
+    .get<Meal>(this.base_path)
+  }
 
-    getToken(){
-        return this.token;
-    }
-
-    getUserId() {
-        return this.userId;
-    }
-
-    getUsername() {
-        return this.username;
-    }
-
-    getDescription() {
-        return this.description;
-    }
-
-    getUserStatusListener() {
-        return this.userStatusListener.asObservable();
-    }
-
-    getIsAuthenticated() {
-        return this.isAuthenticated;
-    }
-
+  // Update item by id
+  updateItem(id, item): Observable<Meal> {
+    return this.http
+      .put<Meal>(this.base_path + '/' + id, JSON.stringify(item), this.httpOptions)
+  }
   
+  deleteItem(id):Observable<Meal>{
+    return this.http
+    .delete<Meal>(this.base_path + '/'+id)
+  }
 }

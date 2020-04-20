@@ -17,6 +17,11 @@ import {Landingpage2Component} from './landingpage2/landingpage2.component';
 import {ViewDetailsComponent} from './view-details/view-details.component';
 import { Header2Component } from './header2/header2.component'
 import { VideoLibraryComponent } from './video-library/video-library.component';
+import { MealCreateComponent } from './meal-create/meal-create.component';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MealItemComponent } from './meal-item/meal-item.component';
+import { MealListComponent } from './meal-list/meal-list.component';
+
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 
 
@@ -40,6 +45,10 @@ const routes: Routes = [
   { path: 'edit/:id', component: EditFoodComponent},
   { path: 'list', component: ResultPaneComponent },  
   { path: 'viewDetails', component:ViewDetailsComponent},
+  { path: 'create', component: MealCreateComponent },
+  { path: 'edit/:id', component: MealEditComponent},
+  { path: 'item/:id', component: MealItemComponent},
+  { path: 'list', component: MealListComponent } 
 ];
  
 @NgModule({

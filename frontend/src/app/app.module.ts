@@ -53,6 +53,10 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import { Header2Component } from './header2/header2.component';
 import { CommentComponent } from './comment/comment.component';
+import { MealCreateComponent } from './meal-create/meal-create.component';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MealItemComponent } from './meal-item/meal-item.component';
+import { MealListComponent } from './meal-list/meal-list.component';
 
 
 @NgModule({
@@ -80,7 +84,11 @@ import { CommentComponent } from './comment/comment.component';
     ViewDetailsComponent,
     VideoDetailComponent,
     Header2Component,
-    CommentComponent,
+    MealCreateComponent,
+    MealEditComponent,
+    MealItemComponent,
+    MealListComponent,
+    CommentComponent
   ],
   imports: [
     BrowserModule,
