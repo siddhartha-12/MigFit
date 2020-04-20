@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm, FormGroup, FormControl, Validators} from "@angular/forms";
 import { Subscription } from 'rxjs';
 import { VideoService } from 'src/app/video-library/video.service';
-
+import {Router} from '@angular/router';
 import { Upload } from 'src/app/uploads/upload.model';
 
 
@@ -16,7 +16,7 @@ export class VideoLibraryComponent implements OnInit, OnDestroy {
   uploads: Upload[] = [];
   private uploadsSub: Subscription;
  
-  constructor(public videosService: VideoService) {}
+  constructor(public videosService: VideoService, private router: Router) {}
 
   ngOnInit() {
     this.videosService.getUploads();
@@ -24,6 +24,16 @@ export class VideoLibraryComponent implements OnInit, OnDestroy {
       .subscribe((uploads : Upload[]) => {
           this.uploads = uploads;
       });
+    }
+
+    handleclick(id:string){
+    
+      this.router.navigate([`fitness/video-library/${id}`], {
+        queryParams: {
+          id: id
+        }
+      });
+  
     }
       ngOnDestroy(){
         this.uploadsSub.unsubscribe();
