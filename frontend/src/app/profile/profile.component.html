@@ -4,11 +4,11 @@
             <h2>Fitness Information</h2>
             <mat-form-field>
                 <mat-label>height(cm)</mat-label>
-                <input matInput name="height" value="{{user.height}}" ngModel #heightInput="ngModel" (ngModelChange)="heightChange()">
+                <input matInput name="height" value="{{user.height ? user.height : 0}}" ngModel #heightInput="ngModel" (ngModelChange)="heightChange()">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>weight(kg)</mat-label>
-                <input matInput name="weight" value="{{user.weight}}" ngModel #weightInput="ngModel" (ngModelChange)="weightChange()">
+                <input matInput name="weight" value="{{user.weight ? user.weight : 0}}" ngModel #weightInput="ngModel" (ngModelChange)="weightChange()">
             </mat-form-field>
             <mat-form-field>
                 <mat-label>gender</mat-label>
