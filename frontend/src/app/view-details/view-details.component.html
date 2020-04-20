@@ -1,3 +1,4 @@
+<app-header></app-header>
 <p>view-details works!</p>
 <div>
 <div>
@@ -9,7 +10,7 @@
     <input type="number" required>
 </div>
 
-<button (click) = "search()">Details</button>
+<button class="btn btn-primary" (click) = "search()">Details</button>
 
 <div *ngIf = "response">
 <p>Item Name : {{response.item_name}}</p>
