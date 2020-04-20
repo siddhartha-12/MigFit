@@ -34,7 +34,6 @@ const routes: Routes = [
   { path: 'fitness/profile', component: ProfileComponent },
   { path: 'fitness/video_library', component: VideoLibraryComponent},
   { path: 'fitness/video_library/:id', component: ViewDetailsComponent},
-
   { path: 'meal', component: MealsComponent },
   { path: 'meal/add', component: AddFoodComponent },
   { path: 'edit/:id', component: EditFoodComponent},

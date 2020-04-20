@@ -11,7 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
-
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -50,9 +50,7 @@ import { HomeComponent } from './home/home.component';
 import { VideoLibraryComponent } from './video-library/video-library.component';
 import { Landingpage2Component } from './landingpage2/landingpage2.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
-
 import { VideoDetailComponent } from './video-detail/video-detail.component';
-
 import { Header2Component } from './header2/header2.component';
 import { CommentComponent } from './comment/comment.component';
 
@@ -90,6 +88,7 @@ import { CommentComponent } from './comment/comment.component';
     MatInputModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatStepperModule,
     MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,

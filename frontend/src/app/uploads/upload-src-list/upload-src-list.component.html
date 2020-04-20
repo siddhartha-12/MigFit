@@ -5,8 +5,8 @@
 </mat-card-header>
 <mat-accordion multi="true" *ngIf = "uploads.length > 0 && !isLoading">  
   <mat-expansion-panel *ngFor="let upload of uploads">
-        <mat-expansion-panel-header>
-            {{upload.title}}
+        <mat-expansion-panel-header class="matheaderCenter">
+            Video Title : {{upload.title}}
         </mat-expansion-panel-header>
           <div class="upload-image" *ngIf="upload.contentType == 'image'">
             <img [src]="upload.mediaPath" [alt]="upload.title">
@@ -15,6 +15,7 @@
             <video controls="controls" [src]="upload.mediaPath" width="250" height="180"></video>
           </div>
           <div class="upload-image"  *ngIf="upload.contentType == 'link'">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/dRFbwjwQ4VE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <a [href]="upload.mediaPath">Link to : {{upload.title}}</a>
           </div>
         <p>{{ upload.content }}</p>
