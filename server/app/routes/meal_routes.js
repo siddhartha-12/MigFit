@@ -12,4 +12,8 @@ module.exports = (app) => {
         .get(mealController.get)
         .put(mealController.update)
         .delete(mealController.delete);
+    app.route('/meal/user/:id')
+        .get(mealController.listUserMeal)
+        .put(mealController.update)
+        .delete(mealController.delete);
 };

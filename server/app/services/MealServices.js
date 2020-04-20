@@ -1,6 +1,16 @@
 'use strict';
 const mongoose = require('mongoose'),
     Meal = mongoose.model('meal');
+    
+exports.getAll = () => {
+    const promise = Meal.find().exec();
+    return promise;
+}
+
+exports.getAllbyUser = (userId) => {
+    const promise = Meal.findOne({User_id: userId})
+    return promise;
+}
 
 /**
  * Returns a promise for search results.

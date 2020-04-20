@@ -9,12 +9,18 @@ const mealService = require('./../services/MealServices');
  * @param response
 */
 exports.list = (request, response) => {
-    const totalQuery = request.query.total;
-    const params = {};
-    if(totalQuery) {
-        params.total = totalQuery
+    const promise = mealService.getAll();
+    const result = (meals) => {
+        response.status(200);
+        response.json(meals);
     };
-    const promise = mealService.search(params);
+    promise
+        .then(result)
+        .catch(renderErrorResponse(response));
+};
+
+exports.listUserMeal = (request, response) => {
+    const promise = mealService.getAllbyUser();
     const result = (meals) => {
         response.status(200);
         response.json(meals);
