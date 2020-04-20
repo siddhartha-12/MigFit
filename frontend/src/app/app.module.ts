@@ -12,6 +12,7 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -29,7 +30,6 @@ import { BmiComponent } from './bmi/bmi.component';
 import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
 import { UploadSrcListComponent } from './uploads/upload-src-list/upload-src-list.component';
 import { UploadViewAllComponent } from './upload-view-all/upload-view-all.component';
-
 
 
 //store
@@ -50,13 +50,17 @@ import { HomeComponent } from './home/home.component';
 import { VideoLibraryComponent } from './video-library/video-library.component';
 import { Landingpage2Component } from './landingpage2/landingpage2.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
-import { VideoDetailComponent } from './video-detail/video-detail.component';
-import { Header2Component } from './header2/header2.component';
+
 import { CommentComponent } from './comment/comment.component';
+import { Header2Component } from './header2/header2.component';
+
+import { VideoDetailComponent } from './video-detail/video-detail.component';
+
 import { MealCreateComponent } from './meal-create/meal-create.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MealItemComponent } from './meal-item/meal-item.component';
 import { MealListComponent } from './meal-list/meal-list.component';
+
 
 
 @NgModule({
@@ -82,14 +86,17 @@ import { MealListComponent } from './meal-list/meal-list.component';
     VideoLibraryComponent,
     Landingpage2Component,
     ViewDetailsComponent,
+    CommentComponent,
+    Header2Component,
     VideoDetailComponent,
     Header2Component,
     MealCreateComponent,
     MealEditComponent,
     MealItemComponent,
     MealListComponent,
-    CommentComponent
+
   ],
+
   imports: [
     BrowserModule,
     AppRoutingModule,
