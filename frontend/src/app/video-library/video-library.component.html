@@ -1,11 +1,31 @@
 <p>video-library works!</p>
 
 
-<mat-card *ngFor="let upload of uploads">
+<!-- <mat-card *ngFor="let upload of uploads">
     <mat-card-title>
         {{upload.title}}
     </mat-card-title>
       <div class="upload-image" *ngIf="upload.contentType == 'image'">
+        <img [src]="upload.mediaPath" [alt]="upload.title">
+      </div> -->
+      <!-- <div class="video"  *ngIf="upload.contentType == 'video'">
+        <video controls="controls" [src]="upload.mediaPath" width="250" height="180"></video>
+      </div>
+      <div class="video"  *ngIf="upload.contentType == 'link'">
+        <a [href]="upload.mediaPath">Link to : {{upload.title}}</a>
+      </div>
+    <mat-card-content>{{ upload.content }}</mat-card-content>
+    <p>{{ upload.userId}}</p>
+</mat-card>   -->
+
+<mat-card *ngFor="let upload of uploads" >
+    <img style= "float: right; width: 20px; height: 20px;" mat-card-image src="http://icons.iconarchive.com/icons/designbolts/free-valentine-heart/256/Heart-icon.png" alt="favorite">
+<mat-expansion-panel >
+    <mat-expansion-panel-header>
+        {{upload.title}}
+        
+    </mat-expansion-panel-header>
+    <div class="upload-image" *ngIf="upload.contentType == 'image'">
         <img [src]="upload.mediaPath" [alt]="upload.title">
       </div> -->
       <div class="video"  *ngIf="upload.contentType == 'video'">
@@ -16,4 +36,5 @@
       </div>
     <mat-card-content>{{ upload.content }}</mat-card-content>
     <p>{{ upload.userId}}</p>
-</mat-card> 
+</mat-expansion-panel> 
+</mat-card>

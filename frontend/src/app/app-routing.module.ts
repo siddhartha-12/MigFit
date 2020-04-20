@@ -38,7 +38,7 @@ const routes: Routes = [
   { path: 'edit/:id', component: EditFoodComponent},
   { path: 'list', component: ResultPaneComponent }  
 ];
-
+ 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
