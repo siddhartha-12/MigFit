@@ -8,15 +8,16 @@ import { BmiComponent } from './bmi/bmi.component';
 import { UploadViewAllComponent } from './upload-view-all/upload-view-all.component';
 import { UploadSrcComponent } from './uploads/upload-src/upload-src.component';
 import { ProfileComponent } from './profile/profile.component';
-import {HomeComponent} from './home/home.component'
+import { HomeComponent } from './home/home.component'
 import { MealsComponent } from './meals/meals.component';
 import { AddFoodComponent } from './meals/add-food/add-food.component';
 import { EditFoodComponent } from './meals/edit-food/edit-food.component';
 import { ResultPaneComponent } from './meals/result-pane/result-pane.component';
 import {Landingpage2Component} from './landingpage2/landingpage2.component';
 import {ViewDetailsComponent} from './view-details/view-details.component';
-import {Header2Component} from './header2/header2.component'
+import { Header2Component } from './header2/header2.component'
 import { VideoLibraryComponent } from './video-library/video-library.component';
+import { VideoDetailComponent } from './video-detail/video-detail.component';
 
 
 const routes: Routes = [
@@ -33,12 +34,12 @@ const routes: Routes = [
   { path: 'edit/:uploadId', component: UploadSrcComponent },
   { path: 'fitness/profile', component: ProfileComponent },
   { path: 'fitness/video_library', component: VideoLibraryComponent},
-  { path: 'fitness/video_library/:id', component: ViewDetailsComponent},
+  { path: 'fitness/video_detail/:id', component: VideoDetailComponent},
   { path: 'meal', component: MealsComponent },
   { path: 'meal/add', component: AddFoodComponent },
   { path: 'edit/:id', component: EditFoodComponent},
   { path: 'list', component: ResultPaneComponent },  
-  { path: 'viewDetails', component:ViewDetailsComponent}
+  { path: 'viewDetails', component:ViewDetailsComponent},
 ];
  
 @NgModule({

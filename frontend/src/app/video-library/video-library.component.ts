@@ -28,11 +28,7 @@ export class VideoLibraryComponent implements OnInit, OnDestroy {
 
     handleclick(id:string){
     
-      this.router.navigate([`fitness/video-library/${id}`], {
-        queryParams: {
-          id: id
-        }
-      });
+      this.router.navigate(["/fitness/video_detail/" + id]);
   
     }
       ngOnDestroy(){
