@@ -32,10 +32,18 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
             mediaPath: uploadData.mediaPath,
             imagePath: null,
             userId: uploadData.userId
+          };
+          if (this.upload.contentType === 'link') {
+            this.upload.mediaPath = this.upload.mediaPath.replace('watch?v=', 'embed/');
+            this.upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(this.upload.mediaPath);
           }
         });
       }
     });
+  }
+
+  ngOnAfterContentInit() {
+
   }
 
   ngOnDestroy(){

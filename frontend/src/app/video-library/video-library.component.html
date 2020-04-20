@@ -23,23 +23,25 @@
 <!-- <mat-expansion-panel >
     <mat-expansion-panel-header> -->
         <!-- {{upload.title}} -->
+      <mat-card-header>
+        <mat-card-title>{{upload.title}}</mat-card-title>
+      </mat-card-header>
      <mat-card-content>
     <!-- </mat-expansion-panel-header> -->
     <div class="upload-image" *ngIf="upload.contentType == 'image'">
         <img [src]="upload.mediaPath" [alt]="upload.title">
-      </div> -->
+      </div>
       <div class="videoitem"  *ngIf="upload.contentType == 'video'">
-        <video controls="controls" [src]="upload.mediaPath" width="250" height="180"></video>
+        <video controls="controls" [src]="upload.mediaPath" width="400" height="280"></video>
       </div>
       <div class="videoitem"  *ngIf="upload.contentType == 'link'">
-        <a [href]="upload.mediaPath">Link to : {{upload.title}}</a>
+        <iframe width="360" height="280" [src]="upload.mediaPath" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       </div>
     </mat-card-content>   
     <div class="hover-menu down">{{upload.content}}
         <a class="button detail" (click)="handleclick(upload.id)" >Detail</a>
     </div>
     <!-- <mat-card-content>{{ upload.content }}</mat-card-content> -->
-    <p>{{ upload.userId}}</p>
 <!-- </mat-expansion-panel>  -->
 </mat-card>
 </div>

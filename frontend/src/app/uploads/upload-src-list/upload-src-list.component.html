@@ -12,10 +12,10 @@
             <img [src]="upload.mediaPath" [alt]="upload.title">
           </div>
           <div class="upload-image"  *ngIf="upload.contentType == 'video'">
-            <video controls="controls" [src]="upload.mediaPath" width="250" height="180"></video>
+            <video controls="controls" [src]="upload.mediaPath" width="560" height="315"></video>
           </div>
           <div class="upload-image"  *ngIf="upload.contentType == 'link'">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/dRFbwjwQ4VE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <iframe width="560" height="315" [src]="upload.mediaPath" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <a [href]="upload.mediaPath">Link to : {{upload.title}}</a>
           </div>
         <p>{{ upload.content }}</p>
