@@ -81,11 +81,11 @@ export class UserService {
                   this.userStatusListener.next(true);
                   this.userId = response.userId;
                   const expiresInDuration = response.expiressIn;
-                  this.userStatusListener.next(true);
                   const now = new Date();
                   const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                 //   this.setAuthTimer(expiresInDuration);
               }
+              console.log("login successfully");
               this.router.navigate(['/home']);
           }, error => {
               this.router.navigate(['/signin']);
