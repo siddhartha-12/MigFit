@@ -1,5 +1,8 @@
-<mat-card>
+<mat-card class="box">
     <mat-spinner *ngIf="isLoading"></mat-spinner>
+    <mat-card-header>
+      <mat-card-title>Upload Video</mat-card-title>
+  </mat-card-header>
     <form [formGroup] = "form" (submit) = "onSaveUpload()" *ngIf="!isLoading">
         <mat-form-field>
             <input
