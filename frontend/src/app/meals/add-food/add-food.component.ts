@@ -20,14 +20,4 @@ export class AddFoodComponent implements OnInit {
   ngOnInit(): void{
   }
 
-
-
-
-
-
-
-
-
-
-
 }

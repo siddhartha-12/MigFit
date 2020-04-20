@@ -47,6 +47,7 @@ import { ErrorComponent } from './error/error.component';
 import { HomeComponent } from './home/home.component';
 import { VideoLibraryComponent } from './video-library/video-library.component';
 import { Landingpage2Component } from './landingpage2/landingpage2.component';
+import { ViewDetailsComponent } from './view-details/view-details.component';
 
 
 @NgModule({
@@ -71,6 +72,7 @@ import { Landingpage2Component } from './landingpage2/landingpage2.component';
     HomeComponent,
     VideoLibraryComponent,
     Landingpage2Component,
+    ViewDetailsComponent,
   ],
   imports: [
     BrowserModule,
