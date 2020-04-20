@@ -2,6 +2,7 @@ import { Component, Input, OnInit, OnDestroy } from '@angular/core';
 import { Upload } from '../upload.model';
 import { UploadService } from '../uploads.service';
 import { Subscription } from 'rxjs';
+import { DomSanitizer } from '@angular/platform-browser';
 
 
 @Component({
@@ -14,7 +15,7 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
   isLoading = false;
   private uploadsSub: Subscription;
  
-  constructor(public uploadsService: UploadService) {}
+  constructor(public uploadsService: UploadService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.isLoading = true;
@@ -23,6 +24,12 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
       .subscribe((uploads : Upload[]) => {
         this.isLoading = false;
           this.uploads = uploads;
+          this.uploads.forEach(upload => {
+            if (upload.contentType === 'link') {
+              upload.mediaPath = upload.mediaPath.replace('watch?v=', 'embed/');
+              upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(upload.mediaPath);
+            }
+          });
       });
   }
 

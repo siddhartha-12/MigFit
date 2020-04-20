@@ -1,34 +1,39 @@
 <app-header></app-header>
 <div class="profile_width">
-    <mat-card>
+    <mat-card class="box">
         <form #updateForm="ngForm" (submit)="updateProfile(updateForm)">
             <h2>Fitness Information</h2>
+            <mat-horizontal-stepper>
+                <mat-step label="Height(cm)">
             <mat-form-field>
-                <mat-label>height(cm)</mat-label>
                 <input matInput name="height" value="{{user.height ? user.height : 0}}" ngModel #heightInput="ngModel" (ngModelChange)="heightChange()">
             </mat-form-field>
+        </mat-step>
+        <mat-step label="Weight">
             <mat-form-field>
-                <mat-label>weight(kg)</mat-label>
                 <input matInput name="weight" value="{{user.weight ? user.weight : 0}}" ngModel #weightInput="ngModel" (ngModelChange)="weightChange()">
             </mat-form-field>
+        </mat-step>
+        <mat-step label="Gender">
             <mat-form-field>
-                <mat-label>gender</mat-label>
                 <mat-select title="gender" value="{{user.gender}}"  name="gender" ngModel #genderSelector="ngModel" (ngModelChange)="genderChange()" required>
                     <mat-option value="male">male</mat-option>
                     <mat-option value="female">female</mat-option>
                     <mat-option value="no-binary gender">no-binary gender</mat-option>
                 </mat-select>
             </mat-form-field>
+            </mat-step>
+        </mat-horizontal-stepper>
             <mat-divider [inset]="true"></mat-divider>
             <br>
             <h2>Identity Information</h2>
             <mat-form-field>
                 <mat-label>username</mat-label>
-                <input matInput name="username" type="text" value="{{user.username}}" ngModel #usernameInput="ngModel" (ngModelChange)="usernameChange()" required>
+                <input disabled=true matInput name="username" type="text" value="{{user.username}}" ngModel #usernameInput="ngModel" (ngModelChange)="usernameChange()" required>
               </mat-form-field>  
             <mat-form-field>
                 <mat-label>email</mat-label>
-                <input matInput name="email" type="email" value="{{user.email}}" ngModel #emailInput="ngModel" (ngModelChange)="emailChange()" required>
+                <input disabled=true matInput name="email" type="email" value="{{user.email}}" ngModel #emailInput="ngModel" (ngModelChange)="emailChange()" required>
               </mat-form-field> 
               <br *ngIf="!isChangePassword">
               <br *ngIf="!isChangePassword">

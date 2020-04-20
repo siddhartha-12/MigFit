@@ -1,7 +1,9 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { Upload } from 'src/app/uploads/upload.model';
 import { Subscription } from 'rxjs';
-import { VideoService } from 'src/app/video-library/video.service';
+import { ActivatedRoute, ParamMap } from '@angular/router';
+import { DomSanitizer } from '@angular/platform-browser';
+import { UploadService } from '../uploads/uploads.service';
 
 @Component({
   selector: 'app-video-detail',
@@ -11,16 +13,37 @@ import { VideoService } from 'src/app/video-library/video.service';
 export class VideoDetailComponent implements OnInit, OnDestroy{
 
 
-  uploads: Upload[] = [];
+  upload: Upload;
+  uploadId: string;
+
   private uploadsSub: Subscription;
-  constructor(public videosService: VideoService) { }
+  constructor(public uploadService: UploadService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
 
   ngOnInit(): void {
-    this.videosService.getUploads();
-    this.uploadsSub = this.videosService.getUploadUpdateListener()
-      .subscribe((uploads : Upload[]) => {
-          this.uploads = uploads;
-      });
+    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+      if (paramMap.has('id')) {
+        this.uploadId = paramMap.get('id');
+        this.uploadService.getUpload(this.uploadId).subscribe(uploadData => {
+          this.upload = {
+            id: uploadData._id,
+            title: uploadData.title,
+            content: uploadData.content,
+            contentType: uploadData.contentType,
+            mediaPath: uploadData.mediaPath,
+            imagePath: null,
+            userId: uploadData.userId
+          };
+          if (this.upload.contentType === 'link') {
+            this.upload.mediaPath = this.upload.mediaPath.replace('watch?v=', 'embed/');
+            this.upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(this.upload.mediaPath);
+          }
+        });
+      }
+    });
+  }
+
+  ngOnAfterContentInit() {
+
   }
 
   ngOnDestroy(){

@@ -1,8 +1,8 @@
 const express = require("express");
 
-const Upload = require("../models/upload");
+const Upload = require("../models/meal");
 
-const uploadService = require('../services/UploadService');
+const uploadService = require('../services/MealServices');
 
 const multer = require("multer");
 const fs = require('fs');
@@ -133,7 +133,7 @@ exports.get = (req, res, next) => {
             res.status(404).json({
                 message: "get fail"
             })
-        })
+        });
 };
 
 exports.delete = (req, res, next) => {

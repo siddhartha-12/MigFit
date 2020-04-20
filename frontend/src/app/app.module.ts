@@ -11,10 +11,12 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+import { MatStepper, MatStepperModule } from '@angular/material/stepper';
+
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule} from '@angular/material/grid-list';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -48,8 +50,17 @@ import { HomeComponent } from './home/home.component';
 import { VideoLibraryComponent } from './video-library/video-library.component';
 import { Landingpage2Component } from './landingpage2/landingpage2.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
+
 import { CommentComponent } from './comment/comment.component';
 import { Header2Component } from './header2/header2.component';
+
+import { VideoDetailComponent } from './video-detail/video-detail.component';
+
+import { MealCreateComponent } from './meal-create/meal-create.component';
+import { MealEditComponent } from './meal-edit/meal-edit.component';
+import { MealItemComponent } from './meal-item/meal-item.component';
+import { MealListComponent } from './meal-list/meal-list.component';
+
 
 
 @NgModule({
@@ -76,7 +87,14 @@ import { Header2Component } from './header2/header2.component';
     Landingpage2Component,
     ViewDetailsComponent,
     CommentComponent,
-    Header2Component
+    Header2Component,
+    VideoDetailComponent,
+    Header2Component,
+    MealCreateComponent,
+    MealEditComponent,
+    MealItemComponent,
+    MealListComponent,
+
   ],
 
   imports: [
@@ -86,6 +104,7 @@ import { Header2Component } from './header2/header2.component';
     MatInputModule,
     MatToolbarModule,
     MatFormFieldModule,
+    MatStepperModule,
     MatProgressSpinnerModule,
     FormsModule,
     HttpClientModule,
