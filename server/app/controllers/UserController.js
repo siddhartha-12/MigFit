@@ -130,7 +130,10 @@ exports.updateUser = (req,res,next) => {
                 _id: userId,
                 username: req.body.username,
                 email: req.body.email,
-                password: hash
+                password: hash,
+                gender: req.body.gender,
+                height: Number(req.body.height),
+                weight: Number(req.body.weight)
             });
             userService.updateUser(updatedUser)
              .then(user => {
