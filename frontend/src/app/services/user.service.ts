@@ -86,7 +86,7 @@ export class UserService {
                   const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
                 //   this.setAuthTimer(expiresInDuration);
               }
-              this.router.navigate(['/fitness/home']);
+              this.router.navigate(['/home']);
           }, error => {
               this.router.navigate(['/signin']);
               this.userStatusListener.next(false);
