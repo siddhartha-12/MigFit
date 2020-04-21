@@ -13,6 +13,12 @@ mat-card {
     height: 100rem;
 }
 
+mat-card-content{
+    text-align: center;
+    font-size: 25px;
+    color: turquoise;
+}
+
 .videoitem{
     //display: block;
     size: large;

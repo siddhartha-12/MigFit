@@ -11,8 +11,8 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/animations": "~9.1.0",
-    "@angular/cdk": "^9.2.0",
+    "@angular/animations": "^9.1.2",
+    "@angular/cdk": "^9.2.1",
     "@angular/common": "~9.1.0",
     "@angular/compiler": "~9.1.0",
     "@angular/core": "~9.1.0",
@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~9.1.0",
     "@angular/platform-browser-dynamic": "~9.1.0",
     "@angular/router": "~9.1.0",
+    "@nebular/theme": "^5.0.0",
     "@ngrx/store": "^9.1.0",
     "@ngrx/store-devtools": "^9.1.0",
     "bootstrap": "^4.4.1",
