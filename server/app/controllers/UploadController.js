@@ -1,8 +1,8 @@
 const express = require("express");
 
-const Upload = require("../models/meal");
+const Upload = require("../models/upload");
 
-const uploadService = require('../services/MealServices');
+const uploadService = require('../services/UploadService');
 
 const multer = require("multer");
 const fs = require('fs');
@@ -61,7 +61,6 @@ exports.post = (req, res, next) => {
         .then(createdUpload => {
             res.status(200).json({
               message: "upload added successfully",
-              uploadId: createdUpload._id,
               upload: createdUpload,
               userId: createdUpload.userId,
             });
@@ -77,6 +76,7 @@ exports.post = (req, res, next) => {
 
 
 exports.update = (req, res, next) => {
+    console.log("hererererer");
     const uploadId = req.params.id;
     let imagePath = req.body.imagePath;
     const upload = Object.assign({}, req.body);
