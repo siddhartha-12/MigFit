@@ -12,8 +12,20 @@
           </button>
           <label></label>
           <mat-menu #userMenu="matMenu">
+            <button mat-button routerLinkActive="active" routerLink="/home">Home</button>
+            <mat-divider></mat-divider>
             <button mat-button (click)="onUploadVideo()">Video Manager</button>
+            <mat-divider></mat-divider>
+            <button mat-button routerLinkActive="active" routerLink="/fitness/video_library">Watch Videos</button>
+            <mat-divider></mat-divider>
+            <button mat-button routerLinkActive="active" routerLink="/create">Add Meals</button>
+            <mat-divider></mat-divider>
+            <button mat-button routerLinkActive="active" routerLink="/list">Check Meals</button>
+            <mat-divider></mat-divider>
+            <button mat-button routerLinkActive="active" routerLink="/bmi">BMI Calculator</button>
+            <mat-divider></mat-divider>
             <button mat-button (click)="onProfile()">Edit Profile</button>
+            <mat-divider></mat-divider>
             <button mat-button (click)="onLogout()">Logout</button>
           </mat-menu>
         </li>

@@ -142,6 +142,25 @@ exports.get = (req, res, next) => {
         });
 };
 
+exports.findByUserId = (req, res, next) => {
+  const userId = req.params.userId;
+  console.log("req: " + req.params);
+  console.log("userId: " + userId);
+  uploadService.getUploadByUserId(userId)
+    .then(uploads => {
+      res.status(200).json({
+        message: "get uploads by userId",
+        uploads: uploads
+      });
+    })
+    .catch(err => {
+      console.log(err);
+      res.status(404).json({
+        message: "fail to find upload by userId"
+      });
+    });
+}
+
 exports.delete = (req, res, next) => {
     uploadService.deleteUpload(req.body.id)
         .then(result => {

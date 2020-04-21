@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -12,12 +13,12 @@ export class ProfileComponent implements OnInit {
 
   @Input() user: User = {
     _id: '',
-        email: '',
-        username: '',
-        password: '',
-        gender: '',
-        weight: 0,
-        height: 0
+    email: '',
+    username: '',
+    password: '',
+    gender: '',
+    weight: 0,
+    height: 0
   };
 
   isChangePassword = false;
@@ -27,12 +28,18 @@ export class ProfileComponent implements OnInit {
   isUsernameChange = false;
   isGenderChange = false;
 
-  constructor(private userService: UserService) { }
+  constructor(private userService: UserService, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-   this.userService.getUserProfile();
-   this.user = this.userService.getUser();
-   console.log(this.user);
+    this.userService.getUserProfile().subscribe(response => {
+      this.user.password = response.user.password;
+      this.user.email = response.user.email;
+      this.user.username = response.user.username;
+      this.user.weight = response.user.weight;
+      this.user.height = response.user.height;
+      this.user.gender = response.user.gender;
+      // this.user = response.user;
+    });
   }
 
   changePassword() {
@@ -47,7 +54,7 @@ export class ProfileComponent implements OnInit {
     let email: string = this.isEmailChange ? form.value.email : this.user.email;
     let newPassword: string = form.value.newPassword;
     let originPassword: string = form.value.currentPassword;
-    let gender: string = this.isGenderChange? form.value.gender : this.user.gender;
+    let gender: string = this.isGenderChange ? form.value.gender : this.user.gender;
     let height: number = this.isHeightChange ? form.value.height : this.user.height;
     let weight: number = this.isWeightChange ? form.value.weight : this.user.weight;
     if (newPassword === undefined) {
@@ -81,5 +88,5 @@ export class ProfileComponent implements OnInit {
   usernameChange() {
     this.isUsernameChange = true;
   }
- 
+
 }

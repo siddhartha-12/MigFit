@@ -102,24 +102,14 @@ export class UserService {
 
     //show user basic information
     getUserProfile() {
-        return this.http.get<{user: User}>("http://localhost:3030/user/userProfile/" + this.userId).subscribe(response => {
-            this.user.password = response.user.password;
-            this.user.email = response.user.email;
-            this.user.username = response.user.username;
-            this.user.weight = response.user.weight;
-            this.user.height = response.user.height;
-            this.user.gender = response.user.gender;
-            // this.user = response.user;
-        }, error => {
-            this.router.navigate(['']);
-            this.userStatusListener.next(false);
-        });
+        return this.http.get<{user: User}>("http://localhost:3030/user/userProfile/" + this.userId);
     }
 
 
     //update profile
     updateProfile(username: string, email: string, newPassword: string, originPassword: string, gender: string, height: number, weight: number) {
         
+        //save updateUser information to HttpParams, in order to send a user object to server.
         let updateUser = new HttpParams();
         updateUser = updateUser.append("id", this.userId);
         updateUser = updateUser.append("username", username);
@@ -132,6 +122,7 @@ export class UserService {
 
         this.http
          .put<{id: string, username: string, email: string, newPassword: string, originPassword: string, gender: string, height: number, weight: number}>("http://localhost:3030/user/userProfile/" + this.userId, updateUser)
+         //if update successfully
          .subscribe(response => {
              this.snackBar.open("Update successfully!", "OK", {duration: 2000,});
          }, error => {

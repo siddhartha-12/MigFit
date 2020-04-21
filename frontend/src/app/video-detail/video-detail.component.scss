@@ -9,7 +9,7 @@
 
 mat-card {
     width: 50rem;
-    height: 50rem;
+    height: auto;
 }
 
 mat-card-content{
@@ -27,14 +27,21 @@ mat-card-content{
     width: 100%;
   }
 
+.container {
+    margin-top: 40px;
+    margin: 0 auto;
+    width: 80rem;
+}
+
 .block1 {
-    margin-left: 12rem;
-    display: inline-flex;
+    width: 60rem;
 }
 
 .block2 {
     margin-top: 3rem;
-    display: inline-block;
     margin-left: 5rem;
     
+}
+.block1, .block2{
+    display: inline-flex;
 }

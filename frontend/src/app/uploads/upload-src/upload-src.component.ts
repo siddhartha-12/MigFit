@@ -8,6 +8,7 @@ import { mimeType} from "./mime-type.validator"
 import { from } from 'rxjs';
 import {stringify} from 'querystring';
 import { UserService } from 'src/app/services/user.service';
+import {Router} from "@angular/router"
 
 
 @Component({
@@ -31,7 +32,8 @@ export class UploadSrcComponent implements OnInit {
     public uploadsService: UploadService,
     public route: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    private userService: UserService
+    private userService: UserService,
+    private router:Router
     ) { }
   // uploadCreated = new EventEmitter<Upload>();
 
@@ -101,6 +103,7 @@ export class UploadSrcComponent implements OnInit {
       }
     });
   }
+  
   onImagePicked(event: Event){
     const file = (event.target as HTMLInputElement).files[0];
     console.log(file);
@@ -114,10 +117,7 @@ export class UploadSrcComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  // getTrustedYouTubeUrl(linkedVideo: string) {
-  //   linkedVideo = linkedVideo.replace('watch?v=', 'embed/');
-  //   return this.sanitizer.bypassSecurityTrustResourceUrl(linkedVideo);
-  // }
+
   onSaveUpload(){
     console.log(this.form.value)
     console.log(this.form.status )
@@ -155,6 +155,7 @@ export class UploadSrcComponent implements OnInit {
       );
     }
     this.form.reset();
+    this.uploadsService.getUploadsByUserId(this.userService.getUserId());
   }
 
   getTrustedYouTubeUrl(linkedVideo:string) {

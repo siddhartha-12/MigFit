@@ -37,7 +37,33 @@ export class UploadService{
             this.uploadsUpdated.next([...this.uploads]);
         });
     }
+
     //each time listene the update information
+
+
+    getUploadsByUserId(userId: string) {
+      this.http.get<{message: string, uploads: any}>(
+        "http://localhost:3030/fitness/uploadByUser/" + userId)
+        .pipe(
+          map(uploadData => {
+              return uploadData.uploads.map(upload => {
+                return {
+                  title: upload.title,
+                  content: upload.content,
+                  contentType: upload.contentType,
+                  id: upload._id,
+                  mediaPath: upload.mediaPath,
+                  usernmae: upload.usernmae
+                };
+              });
+            })
+      )
+      .subscribe(transformUploads =>{
+          this.uploads = transformUploads;
+          this.uploadsUpdated.next([...this.uploads]);
+      });
+    }
+
     getUploadUpdateListener(){
         return this.uploadsUpdated.asObservable();
     }
@@ -62,6 +88,8 @@ export class UploadService{
           uploadData.append('media', media, title);
         }
         if (link){
+          link = link.replace('watch?v=', 'embed/');
+          console.log(link);
           uploadData.append('linkData', link);
         }
         this.http.post<{message: string; upload: Upload; uploadId: any, title: any, content: any, contentType: any, userId: string, username: string}>(

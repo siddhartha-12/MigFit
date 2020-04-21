@@ -8,6 +8,7 @@ import { Comment } from '../models/comment.model';
 export class CommentService {
     constructor(private http: HttpClient, private snackBar: MatSnackBar) {}
 
+    //call server to get comments for a video
     getComments(uploadId: string) {
         return this.http.get<{message: any, comments: any}>('http://localhost:3030/fitness/comments/' + uploadId)
             .pipe(
@@ -23,6 +24,7 @@ export class CommentService {
             );
     }
 
+    //call server to create a new comment
     createNewComment(comment: Comment) {
         this.http.post("http://localhost:3030/fitness/addComment", comment).subscribe(response => {
             console.log(response);

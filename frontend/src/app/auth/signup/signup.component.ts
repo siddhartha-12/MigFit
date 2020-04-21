@@ -21,10 +21,12 @@ export class SignupComponent implements OnInit, OnDestroy {
     this.userStatueSub = this.userService.getUserStatusListener().subscribe();
   }
 
+  //click sign up to so this method
   onSignup(form: NgForm) {
     if (form.invalid) {
       return;
     }
+    //assign value to a user object
     this.isLoading = true;
     let username:string = form.value.username;
     let email:string = form.value.email;

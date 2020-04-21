@@ -1,50 +1,63 @@
-.inputs {
-    display: flex;
-    flex: auto; 
-  }
+  /* use of variables*/
+  $color: #ff4081;
   
   .height, .weight {
     flex: auto;
     font-weight: bolder;
     font-size: larger;
   }
-  
-  .bmi {
-    padding: 3px;
-  }
-  
+    
   h2{
     text-align: center;
-    color:#c6ff40;
+    color:rgb(228, 29, 29);
     font-weight: bolder;
     font-size: xx-large;
   }
 
   p{
-    color:#ff4081;
-    font-size: large;
+    color:rgb(228, 29, 29);
+    font-size:medium
   }
 
   .height label{
-    color:#ff4081;
+    color: $color;
   }
 
   .weight label{
-    color:#ff4081;
+    color: $color;
   }
-
-  .bmi{
-     
-      font-weight: bolder;
-      padding-left: 30em;
-      font-size: larger;
-  }
-
   ul li{
-    color:#ff4081;
+    color: rgb(228, 29, 29);
     list-style-type:none;
   }
+ 
+  input
+{
+    align-content: center;
+    width: 18em;
+}
+.container
+{
+    padding-top: 2%;
+}
+label
+{
+    padding-left: 35%;
+}
+.colBorder
+{
+    border: groove;
+}
+h3
+{
+    text-align: center;
+}
+.center
+{
+  text-align: center; 
+}
 
-  li span{
-    background-color:#c6ff40;
-  }
+img
+{
+  padding-top: 10%;
+}
