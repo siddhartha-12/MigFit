@@ -44,6 +44,7 @@ module.exports = (app) => {
     
     app.post('/fitness/upload', multer({storage: storage }).single("media"), uploadController.post);
     app.put('/fitness/upload/:id', multer({ storage: storage }).single("media"), uploadController.update);
+    console.log(uploadController.update);
     app.get('/fitness/upload/:id', uploadController.get);
     app.get('/fitness/upload/', uploadController.getTotal);
     app.delete('/fitness/upload/:id', uploadController.delete)
