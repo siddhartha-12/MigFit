@@ -102,6 +102,7 @@ export class UploadSrcComponent implements OnInit {
       }
     });
   }
+  
   onImagePicked(event: Event){
     const file = (event.target as HTMLInputElement).files[0];
     console.log(file);
@@ -115,10 +116,7 @@ export class UploadSrcComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
-  // getTrustedYouTubeUrl(linkedVideo: string) {
-  //   linkedVideo = linkedVideo.replace('watch?v=', 'embed/');
-  //   return this.sanitizer.bypassSecurityTrustResourceUrl(linkedVideo);
-  // }
+
   onSaveUpload(){
     console.log(this.form.value)
     console.log(this.form.status )
@@ -156,6 +154,7 @@ export class UploadSrcComponent implements OnInit {
       );
     }
     this.form.reset();
+    this.uploadsService.getUploadsByUserId(this.userService.getUserId());
   }
 
   getTrustedYouTubeUrl(linkedVideo:string) {

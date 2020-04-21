@@ -28,3 +28,8 @@ exports.deleteUpload = (uploadId) => {
     const promise = Upload.findOneAndRemove(uploadId).exec();
     return promise;
 }
+
+exports.getUploadByUserId = (userId) => {
+    const promise = Upload.find({userId: userId});
+    return promise;
+}

@@ -47,12 +47,6 @@ module.exports = (app) => {
     console.log(uploadController.update);
     app.get('/fitness/upload/:id', uploadController.get);
     app.get('/fitness/upload/', uploadController.getTotal);
-    app.delete('/fitness/upload/:id', uploadController.delete)
-    // app.route('/fitness/upload')
-    //    .get(uploadController.get)
-    //    .post(uploadController.post);
-    // app.route('/fitness/upload/:id')
-    //     .get(uploadController.get)
-    //     .put(uploadController.update)
-    //     .delete(uploadController.delete);
+    app.delete('/fitness/upload/:id', uploadController.delete);
+    app.get('/fitness/uploadByUser/:userId', uploadController.findByUserId);
 };

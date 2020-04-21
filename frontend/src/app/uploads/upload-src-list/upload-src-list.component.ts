@@ -3,6 +3,7 @@ import { Upload } from '../upload.model';
 import { UploadService } from '../uploads.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -14,26 +15,30 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
   uploads: Upload[] = [];
   isLoading = false;
   private uploadsSub: Subscription;
+  
  
-  constructor(public uploadsService: UploadService, private sanitizer: DomSanitizer) {}
+  constructor(private userService: UserService, public uploadsService: UploadService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.uploadsService.getUploads();
+    this.uploadsService.getUploadsByUserId(this.userService.getUserId());
     this.uploadsSub = this.uploadsService.getUploadUpdateListener()
       .subscribe((uploads : Upload[]) => {
         this.isLoading = false;
           this.uploads = uploads;
+          //make every link url to be safe Url
           this.uploads.forEach(upload => {
             if (upload.contentType === 'link') {
-              upload.mediaPath = upload.mediaPath.replace('watch?v=', 'embed/');
-              upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(upload.mediaPath);
+              if (typeof(upload.mediaPath) === 'string') {
+                 upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(upload.mediaPath)
+              }
             }
           });
       });
   }
 
 
+  //when delete a video
   onDelete(uploadId: string) {
     this.uploadsService.deleteUpload(uploadId);
   }

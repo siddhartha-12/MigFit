@@ -4,7 +4,7 @@ import { UploadService } from 'src/app/uploads/uploads.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import {User} from 'src/app/models/user.model';
+import { User } from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-video-detail',

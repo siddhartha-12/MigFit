@@ -25,8 +25,11 @@ export class CommentComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private snackBar: MatSnackBar) { }
 
+
+  //init the comment component
   ngOnInit(): void {
     this.userAuthSub = this.userService.getUserStatusListener().subscribe();
+    //get upload id through the url
     this.route.paramMap.subscribe((paramMap: ParamMap) => {
       if (paramMap.has('id')) {
         this.uploadId = paramMap.get('id');
@@ -38,16 +41,19 @@ export class CommentComponent implements OnInit, OnDestroy {
     })
   }
 
+  //create a new comment
   createNewComment(form: NgForm) {
+    //check whether the user is still in login
     if (this.userService.getUserId() === undefined) {
       this.snackBar.open("You haven't login yet.", "OK");
       return;
     }
+    //assign value to comment's attributes
     let userId: string = this.userService.getUserId();
     let uploadId: string = this.uploadId;
     let content: string = form.value.content;
     this.newComment = {userId, uploadId, content} as Comment;
-    console.log(this.newComment);
+    //call service to save a new upload
     this.commentService.createNewComment({userId, uploadId, content} as Comment);
     this.comments.push(this.newComment);
   }
