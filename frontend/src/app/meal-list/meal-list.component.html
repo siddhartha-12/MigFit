@@ -19,13 +19,13 @@
           <td>{{item.Calories}}</td>
           <td>{{item.Quantity}}</td>
           <td style="display: flex">
-            <button type="button" class="btn btn-success btn-sm" [routerLink]="[ '/item',item.id]">Details</button> &nbsp;&nbsp;
               <button type="button" class="btn btn-warning btn-sm" [routerLink]="[ '/editMeal',item.id]">Edit</button>
               <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(item)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-   
-    <button type="button" class="btn btn-success" [routerLink]="[ '/create']">Add Meal</button>
   </div>
+  <span class="buttonLeft">
+  <a href="#" class="btn btn-danger btn-xl rounded-pill mt-2 " routerLinkActive="active" routerLink="/create">Add meal</a>
+</span>

@@ -1,41 +1,45 @@
     <div class="container">
-		
-		<h2>BMI Calculator</h2>
-		<div class="row">
+        <div class="row">
             <div class="col">
-				<br>
-				<br>
-                <img src="../../assets/img/LandingPage/BMI-Chart-1.png">
+                <img src="../../assets/img/LandingPage/BMI-Chart-1.png" class="leftPic">
             </div>
-            <div class="col">
-				<br>
-				<p>Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women..</p> 
-	<div class="form-group">
+            <div class="col colBorder">
+
+	<h2>BMI Calculator</h2>
+
+	<p>Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women..</p>
 	<div class="playground">
-		<div class="inputs center">
+		<div class="inputs">
 			<div class="height">
 				<label>Height:</label>
+				<p>
 					<input type="range" #heightSlider min="50" max="250" [value]="heightValue$ | async">
+				</p>
+				<p>
+					<input type="number" #heightField [value]="heightValue$ | async">
+				</p>
+				<p>
 					{{heightValue$ | async}} cm
+				</p>
 			</div>
 			<div class="weight">
+
 				<label>Weight:</label>
+				<p>
 					<input type="range" #weightSlider min="10" max="300" [value]="weightValue$ | async">
+				</p>
+				<p>
+					<input type="number" #weightField [value]="weightValue$ | async">
+				</p>
+				<p>
 					{{weightValue$ | async}} kg
+				</p>
 			</div>
 		</div>
-		<div class="center">
+		<div class="bmi">
+
 		<p>YOUR BMI: {{ bmi$ | async }}</p>
 		<p>Healthy BMI range: 18.5 kg/m2 - 25 kg/m2</p>
-		<p>BMI Categories:</p>
-		<ul>
-			<li><span>Underweight = <18.5</span></li>
-			<li><span>Normal weight = 18.5–24.9</span></li>
-			<li><span>Overweight = 25–29.9</span></li>
-			<li><span>Obesity = BMI of 30 or greater</span></li>
-		</ul>
 		</div>
-		<div class="center">
-		<button type="submit" class="btn btn-danger btn-xl rounded-pill" [routerLink]="[ '/home']"> Back to Home Page</button>
-	</div>
+		<button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/home']"> Back to Home Page</button>
 	</div>
