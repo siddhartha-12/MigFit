@@ -1,9 +1,10 @@
 import { Component, OnInit, OnDestroy, Output } from '@angular/core';
 import { Upload } from 'src/app/uploads/upload.model';
+import { UploadService } from 'src/app/uploads/uploads.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-import { UploadService } from '../uploads/uploads.service';
+
 
 @Component({
   selector: 'app-video-detail',
@@ -17,13 +18,12 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
   uploadId: string;
 
   private uploadsSub: Subscription;
-  constructor(public uploadService: UploadService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { }
-
-  ngOnInit(): void {
-    this.route.paramMap.subscribe((paramMap: ParamMap) => {
+  constructor(public uploadService: UploadService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { 
+    route.paramMap.subscribe(paramMap => {
+      
       if (paramMap.has('id')) {
         this.uploadId = paramMap.get('id');
-        this.uploadService.getUpload(this.uploadId).subscribe(uploadData => {
+        this.uploadService.getUpload(this.uploadId).toPromise().then(uploadData => {
           this.upload = {
             id: uploadData._id,
             title: uploadData.title,
@@ -39,8 +39,18 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
           }
         });
       }
-    });
+    })
+  
+    
+
+}
+  // this.uploadsSub = this.uploadsService.getUploadUpdateListener()
+  ngOnInit(): void {
+    
   }
+
+
+ 
 
   ngOnAfterContentInit() {
 
