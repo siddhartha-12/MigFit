@@ -8,7 +8,7 @@ exports.getAll = () => {
 }
 
 exports.getAllbyUser = (userId) => {
-    const promise = Meal.findOne({User_id: userId})
+    const promise = Meal.find({User_Id: userId});
     return promise;
 }
 

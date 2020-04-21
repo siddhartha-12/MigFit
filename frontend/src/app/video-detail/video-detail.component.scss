@@ -5,7 +5,6 @@
 .video-detail-page{
     width:100%;
     display:inline-flex;
-
 }
 
 mat-card {
@@ -28,7 +27,14 @@ mat-card-content{
     width: 100%;
   }
 
-.left_right {
-    margin-left: 10rem;
-    display: inline;
+.block1 {
+    margin-left: 12rem;
+    display: inline-flex;
+}
+
+.block2 {
+    margin-top: 3rem;
+    display: inline-block;
+    margin-left: 5rem;
+    
 }

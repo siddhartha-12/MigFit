@@ -7,6 +7,8 @@ exports.createComment = (req, res, next) => {
     newComment.content = req.body.content;
     newComment.userId = req.body.userId;
     newComment.uploadId = req.body.uploadId;
+    console.log(req.body);
+    console.log(newComment);
     commentService.createComment(newComment)
         .then(result => {
             res.status(200).json({
@@ -24,7 +26,7 @@ exports.createComment = (req, res, next) => {
 }
 
 exports.getCommentsByUploadId = (req, res, next) => {
-    const uploadId = req.params.id;
+    const uploadId = req.params.uploadId;
     commentService.getCommentByUploadId(uploadId)
         .then(comments => {
             res.status(200).json({

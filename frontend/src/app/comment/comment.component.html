@@ -1,15 +1,16 @@
-<mat-card>
+<mat-card class="container">
     <mat-card-header>
         <mat-card-title>Comments</mat-card-title>
     </mat-card-header>
     <mat-divider></mat-divider>
     <div>
         <mat-list>
-            <mat-list-item *ngFor="let comment of comments"></mat-list-item>
+            <mat-list-item *ngFor="let comment of comments">{{comment.content}}</mat-list-item>
+            <mat-divider *ngFor="let comment of comments"></mat-divider>
         </mat-list>
     </div>
     <mat-card-footer>
-        <form #commentForm="ngForm" (submit)="createNewComment(commentForm)">
+        <form  class="input_format" #commentForm="ngForm" (submit)="createNewComment(commentForm)">
             <div>
                 <mat-form-field>
                     <mat-label>Leave a comment</mat-label>

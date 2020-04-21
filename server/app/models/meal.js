@@ -7,11 +7,14 @@ const Schema = mongoose.Schema;
  */
 let MealSchema = new Schema({
   User_Id: {
-    type: String
+    //type: Schema.Types.ObjectId, ref: "User"
+    //type: mongoose.SchemaTypes.ObjectId,required: true, index: true
+    type:mongoose.Schema.Types.ObjectId, required: true, index: true
+    //type:String
   },
   Food: {
     type: String,
-    required: 'Kindly enter the title of the task'
+    required: 'Kindly enter meal'
   },
   Description: {
     type: String

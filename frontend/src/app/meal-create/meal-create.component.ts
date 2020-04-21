@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Meal } from '../models/meal';
 import { MealService } from '../services/meals.service';
 import { Router } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-meal-create',
@@ -14,6 +15,7 @@ export class MealCreateComponent implements OnInit {
  
   constructor(
     public apiService: MealService,
+    private userService: UserService,
     public router: Router
   ) {
     this.data = new Meal();
@@ -23,9 +25,18 @@ export class MealCreateComponent implements OnInit {
   }
  
   submitForm() {
-    this.apiService.createItem(this.data).subscribe((response) => {
-      this.router.navigate(['list']);
-    });
- 
+    let userId : string = this.userService.getUserId();
+    this.data.User_Id = userId;
+    console.log("this is the id" + userId);
+    console.log(this.data);
+    this.apiService.createMeal(this.data);
+    // .subscribe((response) => {
+    //   let id = response.id
+    //   this.router.navigate(['list']);
+    // },
+    // err => {
+    //   console.log(err);
+    // }
+    // );
  }
 }
