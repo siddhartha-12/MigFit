@@ -44,12 +44,15 @@ const MIME_TYPE_MAP = {
 
 exports.post = (req, res, next) => {
     console.log(req.body.userId);
+    console.log(req.body.username);
   const url = req.protocol + "://" + req.get("host");
     let newUpload = {};
     newUpload.title = req.body.title;
     newUpload.content = req.body.content;
     newUpload.contentType = req.body.contentType;
     newUpload.userId = req.body.userId;
+    newUpload.username = req.body.username;
+    console.log(newUpload.username);
     // newUpload.userId = 
     if(req.body.contentType == 'link'){
         newUpload.mediaPath = req.body.linkData;
@@ -125,6 +128,7 @@ exports.getTotal = (req, res, next) => {
 
 exports.get = (req, res, next) => {
     const uploadId = req.params.id;
+    console.log(req.params.username);
     uploadService.getUploadById(uploadId)
         .then(upload => {
             console.log(upload);

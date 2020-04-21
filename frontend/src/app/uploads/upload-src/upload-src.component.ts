@@ -84,7 +84,8 @@ export class UploadSrcComponent implements OnInit {
             contentType: uploadData.contentType,
             mediaPath: uploadData.mediaPath,
             imagePath: null,
-            userId: this.userService.getUserId()
+            userId: this.userService.getUserId(),
+            username: this.userService.getUsername()
           };
           this.form.patchValue({
             title: this.upload.title,
@@ -117,7 +118,7 @@ export class UploadSrcComponent implements OnInit {
   //   return this.sanitizer.bypassSecurityTrustResourceUrl(linkedVideo);
   // }
   onSaveUpload(){
-    console.log(this.form.value  )
+    console.log(this.form.value)
     console.log(this.form.status )
     if(this.form.invalid){
       console.log(this.form.invalid)
@@ -136,7 +137,8 @@ export class UploadSrcComponent implements OnInit {
         this.form.value.image,
         this.form.value.media,
         this.form.value.link,
-        this.userService.getUserId()
+        this.userService.getUserId(),
+        this.userService.getUsername()
       );
     } else {
     this.uploadsService.updateUpload(
@@ -147,7 +149,8 @@ export class UploadSrcComponent implements OnInit {
       this.form.value.image,
       this.form.value.media,
       this.form.value.link,
-      this.userService.getUserId()
+      this.userService.getUserId(),
+      this.userService.getUsername()
       );
     }
     this.form.reset();

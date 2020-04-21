@@ -25,7 +25,8 @@ export class UploadService{
                     content: upload.content,
                     contentType: upload.contentType,
                     id: upload._id,
-                    mediaPath: upload.mediaPath
+                    mediaPath: upload.mediaPath,
+                    usernmae: upload.usernmae
                   };
                 });
               })
@@ -41,17 +42,18 @@ export class UploadService{
     }
 
     getUpload(id: string) {
-        return this.http.get<{ _id: string; title: string; content: string, imagePath: string, mediaPath: string, contentType: string, userId: string }>(
+        return this.http.get<{ _id: string; title: string; content: string, imagePath: string, mediaPath: string, contentType: string, userId: string, username: string }>(
           "http://localhost:3030/fitness/upload/" + id
         );
       }
 
-    addUpload(title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string){
+    addUpload(title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string, username: string){
         const uploadData = new FormData();
         uploadData.append('title', title);
         uploadData.append('content', content);
         uploadData.append('contentType', contentType);
         uploadData.append('userId', userId);
+        uploadData.append('username', username);
         if (image){
           uploadData.append('image', image, title);
         }
@@ -61,7 +63,7 @@ export class UploadService{
         if (link){
           uploadData.append('linkData', link);
         }
-        this.http.post<{message: string; upload: Upload; uploadId: any, title: any, content: any, contentType: any, userId: string}>(
+        this.http.post<{message: string; upload: Upload; uploadId: any, title: any, content: any, contentType: any, userId: string, username: string}>(
             'http://localhost:3030/fitness/upload',
             uploadData
             )
@@ -75,6 +77,7 @@ export class UploadService{
                     mediaPath: null,
                     imagePath: responseData.upload.imagePath,
                     userId: responseData.userId,
+                    username: responseData.username
                   };
                 console.log('addUpload !important...')
                 this.uploads.push(upload);
@@ -86,7 +89,7 @@ export class UploadService{
             });
     }
 
-    updateUpload(id: string, title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string) {
+    updateUpload(id: string, title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string, username: string) {
 
       console.log(id + ' ' + title + ' ' + content + ' ' + contentType + ' ' + media + ' ');
         let uploadData: Upload | FormData;
@@ -97,6 +100,7 @@ export class UploadService{
             uploadData.append('title', title);
             uploadData.append('content', content);
             uploadData.append('contentType', contentType);
+
             if (image){
               uploadData.append('image', image, title);
             }
@@ -117,7 +121,8 @@ export class UploadService{
               imagePath: image,
               mediaPath: media,
               contentType: '',
-              userId: userId
+              userId: userId,
+              username: username
             };
           }
 
@@ -134,6 +139,7 @@ export class UploadService{
               mediaPath: media,
               contentType: '',
               userId: userId,
+              username: username
               };
             updatedUploads[oldUploadIndex] = upload;
             this.uploads = updatedUploads;
