@@ -14,6 +14,7 @@ export class UploadService{
 
     constructor(private http: HttpClient, private router: Router){}
 
+    //get upload for all the uploads in data
     getUploads(){
         // return [...this.uploads];
         this.http.get<{message: string, uploads: any}>('http://localhost:3030/fitness/upload')
@@ -36,17 +37,17 @@ export class UploadService{
             this.uploadsUpdated.next([...this.uploads]);
         });
     }
-
+    //each time listene the update information
     getUploadUpdateListener(){
         return this.uploadsUpdated.asObservable();
     }
-
+    //get the new create information
     getUpload(id: string) {
         return this.http.get<{ _id: string; title: string; content: string, imagePath: string, mediaPath: string, contentType: string, userId: string, username: string }>(
           "http://localhost:3030/fitness/upload/" + id
         );
       }
-
+      //create a new post include all video and user information 
     addUpload(title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string, username: string){
         const uploadData = new FormData();
         uploadData.append('title', title);
@@ -88,7 +89,7 @@ export class UploadService{
               this.router.navigate(['fitness/upload']);
             });
     }
-
+    //update the old post and save new informatiuon in to database
     updateUpload(id: string, title: string, content: string, contentType: string, image: File | null, media: File | null, link: string | null, userId: string, username: string) {
 
       console.log(id + ' ' + title + ' ' + content + ' ' + contentType + ' ' + media + ' ');
@@ -125,7 +126,7 @@ export class UploadService{
               username: username
             };
           }
-
+        //save the new update stuff from front page
         this.http
           .put("http://localhost:3030/fitness/upload/" + id, uploadData)
           .subscribe(response => {
@@ -144,10 +145,11 @@ export class UploadService{
             updatedUploads[oldUploadIndex] = upload;
             this.uploads = updatedUploads;
             this.uploadsUpdated.next([...this.uploads]);
+            //refresjh page after each update
             this.router.navigate(["fitness/upload"]);
           });
       }
-
+      //delete the post 
       deleteUpload(uploadId: string) {
         this.http
           .delete("http://localhost:3030/fitness/upload/" + uploadId)
@@ -155,6 +157,7 @@ export class UploadService{
             const updatedUploads = this.uploads.filter(upload => upload.id !== uploadId);
             this.uploads = updatedUploads;
             this.uploadsUpdated.next([...this.uploads]);
+            this.router.navigate(['fitness/upload']);
           });
       }
 
