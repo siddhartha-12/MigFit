@@ -26,9 +26,10 @@ exports.createComment = (req, res, next) => {
 exports.getCommentsByUploadId = (req, res, next) => {
     const uploadId = req.params.id;
     commentService.getCommentByUploadId(uploadId)
-        .then(comment => {
+        .then(comments => {
             res.status(200).json({
-                message: "get comments"
+                message: "get comments",
+                comments: comments
             });
         })
         .catch(err => {

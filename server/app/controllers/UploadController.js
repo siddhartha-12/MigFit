@@ -2,7 +2,7 @@ const express = require("express");
 
 const Upload = require("../models/meal");
 
-const uploadService = require('../services/MealServices');
+const uploadService = require('../services/UploadService');
 
 const multer = require("multer");
 const fs = require('fs');
@@ -56,6 +56,8 @@ exports.post = (req, res, next) => {
     }else{
         newUpload.mediaPath = url + "/public/media/" + req.file.filename;
     }
+
+
 
     uploadService.createUploadSRC(newUpload)
         .then(createdUpload => {

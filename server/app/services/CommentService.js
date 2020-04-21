@@ -8,7 +8,7 @@ exports.createComment = (comment) => {
 }
 
 exports.getCommentByUploadId = (uploadId) => {
-    const promise = Comment.find({'uploadId': uploadId});
+    const promise = Comment.find({uploadId: uploadId});
     return promise;
 }
 
