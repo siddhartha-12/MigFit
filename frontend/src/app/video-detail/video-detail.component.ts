@@ -44,16 +44,9 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
     
 
 }
-  // this.uploadsSub = this.uploadsService.getUploadUpdateListener()
-  ngOnInit(): void {
-    
-  }
-
-
  
-
-  ngOnAfterContentInit() {
-
+  ngOnInit(): void {
+      this.uploadsSub = this.uploadService.getUploadUpdateListener().subscribe();
   }
 
   ngOnDestroy(){

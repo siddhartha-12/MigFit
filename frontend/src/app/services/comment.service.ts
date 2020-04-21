@@ -28,7 +28,7 @@ export class CommentService {
             console.log(response);
         }, err => {
             console.log(err);
-            this.snackBar.open("fail to leave a comment");
+            this.snackBar.open("fail to leave a comment", "ok");
         });
     }
 }
