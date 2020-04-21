@@ -4,14 +4,16 @@
     </mat-card-header>
     <mat-divider></mat-divider>
     <div>
-        <mat-list></mat-list>
+        <mat-list>
+            <mat-list-item *ngFor="let comment of comments"></mat-list-item>
+        </mat-list>
     </div>
     <mat-card-footer>
-        <form #commentForm="ngForm">
+        <form #commentForm="ngForm" (submit)="createNewComment(commentForm)">
             <div>
                 <mat-form-field>
                     <mat-label>Leave a comment</mat-label>
-                    <input matInput type="text" ngModel #commentInput="ngModel">
+                    <input name="content" matInput type="text" ngModel #commentInput="ngModel">
                 </mat-form-field>&nbsp;&nbsp;
                 <button mat-raised-button color="warn" type="submit">send</button>
             </div>

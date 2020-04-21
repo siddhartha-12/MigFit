@@ -86,6 +86,7 @@ export class UserService {
                   this.isAuthenticated = true;
                   this.userStatusListener.next(true);
                   this.userId = response.userId;
+                  this.username = response.username;
                   const expiresInDuration = response.expiressIn;
                   const now = new Date();
                   const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);

@@ -10,7 +10,7 @@
 
 mat-card {
     width: 50rem;
-    height: 100rem;
+    height: 50rem;
 }
 
 .videoitem{
@@ -21,3 +21,8 @@ mat-card {
     height: 100%;
     width: 100%;
   }
+
+.left_right {
+    margin-left: 10rem;
+    display: inline;
+}
