@@ -1,4 +1,3 @@
-// http://www.calculator.net/bmi-calculator.html
 //import { Component, OnInit } from '@angular/core';
 import { Component, ElementRef, ViewChild, AfterViewInit } from '@angular/core';
 import { fromEvent, Observable, merge, combineLatest } from 'rxjs';
@@ -11,11 +10,13 @@ import { map, startWith, share, tap } from 'rxjs/operators';
 })
 export class BmiComponent implements AfterViewInit {
 
+  //defining the elements of bmicomponent
   @ViewChild('heightSlider') heightSlider: ElementRef;
   @ViewChild('heightField') heightField: ElementRef;
   @ViewChild('weightSlider') weightSlider: ElementRef;
   @ViewChild('weightField') weightField: ElementRef;
 
+  //Observables
   heightSliderChanges$: Observable<Event>;
   heightFieldChanges$: Observable<Event>;
   heightValue$: Observable<number>;
@@ -26,12 +27,10 @@ export class BmiComponent implements AfterViewInit {
 
   bmi$: Observable<number>;
 
-
   constructor() { }
 
-  // ngOnInit(): void { 
-  // }
   ngAfterViewInit() {
+    //creating observable.fromEvent directly
     this.heightSliderChanges$ = fromEvent(this.heightSlider.nativeElement, 'input');
     this.heightFieldChanges$ = fromEvent(this.heightField.nativeElement, 'input');
 
@@ -53,10 +52,10 @@ export class BmiComponent implements AfterViewInit {
     ).pipe(
       map(e => +(<HTMLInputElement>e.target).value),
       share(),
-      startWith(80),
+      startWith(80),  //by default height is set to 80cm
     );
 
-
+//the bmi keeps the updating the value accorhing to the height and weight change
     this.bmi$ = combineLatest(
       this.heightValue$,
       this.weightValue$,
@@ -65,12 +64,11 @@ export class BmiComponent implements AfterViewInit {
     )
   }
 
+  //computBmi() computes the bmi value with users height and weight
   private computeBmi(height: number, weight: number): number {
     const bmi = (weight / ((height / 100) * (height / 100)));
     return Number(bmi.toFixed(2));
   }
-
-
 }
 
 

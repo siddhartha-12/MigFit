@@ -11,8 +11,10 @@
 	<div class="playground">
 		<div class="inputs">
 			<div class="height">
+				<!-- <label> for Height:</label> -->
 				<label>Height:</label>
 				<p>
+					<!-- input type="range" to specify a numeric value for height  -->
 					<input type="range" #heightSlider min="50" max="250" [value]="heightValue$ | async">
 				</p>
 				<p>
@@ -23,8 +25,9 @@
 				</p>
 			</div>
 			<div class="weight">
-
+				<!-- <label> for Weight:</label> -->
 				<label>Weight:</label>
+				<!-- input type="range" to specify a numeric value for weight  -->
 				<p>
 					<input type="range" #weightSlider min="10" max="300" [value]="weightValue$ | async">
 				</p>
@@ -37,9 +40,14 @@
 			</div>
 		</div>
 		<div class="bmi">
-
 		<p>YOUR BMI: {{ bmi$ | async }}</p>
 		<p>Healthy BMI range: 18.5 kg/m2 - 25 kg/m2</p>
+		<p>BMI Categories:</p>
+		<ul>
+			<li>Underweight = <18.5</li>
+			<li>Overweight = 25–29.9</li>
+			<li>Obesity = BMI of 30 or greater</li>
+		</ul>
 		</div>
 		<button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/home']"> Back to Home Page</button>
 	</div>
