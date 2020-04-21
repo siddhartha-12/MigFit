@@ -15,22 +15,30 @@ export class MealService {
   //HTTP option and setting header
   httpOptions = {headers: new HttpHeaders({'Content-Type':'application/json'})}
 
-  //Creating a new todo
+  //Creating a new meal
   createItem(item):Observable<Meal>
   {
     return this.http
-    .post<Meal>(this.base_path, JSON.stringify(item),this.httpOptions)
+    .post<Meal>(this.base_path, JSON.stringify(item),this.httpOptions);
   }
 
-  //Get Single todo
+  createMeal(meal: Meal) {
+    this.http.post(this.base_path, meal).subscribe(response => {
+      console.log(response);
+    }, err => {
+      console.log(err);
+    });
+  }
+
+  //Get Single meal
   getItem(id):Observable<Meal>{
     return this.http
     .get<Meal>(this.base_path + '/'+id)
   }
 
-  getItems():Observable<Meal>{
+  getItems(userID):Observable<Meal>{
     return this.http
-    .get<Meal>(this.base_path)
+    .get<Meal>(this.base_path + '/user/'+ userID)
   }
 
   // Update item by id

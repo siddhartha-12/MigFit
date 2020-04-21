@@ -42,11 +42,12 @@ const routes: Routes = [
   { path: 'fitness/video_detail/:id', component: VideoDetailComponent},
   { path: 'meal', component: MealsComponent },
   { path: 'meal/add', component: AddFoodComponent },
-  { path: 'edit/:id', component: EditFoodComponent},
-  { path: 'list', component: ResultPaneComponent },  
+  { path: 'editFood/:id', component: EditFoodComponent},
+  { path: 'listFood', component: ResultPaneComponent },  
   { path: 'viewDetails', component:ViewDetailsComponent},
+  { path: '', pathMatch: 'full', redirectTo: 'create' },
   { path: 'create', component: MealCreateComponent },
-  { path: 'edit/:id', component: MealEditComponent},
+  { path: 'editMeal/:id', component: MealEditComponent},
   { path: 'item/:id', component: MealItemComponent},
   { path: 'list', component: MealListComponent } 
 ];

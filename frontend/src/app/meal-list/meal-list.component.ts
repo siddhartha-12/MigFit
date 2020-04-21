@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MealService } from '../services/meals.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-meal-list',
@@ -11,18 +12,20 @@ export class MealListComponent implements OnInit {
  MealsData :any;
 
   constructor(
-    public apiService: MealService
+    public apiService: MealService,
+    private userService: UserService
   ) {
     this.MealsData = [];
    }
 
   ngOnInit(): void {
-    this.getAllTodos();
+    // console.log(this.userService.getUserId())
+    this.getAllMeals(this.userService.getUserId());
   }
 
-  getAllTodos() {
+  getAllMeals(userID) {
     //Get saved list of students
-    this.apiService.getItems().subscribe(response => {
+    this.apiService.getItems(userID).subscribe(response => {
       console.log(response);
       this.MealsData = response;
     })
@@ -31,7 +34,7 @@ export class MealListComponent implements OnInit {
     //Delete item in Student data
     this.apiService.deleteItem(item.id).subscribe(Response => {
       //Update list after delete is successful
-      this.getAllTodos();
+      this.getAllMeals(this.userService.getUserId());
     });
   }
 }

@@ -1,6 +1,8 @@
 export class Meal {
-    food: string;
-    description: string;
-    calories: Number;
-    quantity:Number;
+    id:string;
+    User_Id:string;
+    Food: string;
+    Description: string;
+    Calories: string;
+    Quantity:Number;
     }
