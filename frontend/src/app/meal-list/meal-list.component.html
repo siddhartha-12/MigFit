@@ -1,9 +1,9 @@
 <div class="container">
-    <h3>List All Meals</h3>
+    <h1>My Meals</h1>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Id</th>
+          <th scope="col"></th>
           <th scope="col">Food </th>
           <th scope="col">Description</th>
           <th scope="col">Calories</th>
@@ -13,19 +13,16 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of MealsData">
-          <td>{{item.id}}</td>
+          <td></td>
           <td>{{item.Food}}</td>
           <td>{{item.Description}}</td>
           <td>{{item.Calories}}</td>
           <td>{{item.Quantity}}</td>
           <td style="display: flex">
-            <button type="button" class="btn btn-success btn-sm" [routerLink]="[ '/item',item.id]">Details</button> &nbsp;&nbsp;
               <button type="button" class="btn btn-warning btn-sm" [routerLink]="[ '/editMeal',item.id]">Edit</button>
               <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(item)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
-   
-    <button type="button" class="btn btn-success" [routerLink]="[ '/create']">Add Meal</button>
   </div>

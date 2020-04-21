@@ -1,3 +1,6 @@
+  /* use of variables*/
+  $color: #ff4081;
+  
   .height, .weight {
     flex: auto;
     font-weight: bolder;
@@ -17,14 +20,14 @@
   }
 
   .height label{
-    color:#ff4081;
+    color: $color;
   }
 
   .weight label{
-    color:#ff4081;
+    color: $color;
   }
   ul li{
-    color:#ff4081;
+    color: $color;
     list-style-type:none;
   }
   li span{
@@ -55,4 +58,9 @@ h3
 .center
 {
   text-align: center; 
+}
+
+img
+{
+  padding-top: 10%;
 }
