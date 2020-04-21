@@ -1,9 +1,9 @@
 <div class="container">
-    <h3>List All Meals</h3>
+    <h1>My Meals</h1>
     <table class="table">
       <thead>
         <tr>
-          <th scope="col">Id</th>
+          <th scope="col"></th>
           <th scope="col">Food </th>
           <th scope="col">Description</th>
           <th scope="col">Calories</th>
@@ -13,7 +13,7 @@
       </thead>
       <tbody>
         <tr *ngFor="let item of MealsData">
-          <td>{{item.id}}</td>
+          <td></td>
           <td>{{item.Food}}</td>
           <td>{{item.Description}}</td>
           <td>{{item.Calories}}</td>
@@ -26,6 +26,4 @@
       </tbody>
     </table>
   </div>
-  <span class="buttonLeft">
-  <a href="#" class="btn btn-danger btn-xl rounded-pill mt-2 " routerLinkActive="active" routerLink="/create">Add meal</a>
-</span>
+  
