@@ -3,6 +3,7 @@ import { Meal } from '../models/meal';
 import { MealService } from '../services/meals.service';
 import { Router } from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
+import { ShowOnDirtyErrorStateMatcher } from '@angular/material/core';
 
 @Component({
   selector: 'app-meal-create',
@@ -12,7 +13,8 @@ import { UserService } from 'src/app/services/user.service';
 export class MealCreateComponent implements OnInit {
 
   data: Meal
- 
+  showMsg: boolean = false;
+
   constructor(
     public apiService: MealService,
     private userService: UserService,
@@ -23,20 +25,14 @@ export class MealCreateComponent implements OnInit {
  
   ngOnInit() {
   }
- 
+
+
   submitForm() {
     let userId : string = this.userService.getUserId();
     this.data.User_Id = userId;
     console.log("this is the id" + userId);
     console.log(this.data);
     this.apiService.createMeal(this.data);
-    // .subscribe((response) => {
-    //   let id = response.id
-    //   this.router.navigate(['list']);
-    // },
-    // err => {
-    //   console.log(err);
-    // }
-    // );
+    this.showMsg= true;
  }
 }
