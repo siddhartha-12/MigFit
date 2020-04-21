@@ -13,6 +13,7 @@ export class UserService {
     private isAuthenticated = false;
     private userId: string;
     private username: string;
+    //as a user status listener
     private userStatusListener = new Subject<boolean>();
 
     @Input() private user: User = {
@@ -56,6 +57,7 @@ export class UserService {
         return this.isAuthenticated;
     }
 
+    //call userService to 
     createUser(user: User){
         this.http.post("http://localhost:3030/user/signup", user).subscribe(response => {
             console.log(response);
@@ -67,6 +69,7 @@ export class UserService {
         });
     }
 
+    //login part 
     login(user: User) {
         this.http
         .post<{token: string, expiressIn: number, userId: string, username: string}>(
@@ -74,9 +77,12 @@ export class UserService {
             user
         )
           .subscribe(response => {
+              //get login token
               const token = response.token;
               this.token = token;
+              //if token is valid
               if (token) {
+                  //give the user authentication
                   this.isAuthenticated = true;
                   this.userStatusListener.next(true);
                   this.userId = response.userId;
@@ -93,6 +99,7 @@ export class UserService {
           });
     }
 
+    //show user basic information
     getUserProfile() {
         return this.http.get<{user: User}>("http://localhost:3030/user/userProfile/" + this.userId).subscribe(response => {
             this.user.password = response.user.password;
@@ -103,11 +110,13 @@ export class UserService {
             this.user.gender = response.user.gender;
             // this.user = response.user;
         }, error => {
-            // this.router.navigate(['']);
-            // this.userStatusListener.next(false);
+            this.router.navigate(['']);
+            this.userStatusListener.next(false);
         });
     }
 
+
+    //update profile
     updateProfile(username: string, email: string, newPassword: string, originPassword: string, gender: string, height: number, weight: number) {
         
         let updateUser = new HttpParams();
@@ -131,6 +140,7 @@ export class UserService {
 
     }
 
+    //logout, clear token, userid, and back to the home page
     logout() {
         this.token = null;
         this.isAuthenticated = false;
@@ -140,6 +150,7 @@ export class UserService {
         this.user = null;
     }
 
+    //on click profile button
     showProfile() {
         if(this.isAuthenticated) {
             this.router.navigate(['/fitness/profile']);
@@ -149,6 +160,7 @@ export class UserService {
         }
     }
 
+    //on click video manage button 
     showUpload() {
         if (this.isAuthenticated) {
             this.router.navigate(['/fitness/upload']);

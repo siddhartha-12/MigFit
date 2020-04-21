@@ -9,13 +9,10 @@
     <mat-card-footer>
         <form #commentForm="ngForm">
             <div>
-               <mat-form-field></mat-form-field>
-                <button mat-raised-button type="submit">button</button>
-
                 <mat-form-field>
                     <mat-label>Leave a comment</mat-label>
                     <input matInput type="text" ngModel #commentInput="ngModel">
-                </mat-form-field>
+                </mat-form-field>&nbsp;&nbsp;
                 <button mat-raised-button color="warn" type="submit">send</button>
             </div>
         </form>

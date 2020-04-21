@@ -57,6 +57,8 @@ exports.post = (req, res, next) => {
         newUpload.mediaPath = url + "/public/media/" + req.file.filename;
     }
 
+
+
     uploadService.createUploadSRC(newUpload)
         .then(createdUpload => {
             res.status(200).json({
