@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
     <h3>List All Meals</h3>
     <table class="table">
@@ -14,18 +15,18 @@
       <tbody>
         <tr *ngFor="let item of MealsData">
           <td>{{item.id}}</td>
-          <td>{{item.food}}</td>
-          <td>{{item.description}}</td>
-          <td>{{item.calories}}</td>
-          <td>{{item.quantity}}</td>
+          <td>{{item.Food}}</td>
+          <td>{{item.Description}}</td>
+          <td>{{item.Calories}}</td>
+          <td>{{item.Quantity}}</td>
           <td style="display: flex">
-            <button type="button" class="btn btn-success btn-sm" [routerLink]="[ '/item',item.id]">Details</button>
-              <button type="button" class="btn btn-warning btn-sm" [routerLink]="[ '/edit',item.id]">Edit</button>
+            <button type="button" class="btn btn-success btn-sm" [routerLink]="[ '/item',item.id]">Details</button> &nbsp;&nbsp;
+              <button type="button" class="btn btn-warning btn-sm" [routerLink]="[ '/editMeal',item.id]">Edit</button>
               <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(item)">Delete</button>
           </td>
         </tr>
       </tbody>
     </table>
    
-    <button type="button" class="btn btn-success" [routerLink]="[ '/create']">Add Todo</button>
+    <button type="button" class="btn btn-success" [routerLink]="[ '/create']">Add Meal</button>
   </div>

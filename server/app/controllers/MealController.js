@@ -20,7 +20,8 @@ exports.list = (request, response) => {
 };
 
 exports.listUserMeal = (request, response) => {
-    const promise = mealService.getAllbyUser();
+    console.log(request.params.id);
+    const promise = mealService.getAllbyUser(request.params.id);
     const result = (meals) => {
         response.status(200);
         response.json(meals);

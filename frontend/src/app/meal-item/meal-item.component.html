@@ -1,21 +1,21 @@
 <div class="container">
  
-    <h3>Edit Meal Record</h3>
+    <h3>Details for Meal Record</h3>
     <div class="form-group">
-        <label for="food">Food</label>
-        <input type="text" class="form-control" id="food" [(ngModel)]="data.food" placeholder="Enter food Name">
+        <label for="Food">Food</label>
+        <input type="text" class="form-control" id="Food" [(ngModel)]="data.Food" placeholder="Enter food Name" disabled=true>
     </div>
     <div class="form-group">
         <label for="Description">Description</label>
-        <input type="text" class="form-control" id="description" [(ngModel)]="data.description" placeholder="Enter description">
+        <input type="text" class="form-control" id="Description" [(ngModel)]="data.Description" placeholder="Enter description" disabled=true>
     </div>
     <div class="form-group">
-        <label for="calories">Calories</label>
-        <input type="number" class="form-control" id="calories" [(ngModel)]="data.calories" placeholder="Enter Calories">
+        <label for="Calories">Calories</label>
+        <input type="text" class="form-control" id="Calories" [(ngModel)]="data.Calories" placeholder="Enter Calories" disabled=true>
     </div>
     <div class="form-group">
-        <label for="quantity">Quantity</label>
-        <input type="number" class="form-control" id="quantity" [(ngModel)]="data.quantity" placeholder="Enter Quantity">
+        <label for="Quantity">Quantity</label>
+        <input type="number" class="form-control" id="Quantity" [(ngModel)]="data.Quantity" placeholder="Enter Quantity" disabled=true>
     </div>
         <button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/list']"> Back to List</button>
 </div>
