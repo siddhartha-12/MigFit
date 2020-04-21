@@ -25,7 +25,7 @@ BMI Calculator
         4) npm start
         5)Run using ng server
         6)Default port 4200
- ## Steps to run the Server
+  ## Steps to run the Server
         1) npm init  
         2) npm i express --save 
         3) npm i mongoose --save
