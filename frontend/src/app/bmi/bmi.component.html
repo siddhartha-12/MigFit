@@ -1,40 +1,31 @@
-<div class="page">
-<br><br>
-	<h2>BMI Calculator</h2>
-
-	<p>Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women..</p> <br><br>
+    <div class="container">
+		
+		<h2>BMI Calculator</h2>
+		<div class="row">
+            <div class="col">
+				<br>
+				<br>
+                <img src="../../assets/img/LandingPage/BMI-Chart-1.png">
+            </div>
+            <div class="col">
+				<br>
+				<p>Body mass index (BMI) is a measure of body fat based on height and weight that applies to adult men and women..</p> 
+	<div class="form-group">
 	<div class="playground">
-		<div class="inputs">
+		<div class="inputs center">
 			<div class="height">
 				<label>Height:</label>
-				<p>
 					<input type="range" #heightSlider min="50" max="250" [value]="heightValue$ | async">
-				</p>
-				<p>
-					<input type="number" #heightField [value]="heightValue$ | async">
-				</p>
-				<p>
 					{{heightValue$ | async}} cm
-				</p>
 			</div>
 			<div class="weight">
-
 				<label>Weight:</label>
-				<p>
 					<input type="range" #weightSlider min="10" max="300" [value]="weightValue$ | async">
-				</p>
-				<p>
-					<input type="number" #weightField [value]="weightValue$ | async">
-				</p>
-				<p>
 					{{weightValue$ | async}} kg
-				</p>
-				<br><br><br>
 			</div>
 		</div>
-		<div class="bmi">
-
-		<p>YOUR BMI: {{ bmi$ | async }}</p> <br><br>
+		<div class="center">
+		<p>YOUR BMI: {{ bmi$ | async }}</p>
 		<p>Healthy BMI range: 18.5 kg/m2 - 25 kg/m2</p>
 		<p>BMI Categories:</p>
 		<ul>
@@ -44,5 +35,7 @@
 			<li><span>Obesity = BMI of 30 or greater</span></li>
 		</ul>
 		</div>
-		<button type="submit" class="btn btn-warning ml-1" [routerLink]="[ '/home']"> Back to Home Page</button>
+		<div class="center">
+		<button type="submit" class="btn btn-danger btn-xl rounded-pill" [routerLink]="[ '/home']"> Back to Home Page</button>
+	</div>
 	</div>

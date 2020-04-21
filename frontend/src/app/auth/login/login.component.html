@@ -1,11 +1,11 @@
-<app-header2></app-header2>
+
 <div class="login-wrapper" fxLayout="row" fxLayoutAlign="center center">
     <mat-card class="box">
         <mat-card-header>
             <mat-card-title>Log in</mat-card-title>
         </mat-card-header>
         <form (submit)="onLogin(loginForm)" #loginForm="ngForm" class="example-form">
-            <mat-card-content>
+            <mat-card-content> 
                 <mat-form-field class="example-full-width">
                     <input matInput name="email" type="email" placeholder="email" ngModel #emailInput="ngModel" required
                         email>

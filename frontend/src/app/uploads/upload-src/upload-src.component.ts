@@ -8,6 +8,7 @@ import { mimeType} from "./mime-type.validator"
 import { from } from 'rxjs';
 import {stringify} from 'querystring';
 import { UserService } from 'src/app/services/user.service';
+import {Router} from "@angular/router"
 
 
 @Component({
@@ -31,7 +32,8 @@ export class UploadSrcComponent implements OnInit {
     public uploadsService: UploadService,
     public route: ActivatedRoute,
     public sanitizer: DomSanitizer,
-    private userService: UserService
+    private userService: UserService,
+    private router:Router
     ) { }
   // uploadCreated = new EventEmitter<Upload>();
 

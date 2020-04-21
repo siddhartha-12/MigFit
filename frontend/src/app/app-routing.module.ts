@@ -21,8 +21,8 @@ import { MealCreateComponent } from './meal-create/meal-create.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MealItemComponent } from './meal-item/meal-item.component';
 import { MealListComponent } from './meal-list/meal-list.component';
-
 import { VideoDetailComponent } from './video-detail/video-detail.component';
+import {UploadSrcListComponent} from './uploads/upload-src-list/upload-src-list.component'
 
 
 const routes: Routes = [
@@ -36,6 +36,8 @@ const routes: Routes = [
   { path: 'header2', component: Header2Component },
   { path: 'bmi', component: BmiComponent},
   { path: 'fitness/upload', component: UploadViewAllComponent },
+  { path: 'fitness/uploadVideo', component: UploadSrcComponent },
+  { path: 'fitness/my_library', component: UploadSrcListComponent },
   { path: 'edit/:uploadId', component: UploadSrcComponent },
   { path: 'fitness/profile', component: ProfileComponent },
   { path: 'fitness/video_library', component: VideoLibraryComponent},
