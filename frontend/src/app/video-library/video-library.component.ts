@@ -21,6 +21,7 @@ export class VideoLibraryComponent implements OnInit, OnDestroy {
   constructor(public videosService: VideoService, private router: Router, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
+    //read the video and get authenticate from youtube
     this.videosService.getUploads();
     this.uploadsSub = this.videosService.getUploadUpdateListener()
       .subscribe((uploads : Upload[]) => {

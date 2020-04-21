@@ -4,8 +4,8 @@ import { UploadService } from 'src/app/uploads/uploads.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute, ParamMap } from '@angular/router';
 import { DomSanitizer } from '@angular/platform-browser';
-
-
+import {User} from 'src/app/models/user.model';
+import { UserService } from 'src/app/services/user.service';
 @Component({
   selector: 'app-video-detail',
   templateUrl: './video-detail.component.html',
@@ -16,9 +16,11 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
 
   upload: Upload;
   uploadId: string;
+  user: User;
+  userName: string;
 
   private uploadsSub: Subscription;
-  constructor(public uploadService: UploadService, private route: ActivatedRoute, private sanitizer: DomSanitizer) { 
+  constructor(public uploadService: UploadService, public userService: UserService,private route: ActivatedRoute, private sanitizer: DomSanitizer) { 
     route.paramMap.subscribe(paramMap => {
       
       if (paramMap.has('id')) {
@@ -31,8 +33,10 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
             contentType: uploadData.contentType,
             mediaPath: uploadData.mediaPath,
             imagePath: null,
-            userId: uploadData.userId
+            userId: uploadData.userId,
+            username: uploadData.username
           };
+          
           if (this.upload.contentType === 'link') {
             this.upload.mediaPath = this.upload.mediaPath.replace('watch?v=', 'embed/');
             this.upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(this.upload.mediaPath);
@@ -44,16 +48,11 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
     
 
 }
-  // this.uploadsSub = this.uploadsService.getUploadUpdateListener()
+
+
+
   ngOnInit(): void {
-    
-  }
-
-
- 
-
-  ngOnAfterContentInit() {
-
+      this.uploadsSub = this.uploadService.getUploadUpdateListener().subscribe();
   }
 
   ngOnDestroy(){

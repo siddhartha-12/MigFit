@@ -1,4 +1,31 @@
 <div class="left_right">
+  <div class="block1">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>{{upload.title}}</mat-card-title>
+      </mat-card-header>
+      <mat-divider></mat-divider>
+      <mat-card-content>
+        <div class="upload-image" *ngIf="upload.contentType == 'image'">
+          <img [src]="upload.mediaPath" [alt]="upload.title">
+        </div>
+        <div class="videoitem" *ngIf="upload.contentType == 'video'">
+          <video controls="controls" [src]="upload.mediaPath"></video>
+        </div>
+        <div class="videoitem" *ngIf="upload.contentType == 'link'">
+          <iframe width=100% height=600px [src]="upload.mediaPath" frameborder="0"
+            allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+        <!-- <iframe width="360" height="280" [src]="upload.mediaPath" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> -->
+      </mat-card-content>
+      <mat-card-footer>
+        <mat-card-content>{{upload.content}}</mat-card-content>
+      </mat-card-footer>
+    </mat-card>
+  </div>
+  <div class="block2">
+    <app-comment></app-comment>
+  </div>
   <mat-card>
     <mat-card-header>
       <mat-card-title>{{upload.title}}</mat-card-title>
@@ -18,8 +45,10 @@
     </mat-card-content>
     <mat-card-footer>
 
-        <mat-card-content>{{upload.content}}</mat-card-content>
-        {{upload.userId}}
+        <mat-card-content>{{upload.content}}
+            {{upload.username}}
+        </mat-card-content>
+        <!-- {{upload.username}} -->
 
     </mat-card-footer>
   </mat-card>
