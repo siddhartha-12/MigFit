@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from '../services/user.service'
+import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-upload-view-all',
@@ -7,9 +10,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UploadViewAllComponent implements OnInit {
 
-  constructor() { }
+  constructor(private userService: UserService, private route: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
+    if (this.userService.getUserId() === undefined) {
+      this.snackBar.open("You need to login to upload resources.", "OK");
+      this.route.navigate(['/home']);
+    }
   }
 
 }

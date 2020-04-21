@@ -2,13 +2,13 @@
 const commentService = require('../services/CommentService'),
       Comment = require('../models/comment');
 
+//create a comment
 exports.createComment = (req, res, next) => {
     let newComment = {};
+    //assign value to comment
     newComment.content = req.body.content;
     newComment.userId = req.body.userId;
     newComment.uploadId = req.body.uploadId;
-    console.log(req.body);
-    console.log(newComment);
     commentService.createComment(newComment)
         .then(result => {
             res.status(200).json({

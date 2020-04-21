@@ -16,9 +16,11 @@ export class LoginComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
+    //add a listener to check whether the user is authenticated or not
     this.userAuthSub = this.userService.getUserStatusListener().subscribe();
   }
 
+  // when submit login
   onLogin(form: NgForm) {
     if (form.invalid) {
       return;
