@@ -2,7 +2,12 @@
 const commentService = require('../services/CommentService'),
       Comment = require('../models/comment');
 
-//create a comment
+/**
+ * create a new comment for a video
+ * @param req
+ * @param res
+ * @param next
+ */
 exports.createComment = (req, res, next) => {
     let newComment = {};
     //assign value to comment
@@ -26,6 +31,10 @@ exports.createComment = (req, res, next) => {
 }
 /**
  * find comment by upload id
+ * 
+ * @param req
+ * @param res
+ * @param next
  */
 exports.getCommentsByUploadId = (req, res, next) => {
     const uploadId = req.params.uploadId;

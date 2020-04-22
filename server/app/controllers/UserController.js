@@ -5,6 +5,13 @@ const userService = require('../services/UserService'),
       jwt = require('jsonwebtoken'),
       checkAuth = require("../middleware/check-auth");
 
+/**
+ * create a new user
+ * 
+ * @param req
+ * @param res
+ * @param next
+ */
 exports.signup = (req, res, next) => {
     let newUser = {};
     //convert the password to hashcode using bcrypt
@@ -35,7 +42,13 @@ exports.signup = (req, res, next) => {
         });
 };
 
-//login
+/**
+ * user login action
+ * 
+ * @param req
+ * @param res
+ * @param next
+ */
 exports.login = (req, res, next) => {
     let fetchedUser;
     //find the user by email
@@ -84,6 +97,10 @@ exports.login = (req, res, next) => {
 
 /**
  * search user by userId, used for edit profile
+ * 
+ * @param req
+ * @param res
+ * @param next
  */
 exports.getUser = (req, res, next) => {
     let userId = req.params.id;
@@ -109,6 +126,9 @@ exports.getUser = (req, res, next) => {
 
 /**
  * update user information
+ * @param req
+ * @param res
+ * @param next
  */
 exports.updateUser = (req,res,next) => {
     const userId = req.params.id;

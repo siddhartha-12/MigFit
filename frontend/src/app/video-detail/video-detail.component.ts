@@ -18,13 +18,16 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
   uploadId: string;
   user: User;
   userName: string;
-
   private uploadsSub: Subscription;
+
   constructor(public uploadService: UploadService, public userService: UserService,private route: ActivatedRoute, private sanitizer: DomSanitizer) { 
+    /**
+     * get the video id from url
+     */
     route.paramMap.subscribe(paramMap => {
-      
       if (paramMap.has('id')) {
         this.uploadId = paramMap.get('id');
+        //get a certain upload video by uploadId
         this.uploadService.getUpload(this.uploadId).toPromise().then(uploadData => {
           this.upload = {
             id: uploadData._id,
@@ -36,7 +39,7 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
             userId: uploadData.userId,
             username: uploadData.username
           };
-          
+          //if the upload content tpye is youtube url, then replace youtube url some character
           if (this.upload.contentType === 'link') {
             this.upload.mediaPath = this.upload.mediaPath.replace('watch?v=', 'embed/');
             this.upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(this.upload.mediaPath);
@@ -48,8 +51,6 @@ export class VideoDetailComponent implements OnInit, OnDestroy{
     
 
 }
-
-
 
   ngOnInit(): void {
       this.uploadsSub = this.uploadService.getUploadUpdateListener().subscribe();

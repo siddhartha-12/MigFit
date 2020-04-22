@@ -2,7 +2,9 @@
 const mongoose = require('mongoose'),
       Comment = require('../models/comment');
 /**
- * create new comment */    
+ * create new comment
+ * 
+ * @param comment */    
 exports.createComment = (comment) => {
     const newComent = new Comment(comment);
     return newComent.save();
@@ -10,6 +12,8 @@ exports.createComment = (comment) => {
 
 /**
  * search comment by upload id
+ * 
+ * @param uploadId
  */
 exports.getCommentByUploadId = (uploadId) => {
     const promise = Comment.find({uploadId: uploadId}).exec();
@@ -18,6 +22,8 @@ exports.getCommentByUploadId = (uploadId) => {
 
 /**
  * delete a comment
+ * 
+ * @param commentId
  */
 exports.deleteComment = (commentId) => {
     const promise = Comment.findOneAndDelete(commentId).exec();
