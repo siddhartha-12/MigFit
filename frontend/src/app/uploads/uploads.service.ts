@@ -173,7 +173,7 @@ export class UploadService{
             updatedUploads[oldUploadIndex] = upload;
             this.uploads = updatedUploads;
             this.uploadsUpdated.next([...this.uploads]);
-            //refresjh page after each update
+            //refresh page after each update
             this.router.navigate(["fitness/upload"]);
           });
       }

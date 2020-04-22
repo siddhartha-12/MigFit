@@ -11,12 +11,13 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatListModule } from '@angular/material/list';
+
 import { MatStepper, MatStepperModule } from '@angular/material/stepper';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { MatGridListModule} from '@angular/material/grid-list';
-
+import { MatGridTile} from '@angular/material/grid-list';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -93,6 +94,7 @@ import { MealListComponent } from './meal-list/meal-list.component';
     MealEditComponent,
     MealItemComponent,
     MealListComponent,
+    
 
   ],
 
@@ -116,6 +118,7 @@ import { MealListComponent } from './meal-list/meal-list.component';
     MatGridListModule,
     MatDividerModule,
     MatListModule,
+    
     // Here is configuration for set up of store module
     StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument(),

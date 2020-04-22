@@ -93,8 +93,8 @@ export class UploadSrcComponent implements OnInit {
             title: this.upload.title,
             content: this.upload.content,
             contentType: this.upload.contentType,
-            mediaPath: this.upload.mediaPath,
-            //link: this.upload.contentType === 'link'
+            media: this.upload.mediaPath,
+            link: this.upload.contentType === 'link'
           });
         });
       } else {
