@@ -1,5 +1,7 @@
-<div class="container">
-  <div class="block1">
+<!-- <div class="container"> -->
+  <!-- <div class="block1"> -->
+   <mat-grid-list cols = "2"> 
+   <mat-grid-tile>    
     <mat-card>
       <mat-card-header>
         <mat-card-title>{{upload.title}}</mat-card-title>
@@ -22,8 +24,12 @@
         <mat-card-content>{{upload.content}}</mat-card-content>
       </mat-card-footer>
     </mat-card>
-  </div>
-  <div class="block2">
-    <app-comment></app-comment>
-  </div>
-</div>
+   </mat-grid-tile>
+  <!-- </div> -->
+  <!-- <div class="block2"> -->
+    <mat-grid-tile>
+        <app-comment></app-comment>
+    </mat-grid-tile>
+  <!-- </div> -->
+    <!-- </div> -->
+</mat-grid-list> 

@@ -3,6 +3,8 @@ import { Upload } from '../upload.model';
 import { UploadService } from '../uploads.service';
 import { Subscription } from 'rxjs';
 import { DomSanitizer } from '@angular/platform-browser';
+
+import {User} from 'src/app/models/user.model';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -17,7 +19,12 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
   private uploadsSub: Subscription;
   
  
-  constructor(private userService: UserService, public uploadsService: UploadService, private sanitizer: DomSanitizer) {}
+
+  user: User;
+  userId: String;
+  //build a constructor >?
+  constructor(public uploadsService: UploadService, private userService: UserService, private sanitizer: DomSanitizer) {}
+
 
   ngOnInit() {
     this.isLoading = true;
@@ -32,6 +39,9 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
               if (typeof(upload.mediaPath) === 'string') {
                  upload.mediaPath = this.sanitizer.bypassSecurityTrustResourceUrl(upload.mediaPath)
               }
+            }
+            if(upload.userId !== this.userService.getUserId()){
+              return;
             }
           });
       });

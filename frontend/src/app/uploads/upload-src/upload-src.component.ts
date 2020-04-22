@@ -85,6 +85,7 @@ export class UploadSrcComponent implements OnInit {
             content: uploadData.content,
             contentType: uploadData.contentType,
             mediaPath: uploadData.mediaPath,
+            //linkData: null,
             imagePath: null,
             userId: this.userService.getUserId(),
             username: this.userService.getUsername()
@@ -93,13 +94,23 @@ export class UploadSrcComponent implements OnInit {
             title: this.upload.title,
             content: this.upload.content,
             contentType: this.upload.contentType,
-            mediaPath: this.upload.mediaPath
+            
+            link: this.upload.contentType === 'link' ? this.upload.mediaPath : null,
+            media: this.upload.mediaPath
+
           });
-        });
+          console.log("why the mediaPath not change ??????????   " + this.upload.mediaPath);
+      //     if (this.upload.contentType === 'link') {
+      //       this.form.patchValue({link: this.upload.mediaPath});
+      //     }
+      //     if (this.upload.contentType === 'video') {
+      //       this.form.patchValue({media: this.upload.mediaPath});
+      //     }
+         });
       } else {
-        this.mode = 'create';
-        this.uploadId = null;
-      }
+         this.mode = 'create';
+         this.uploadId = null;
+       }
     });
   }
   
@@ -116,10 +127,23 @@ export class UploadSrcComponent implements OnInit {
     reader.readAsDataURL(file);
   }
 
+  // onLinkPicked(event: Event){
+  //   const file = (event.target as HTMLInputElement).files[0];
+  //   console.log(file);
+  //   this.form.patchValue({media: file});
+  //   console.log(this.form.get('link'));
+  //   this.form.get('link').updateValueAndValidity();
+  //   const reader = new FileReader();
+  //   reader.onload = () =>{
+  //     this.imagePreview = reader.result as string;
+  //   };
+  //   reader.readAsDataURL(file);
+  // }
+
 
   onSaveUpload(){
     console.log(this.form.value)
-    console.log(this.form.status )
+    console.log(this.form.status)
     if(this.form.invalid){
       console.log(this.form.invalid)
       console.log(this.form.errors)
@@ -153,6 +177,8 @@ export class UploadSrcComponent implements OnInit {
       this.userService.getUsername()
       );
     }
+    console.log("show me the contentType    " + this.contentType);
+   
     this.form.reset();
     this.uploadsService.getUploadsByUserId(this.userService.getUserId());
   }

@@ -15,7 +15,7 @@
         </mat-step>
         <mat-step label="Gender">
             <mat-form-field>
-                <mat-select title="gender" value="{{user.gender}}"  name="gender" ngModel #genderSelector="ngModel" (ngModelChange)="genderChange()" required>
+                <mat-select title="gender" value="{{user.gender}}"  name="gender" ngModel #genderSelector="ngModel" (ngModelChange)="genderChange()">
                     <mat-option value="male">male</mat-option>
                     <mat-option value="female">female</mat-option>
                     <mat-option value="no-binary gender">no-binary gender</mat-option>
@@ -28,11 +28,11 @@
             <h2>Identity Information</h2>
             <mat-form-field>
                 <mat-label>username</mat-label>
-                <input disabled=true matInput name="username" type="text" value="{{user.username}}" ngModel #usernameInput="ngModel" (ngModelChange)="usernameChange()" required>
+                <input disabled=true matInput name="username" type="text" value="{{user.username}}" ngModel #usernameInput="ngModel" (ngModelChange)="usernameChange()">
               </mat-form-field>  
             <mat-form-field>
                 <mat-label>email</mat-label>
-                <input disabled=true matInput name="email" type="email" value="{{user.email}}" ngModel #emailInput="ngModel" (ngModelChange)="emailChange()" required>
+                <input disabled=true matInput name="email" type="email" value="{{user.email}}" ngModel #emailInput="ngModel" (ngModelChange)="emailChange()">
               </mat-form-field> 
               <br *ngIf="!isChangePassword">
               <br *ngIf="!isChangePassword">
@@ -40,12 +40,9 @@
               <br *ngIf="!isChangePassword"><br *ngIf="!isChangePassword">
               <mat-form-field *ngIf="isChangePassword">
                   <mat-label>New password</mat-label>
-                  <input matInput name="newPassword" type="password" ngModel #nPassInput="ngModel">
+                  <input matInput name="newPassword" type="password" ngModel #newPasswordInput="ngModel" required pattern="^(?=.*\d)(?=.*[a-zA-Z]).{6,}$">
+                  <mat-error *ngIf="newPasswordInput.invalid"> Password must be at least 6 characters, and must include at least one letter and one numeric digit.</mat-error>
               </mat-form-field>
-              <mat-form-field *ngIf="isChangePassword">
-                <mat-label>Confirm new password</mat-label>
-                <input matInput name="confirmNewPassword" type="password" ngModel #comfirmNewPassInput="ngModel">
-             </mat-form-field>
               <mat-form-field>
                   <mat-label>To save change. please enter your current password</mat-label>
                   <input matInput name="currentPassword" type="password" ngModel #currentPassInput="ngModel">

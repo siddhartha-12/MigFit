@@ -1,5 +1,5 @@
 mat-card {
-    width : 20rem;
+    width : 30rem;
     height: auto;
 }
 
@@ -9,3 +9,24 @@ mat-card {
     bottom: 0;
 }
 
+// mat-list-item{
+//     margin: 30px;
+// }
+mat-list{
+    margin-bottom: 50px;
+    margin-right: 50px;
+}
+
+mat-card-header{
+    font-size: 40px;
+    margin: 30px;
+}
+
+mat-label{
+    margin: 100px;
+}
+
+mat-form-footer{
+    margin-top: 50px;
+    height: 100%;
+}
