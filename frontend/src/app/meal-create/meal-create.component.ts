@@ -1,3 +1,4 @@
+//imports
 import { Component, OnInit } from '@angular/core';
 import { Meal } from '../models/meal';
 import { MealService } from '../services/meals.service';
@@ -15,6 +16,7 @@ export class MealCreateComponent implements OnInit {
   data: Meal
   showMsg: boolean = false;
 
+  //Passing MealService, Userservice,Router service to constructor
   constructor(
     public apiService: MealService,
     private userService: UserService,
@@ -26,7 +28,8 @@ export class MealCreateComponent implements OnInit {
   ngOnInit() {
   }
 
-
+//  submitForm() adds meal to the list like food ,description, calories,quantity of a particular user
+//  We are fetching id of a particular user from getUserId()
   submitForm() {
     let userId : string = this.userService.getUserId();
     this.data.User_Id = userId;

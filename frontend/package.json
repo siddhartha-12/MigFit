@@ -24,11 +24,13 @@
     "@nebular/theme": "^5.0.0",
     "@ngrx/store": "^9.1.0",
     "@ngrx/store-devtools": "^9.1.0",
+    "@types/pdfmake": "^0.1.13",
     "bootstrap": "^4.4.1",
     "bootstrap-sass": "^3.4.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "nan": "^2.14.0",
+    "pdfmake": "^0.1.65",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"
