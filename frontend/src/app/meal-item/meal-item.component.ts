@@ -1,3 +1,4 @@
+//imports
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MealService } from '../services/meals.service';
@@ -12,6 +13,7 @@ export class MealItemComponent implements OnInit {
   id: number;
   data: Meal;
 
+  //calling ActivedRoute ,Router,MealService in the constructor
   constructor(
     public activatedRoute: ActivatedRoute,
     public router: Router,
@@ -26,6 +28,7 @@ export class MealItemComponent implements OnInit {
     })
   }
  
+  //uodate() allows to update any meal record
   update() {
     //Update item by taking id and updated data object
     this.apiService.updateItem(this.id, this.data).subscribe(response => {

@@ -2,14 +2,8 @@
 import { Component, OnInit } from '@angular/core';
 import { MealService } from '../services/meals.service';
 import { UserService } from 'src/app/services/user.service';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import * as pdfMake from 'pdfmake/build/pdfmake.js';
-import { HttpClient } from '@angular/common/http';
-
-(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
-
-// let pdfM = pdfMake.vfs;
-// pdfM = pdfFonts.pdfMake.vfs;
+import * as jspdf from 'jspdf';  
+import html2canvas from 'html2canvas'; 
 
 
 @Component({
@@ -24,9 +18,7 @@ export class MealListComponent implements OnInit {
 
   constructor(
     public apiService: MealService,
-    private userService: UserService,
-    private http:HttpClient
-
+    private userService: UserService
   ) {
     
     this.MealsData = [];
@@ -56,10 +48,22 @@ export class MealListComponent implements OnInit {
     });
   }
 
-  //to download the contents of page as pdf file
-  generatePdf(){
-    console.log(pdfMake)
-    const documentDefinition = { content:""};
-    pdfMake.createPdf(documentDefinition).download;
-   }
- }
+ //to download the contents of page as pdf file
+ public captureScreen()  
+  {  
+    let data = document.getElementById('contentToConvert');  
+    html2canvas(data).then(canvas => {  
+      // Few necessary setting options  
+      var imgWidth = 208;   
+      var pageHeight = 295;    
+      var imgHeight = canvas.height * imgWidth / canvas.width;  
+      var heightLeft = imgHeight;  
+  
+      const contentDataURL = canvas.toDataURL('http://localhost:4200/list')  
+      let pdf = new jspdf('p', 'mm', 'a4'); // A4 size page of PDF  
+      var position = 0;  
+      pdf.addImage(contentDataURL, 'PNG', 0, position, imgWidth, imgHeight)  
+      pdf.save('Meal.pdf'); // Generated PDF   
+    });
+}
+}

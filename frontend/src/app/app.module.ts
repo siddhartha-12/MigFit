@@ -60,6 +60,7 @@ import { MealCreateComponent } from './meal-create/meal-create.component';
 import { MealEditComponent } from './meal-edit/meal-edit.component';
 import { MealItemComponent } from './meal-item/meal-item.component';
 import { MealListComponent } from './meal-list/meal-list.component';
+import { LittleGameComponent } from './little-game/little-game.component';
 
 
 
@@ -94,6 +95,7 @@ import { MealListComponent } from './meal-list/meal-list.component';
     MealEditComponent,
     MealItemComponent,
     MealListComponent,
+    LittleGameComponent,
     
 
   ],
