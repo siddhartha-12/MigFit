@@ -1,3 +1,4 @@
+//imports
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MealService } from '../services/meals.service';
@@ -12,6 +13,7 @@ export class MealEditComponent implements OnInit {
   id: number;
   data: Meal;
 
+  //passing router ,mealservice and activatedroute to constructor
   constructor( public activatedRoute: ActivatedRoute,
     public router: Router,
     public apiService: MealService) { this.data = new Meal();}
@@ -25,6 +27,7 @@ export class MealEditComponent implements OnInit {
     })
   }
  
+  //update() lets you update any meal data like you can edit you meal, change quantity,calories
   update() {
     //Update item by taking id and updated data object
     this.apiService.updateItem(this.id, this.data).subscribe(response => {

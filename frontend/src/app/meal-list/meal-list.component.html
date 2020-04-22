@@ -21,6 +21,7 @@
           <td style="display: flex">
               <button type="button" class="btn btn-warning btn-sm" [routerLink]="[ '/editMeal',item.id]">Edit</button>
               <button type="button" class="btn btn-danger btn-sm ml-1" (click)="delete(item)">Delete</button>
+              <button type="button" class="btn btn-warning btn-sm" (click)="generatePdf()">Download PDF</button>
           </td>
         </tr>
       </tbody>
