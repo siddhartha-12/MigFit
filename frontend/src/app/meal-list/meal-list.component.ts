@@ -2,15 +2,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MealService } from '../services/meals.service';
 import { UserService } from 'src/app/services/user.service';
-import * as pdfFonts from 'pdfmake/build/vfs_fonts.js';
-import * as pdfMake from 'pdfmake/build/pdfmake.js';
-import { HttpClient } from '@angular/common/http';
-
-(<any>pdfMake).vfs = pdfFonts.pdfMake.vfs;
-
-// let pdfM = pdfMake.vfs;
-// pdfM = pdfFonts.pdfMake.vfs;
-
 
 @Component({
   selector: 'app-meal-list',
@@ -24,9 +15,7 @@ export class MealListComponent implements OnInit {
 
   constructor(
     public apiService: MealService,
-    private userService: UserService,
-    private http:HttpClient
-
+    private userService: UserService
   ) {
     
     this.MealsData = [];
@@ -55,11 +44,4 @@ export class MealListComponent implements OnInit {
       this.getAllMeals(localStorage.getItem('userId'));
     });
   }
-
-  //to download the contents of page as pdf file
-  generatePdf(){
-    console.log(pdfMake)
-    const documentDefinition = { content:""};
-    pdfMake.createPdf(documentDefinition).download;
-   }
- }
+}
