@@ -29,6 +29,8 @@
     "bootstrap-sass": "^3.4.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
+    "html2canvas": "^1.0.0-rc.5",
+    "jspdf": "^1.5.3",
     "nan": "^2.14.0",
     "pdfmake": "^0.1.65",
     "rxjs": "~6.5.4",
