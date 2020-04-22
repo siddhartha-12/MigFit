@@ -142,11 +142,11 @@ export class UploadSrcComponent implements OnInit {
 
 
   onSaveUpload(){
-    console.log(this.form.value)
-    console.log(this.form.status)
+    console.log(this.form.value);
+    console.log(this.form.status);
     if(this.form.invalid){
-      console.log(this.form.invalid)
-      console.log(this.form.errors)
+      console.log(this.form.invalid);
+      console.log(this.form.errors);
       return;
     }
 

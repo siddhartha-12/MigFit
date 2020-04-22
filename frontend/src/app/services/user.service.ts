@@ -62,7 +62,8 @@ export class UserService {
     createUser(user: User){
         this.http.post("http://localhost:3030/user/signup", user).subscribe(response => {
             console.log(response);
-            this.router.navigate(['']);
+            this.snackBar.open("Register successfully.", "OK");
+            this.router.navigate(['/signin']);
         }, error => {
             console.log(error);
             this.router.navigate(['/signup']);

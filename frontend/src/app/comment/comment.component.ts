@@ -56,6 +56,7 @@ export class CommentComponent implements OnInit, OnDestroy {
     //call service to save a new upload
     this.commentService.createNewComment({userId, uploadId, content} as Comment);
     this.comments.push(this.newComment);
+    form.reset();
   }
 
   ngOnDestroy() {
