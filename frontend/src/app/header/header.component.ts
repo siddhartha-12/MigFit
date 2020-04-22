@@ -18,6 +18,10 @@ export class HeaderComponent implements OnInit, OnDestroy {
   constructor(private userService: UserService, private uploadService: UploadService) { }
 
   ngOnInit(): void {
+    //get whether user is authenticated first
+    this.userIsAuthenticated = this.userService.getIsAuthenticated();
+
+    //add a listener to listen whether the user is authenticate or not
     this.userListenerSubs = this.userService
       .getUserStatusListener()
       .subscribe(isAuthenticated => {

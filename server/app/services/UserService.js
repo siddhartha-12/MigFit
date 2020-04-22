@@ -21,6 +21,9 @@ exports.getUserByEmail = (userEmail) => {
     return promise;
 }
 
+/**
+ * update a user
+ */
 exports.updateUser = (user) => {
     const promise = User.findByIdAndUpdate(user.id, user);
     return promise;

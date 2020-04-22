@@ -44,12 +44,12 @@ export class CommentComponent implements OnInit, OnDestroy {
   //create a new comment
   createNewComment(form: NgForm) {
     //check whether the user is still in login
-    if (this.userService.getUserId() === undefined) {
+    if (localStorage.getItem('userId') === undefined) {
       this.snackBar.open("You haven't login yet.", "OK");
       return;
     }
     //assign value to comment's attributes
-    let userId: string = this.userService.getUserId();
+    let userId: string = localStorage.getItem('userId');
     let uploadId: string = this.uploadId;
     let content: string = form.value.content;
     this.newComment = {userId, uploadId, content} as Comment;

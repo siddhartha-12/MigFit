@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
@@ -29,9 +29,12 @@ export class ProfileComponent implements OnInit {
   isUsernameChange = false;
   isGenderChange = false;
 
-  constructor(private userService: UserService, private route: ActivatedRoute, private snackBar: MatSnackBar) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private snackBar: MatSnackBar, private router: Router) { }
 
   ngOnInit(): void {
+    if (localStorage.getItem('userId') === undefined) {
+      this.router.navigate(['/home']);
+    }
     this.userService.getUserProfile().subscribe(response => {
       this.user.password = response.user.password;
       this.user.email = response.user.email;
@@ -64,6 +67,7 @@ export class ProfileComponent implements OnInit {
       console.log(originPassword);
       this.userService.updateProfile(username, email, originPassword, originPassword, gender, height, weight);
       this.snackBar.open("Edit your profile successfully");
+      this.router.navigate(['/home']);
     }
     else {
       console.log("have new password");

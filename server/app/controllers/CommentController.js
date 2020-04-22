@@ -24,7 +24,9 @@ exports.createComment = (req, res, next) => {
             });
         });
 }
-
+/**
+ * find comment by upload id
+ */
 exports.getCommentsByUploadId = (req, res, next) => {
     const uploadId = req.params.uploadId;
     commentService.getCommentByUploadId(uploadId)

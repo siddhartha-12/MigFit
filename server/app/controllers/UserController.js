@@ -82,6 +82,9 @@ exports.login = (req, res, next) => {
         });
 }
 
+/**
+ * search user by userId, used for edit profile
+ */
 exports.getUser = (req, res, next) => {
     let userId = req.params.id;
     userService.getUserById(userId)
@@ -104,6 +107,9 @@ exports.getUser = (req, res, next) => {
         });
 }
 
+/**
+ * update user information
+ */
 exports.updateUser = (req,res,next) => {
     const userId = req.params.id;
     console.log(req.body);
@@ -113,19 +119,23 @@ exports.updateUser = (req,res,next) => {
     console.log(req.body.email);
     bcrypt.hash(req.body.newPassword, 10)
       .then(hash => {
+        //get whether user is giving the right old password
         userService.getUserById(userId)
         .then(user => {
             console.log(user);
             console.log(req.body.originPassword);
             return bcrypt.compare(req.body.originPassword, user.password);
         })
+        //get the result of bcrypt
         .then(result => {
             console.log(result);
+            //if the result is false, old password is wrong
             if (!result) {
                 return res.status(401).json({
                     message: "Wrong password"
                 });
             }
+            //result is true, update the password
             const updatedUser = new User({
                 _id: userId,
                 username: req.body.username,
@@ -140,6 +150,7 @@ exports.updateUser = (req,res,next) => {
                  res.status(200).json({
                      message: "Update Successfully"
                  });
+                 //refresh the token value, since the user information has been updated
                  jwt.sign({userId: updatedUser._id, username: updatedUser.username, email: updatedUser.email},
                     "secret_this_should_be_longer",
                     {expiresIn: "1h"});
@@ -153,25 +164,5 @@ exports.updateUser = (req,res,next) => {
         });
       });
     
-    // const updatedUser = Object.assign({}, req.body);
-    // updatedUser.id = userId;
-    // userService.updateUser(updatedUser)
-    //     .then((user) => {
-    //         res.status(200).json({
-    //             message: "update seccessfully",
-    //             result: user
-    //         });
-    //     })
-    //     .catch((err) => {
-    //         console.log(err);
-    //         return res.status(500).json({
-    //             message: "update failed"
-    //         });
-    //     });
 }
 
-// generateJWT(user) {
-//     return jwt.sign({userId: user._id, username: user.username, email: user.email},
-//         "secret_this_should_be_longer",
-//         {expiresIn: "1h"});
-// }

@@ -86,8 +86,8 @@ export class UploadSrcComponent implements OnInit {
             contentType: uploadData.contentType,
             mediaPath: uploadData.mediaPath,
             imagePath: null,
-            userId: this.userService.getUserId(),
-            username: this.userService.getUsername()
+            userId: localStorage.getItem('userId'),
+            username: localStorage.getItem('username')
           };
           this.form.patchValue({
             title: this.upload.title,
@@ -142,8 +142,8 @@ export class UploadSrcComponent implements OnInit {
         this.form.value.image,
         this.form.value.media,
         this.form.value.link,
-        this.userService.getUserId(),
-        this.userService.getUsername()
+        localStorage.getItem('userId'),
+        localStorage.getItem('username')
       );
     } else {
     this.uploadsService.updateUpload(
@@ -154,12 +154,12 @@ export class UploadSrcComponent implements OnInit {
       this.form.value.image,
       this.form.value.media,
       this.form.value.link,
-      this.userService.getUserId(),
-      this.userService.getUsername()
+      localStorage.getItem('userId'),
+      localStorage.getItem('username')
       );
     }
     this.form.reset();
-    this.uploadsService.getUploadsByUserId(this.userService.getUserId());
+    this.uploadsService.getUploadsByUserId(localStorage.getItem('userId'));
   }
 
   getTrustedYouTubeUrl(linkedVideo:string) {

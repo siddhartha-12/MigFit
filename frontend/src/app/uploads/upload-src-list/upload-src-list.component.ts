@@ -15,13 +15,16 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
   uploads: Upload[] = [];
   isLoading = false;
   private uploadsSub: Subscription;
+  private authStatusSub: Subscription;
   
  
   constructor(private userService: UserService, public uploadsService: UploadService, private sanitizer: DomSanitizer) {}
 
   ngOnInit() {
     this.isLoading = true;
-    this.uploadsService.getUploadsByUserId(this.userService.getUserId());
+    //get the userId first
+    this.uploadsService.getUploadsByUserId(localStorage.getItem('userId'));
+    //check whether the upload array is changed
     this.uploadsSub = this.uploadsService.getUploadUpdateListener()
       .subscribe((uploads : Upload[]) => {
         this.isLoading = false;
@@ -35,6 +38,7 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
             }
           });
       });
+     this.authStatusSub = this.userService.getUserStatusListener().subscribe();
   }
 
 
@@ -45,6 +49,7 @@ export class UploadSrcListComponent implements OnInit, OnDestroy{
 
   ngOnDestroy(){
     this.uploadsSub.unsubscribe();
+    this.authStatusSub.unsubscribe();
   }
 
 }

@@ -20,7 +20,7 @@ export class MealListComponent implements OnInit {
 
   ngOnInit(): void {
     // console.log(this.userService.getUserId())
-    this.getAllMeals(this.userService.getUserId());
+    this.getAllMeals(localStorage.getItem('userId'));
   }
 
   getAllMeals(userID) {
@@ -34,7 +34,7 @@ export class MealListComponent implements OnInit {
     //Delete item in Student data
     this.apiService.deleteItem(item.id).subscribe(Response => {
       //Update list after delete is successful
-      this.getAllMeals(this.userService.getUserId());
+      this.getAllMeals(localStorage.getItem('userId'));
     });
   }
 }

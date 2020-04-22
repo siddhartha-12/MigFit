@@ -28,7 +28,7 @@ export class MealCreateComponent implements OnInit {
 
 
   submitForm() {
-    let userId : string = this.userService.getUserId();
+    let userId : string = localStorage.getItem('userId');
     this.data.User_Id = userId;
     console.log("this is the id" + userId);
     console.log(this.data);

@@ -13,7 +13,7 @@ export class UploadViewAllComponent implements OnInit {
   constructor(private userService: UserService, private route: Router, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    if (this.userService.getUserId() === undefined) {
+    if (localStorage.getItem('userId') === undefined) {
       this.snackBar.open("You need to login to upload resources.", "OK");
       this.route.navigate(['/home']);
     }

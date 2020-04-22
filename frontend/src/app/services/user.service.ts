@@ -13,6 +13,7 @@ export class UserService {
     private isAuthenticated = false;
     private userId: string;
     private username: string;
+    private tokenTimer: any;
     //as a user status listener
     private userStatusListener = new Subject<boolean>();
 
@@ -72,7 +73,7 @@ export class UserService {
     //login part 
     login(user: User) {
         this.http
-        .post<{token: string, expiressIn: number, userId: string, username: string}>(
+        .post<{token: string, expiresIn: number, userId: string, username: string}>(
             "http://localhost:3030/user/login", 
             user
         )
@@ -87,9 +88,11 @@ export class UserService {
                   this.userStatusListener.next(true);
                   this.userId = response.userId;
                   this.username = response.username;
-                  const expiresInDuration = response.expiressIn;
+                  const expiresInDuration = response.expiresIn;
+                  this.setAuthTimer(expiresInDuration);
                   const now = new Date();
                   const expirationDate = new Date(now.getTime() + expiresInDuration * 1000);
+                  this.saveUserData(token, expirationDate, this.userId, this.username);
                 //   this.setAuthTimer(expiresInDuration);
               }
               console.log("login successfully");
@@ -100,9 +103,33 @@ export class UserService {
           });
     }
 
+    //auto Authenticate User
+    autoAuthUser() {
+        const authInformation = this.getAuthData();
+        if (!authInformation) {
+            return;
+        }
+        const now = new Date();
+        //get expiration duration, if duration is greater than 0, then the user is authenticated
+        const expiresIn = authInformation.expiratinDate.getTime() - now.getTime();
+        if (expiresIn > 0) {
+            this.token = authInformation.token;
+            this.isAuthenticated = true;
+            this.setAuthTimer(expiresIn / 1000);
+            this.userStatusListener.next(true);
+        }
+    }
+
+    //set authenticated timer
+    private setAuthTimer(duration: number) {
+        this.tokenTimer = setTimeout(() => {
+            this.logout();
+        }, duration * 1000);
+    }
+
     //show user basic information
     getUserProfile() {
-        return this.http.get<{user: User}>("http://localhost:3030/user/userProfile/" + this.userId);
+        return this.http.get<{user: User}>("http://localhost:3030/user/userProfile/" + localStorage.getItem('userId'));
     }
 
 
@@ -111,7 +138,7 @@ export class UserService {
         
         //save updateUser information to HttpParams, in order to send a user object to server.
         let updateUser = new HttpParams();
-        updateUser = updateUser.append("id", this.userId);
+        updateUser = updateUser.append("id", localStorage.getItem('userId'));
         updateUser = updateUser.append("username", username);
         updateUser = updateUser.append('email', email);
         updateUser = updateUser.append("newPassword", newPassword);
@@ -121,7 +148,7 @@ export class UserService {
         updateUser = updateUser.append("weight", weight.toString());
 
         this.http
-         .put<{id: string, username: string, email: string, newPassword: string, originPassword: string, gender: string, height: number, weight: number}>("http://localhost:3030/user/userProfile/" + this.userId, updateUser)
+         .put<{id: string, username: string, email: string, newPassword: string, originPassword: string, gender: string, height: number, weight: number}>("http://localhost:3030/user/userProfile/" + localStorage.getItem('userId'), updateUser)
          //if update successfully
          .subscribe(response => {
              this.snackBar.open("Update successfully!", "OK", {duration: 2000,});
@@ -137,9 +164,44 @@ export class UserService {
         this.token = null;
         this.isAuthenticated = false;
         this.userStatusListener.next(false);
+        clearTimeout(this.tokenTimer);
+        this.clearUserData();
         this.router.navigate(['/']);
         this.userId = null;
         this.user = null;
+    }
+
+    //set localstorage data
+    private saveUserData(token: string, expiresInDuration: Date, userId: string, username: string) {   
+        localStorage.setItem('token', token);
+        localStorage.setItem('expiration', expiresInDuration.toISOString());
+        localStorage.setItem('userId', userId);
+        localStorage.setItem('username', username);
+    }
+
+    //clear localstorage data
+    private clearUserData() {
+        localStorage.removeItem('token');
+        localStorage.removeItem('expiration');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('username');
+    }
+
+    //get localstorage data
+    private getAuthData() {
+        const token = localStorage.getItem('token');
+        const expirationDate = localStorage.getItem('expiration');
+        const userId = localStorage.getItem('userId');
+        const username = localStorage.getItem('username');
+        if (!token || !expirationDate) {
+            return;
+        }
+        return {
+            token: token,
+            expiratinDate: new Date(expirationDate),
+            userId: userId,
+            username: username
+        }
     }
 
     //on click profile button
