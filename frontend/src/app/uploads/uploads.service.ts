@@ -102,9 +102,10 @@ export class UploadService{
                     id: responseData.uploadId,
                     title: responseData.title,
                     content: responseData.content,
-                    contentType: responseData.contentType,
+                    contentType: '',
                     mediaPath: null,
-                    imagePath: responseData.upload.imagePath,
+                    //linkData: null,
+                    imagePath: null,
                     userId: responseData.userId,
                     username: responseData.username
                   };
@@ -142,17 +143,33 @@ export class UploadService{
             }
           } 
           else {
+            if(contentType === 'link'){
             console.log("what hell?");
-            uploadData = {
-              id: id,
-              title: title,
-              content: content,
-              imagePath: image,
-              mediaPath: media,
-              contentType: '',
-              userId: userId,
-              username: username
-            };
+              uploadData = {
+                id: id,
+                title: title,
+                content: content,
+                imagePath: image,
+                mediaPath: link, 
+                //linkData: contentType === 'link'?? link ?? null,
+                contentType: contentType,
+                userId: userId,
+                username: username
+              };
+            }else if(contentType === 'media'){
+              console.log("what hell?");
+              uploadData = {
+                id: id,
+                title: title,
+                content: content,
+                imagePath: image,
+                mediaPath: media, 
+                //linkData: contentType === 'link'?? link ?? null,
+                contentType: contentType,
+                userId: userId,
+                username: username
+              };
+            }
           }
         //save the new update stuff from front page
         this.http
@@ -160,21 +177,43 @@ export class UploadService{
           .subscribe(response => {
             const updatedUploads = [...this.uploads];
             const oldUploadIndex = updatedUploads.findIndex(p => p.id === id);
+            if(contentType === 'link'){
             const upload: Upload = {
               id: id,
               title: title,
               content: content,
               imagePath: image,
-              mediaPath: media,
-              contentType: '',
+              mediaPath: link,
+              contentType: contentType,
               userId: userId,
               username: username
+              //linkData: null
               };
+            
             updatedUploads[oldUploadIndex] = upload;
             this.uploads = updatedUploads;
             this.uploadsUpdated.next([...this.uploads]);
             //refresh page after each update
             this.router.navigate(["fitness/upload"]);
+            }else if(contentType === 'media'){
+              const upload: Upload = {
+                id: id,
+                title: title,
+                content: content,
+                imagePath: image,
+                mediaPath: media,
+                contentType: contentType,
+                userId: userId,
+                username: username
+                //linkData: null
+                };
+              
+              updatedUploads[oldUploadIndex] = upload;
+              this.uploads = updatedUploads;
+              this.uploadsUpdated.next([...this.uploads]);
+              //refresh page after each update
+              this.router.navigate(["fitness/upload"]);
+            }
           });
       }
       //delete the post 

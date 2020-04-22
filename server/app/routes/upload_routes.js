@@ -6,6 +6,8 @@ const fs = require('fs');
 const public_path = './public';
 const media_dir = public_path+'/media';
 
+
+//check all file format
 const MIME_TYPE_MAP = {
     "image/png": "png",
     "image/jpeg": "jpg",
@@ -17,7 +19,7 @@ const MIME_TYPE_MAP = {
     "video/quicktime": "mov"
   };
   
-
+//use multer to read the file format and make change allow the node use
   const storage = multer.diskStorage({
     destination: (req, file, cb) => {
       const isValid = MIME_TYPE_MAP[file.mimetype];
@@ -41,7 +43,7 @@ const MIME_TYPE_MAP = {
   });
 
 module.exports = (app) => {
-    
+    //use post/put/get/delete method to make change through the page
     app.post('/fitness/upload', multer({storage: storage }).single("media"), uploadController.post);
     app.put('/fitness/upload/:id', multer({ storage: storage }).single("media"), uploadController.update);
     console.log(uploadController.update);
