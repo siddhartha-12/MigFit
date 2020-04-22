@@ -10,6 +10,7 @@ Video library
 Leave comment on video
 CRUD Meal Tracker
 BMI Calculator
+Edit Profile
 
 ## Set Up and installation requirements.
 
@@ -41,6 +42,7 @@ Sign in/Sign up pages (URL: http://localhost:4200/signup/ ,http://localhost:4200
 Uses JWT (store the token in localStorage)
 We have a memu page having all the apllication feature.
 We also have a Edit Profile if user wants to make any changes in the profile. (http://localhost:4200/fitness/profile)
+where a user is able to change the password and add details.
 
 
 ## Technologies Used
