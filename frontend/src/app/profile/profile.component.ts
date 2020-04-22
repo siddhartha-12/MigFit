@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { User } from '../models/user.model';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-profile',
@@ -28,7 +29,7 @@ export class ProfileComponent implements OnInit {
   isUsernameChange = false;
   isGenderChange = false;
 
-  constructor(private userService: UserService, private route: ActivatedRoute) { }
+  constructor(private userService: UserService, private route: ActivatedRoute, private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.userService.getUserProfile().subscribe(response => {
@@ -48,6 +49,7 @@ export class ProfileComponent implements OnInit {
 
   updateProfile(form: NgForm) {
     if (form.invalid) {
+      this.snackBar.open("Your form is invalid", "OK");
       return;
     }
     let username: string = this.isUsernameChange ? form.value.username : this.user.username;
@@ -61,6 +63,7 @@ export class ProfileComponent implements OnInit {
       console.log("empty new password");
       console.log(originPassword);
       this.userService.updateProfile(username, email, originPassword, originPassword, gender, height, weight);
+      this.snackBar.open("Edit your profile successfully");
     }
     else {
       console.log("have new password");

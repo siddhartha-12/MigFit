@@ -93,8 +93,13 @@ export class UploadSrcComponent implements OnInit {
             title: this.upload.title,
             content: this.upload.content,
             contentType: this.upload.contentType,
-            mediaPath: this.upload.mediaPath
           });
+          if (this.upload.contentType === 'link') {
+            this.form.patchValue({link: this.upload.mediaPath});
+          }
+          if (this.upload.contentType === 'video') {
+            this.form.patchValue({media: this.upload.mediaPath});
+          }
         });
       } else {
         this.mode = 'create';
@@ -119,7 +124,7 @@ export class UploadSrcComponent implements OnInit {
 
   onSaveUpload(){
     console.log(this.form.value)
-    console.log(this.form.status )
+    console.log(this.form.status)
     if(this.form.invalid){
       console.log(this.form.invalid)
       console.log(this.form.errors)
