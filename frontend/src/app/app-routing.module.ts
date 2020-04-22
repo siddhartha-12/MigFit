@@ -23,6 +23,7 @@ import { MealItemComponent } from './meal-item/meal-item.component';
 import { MealListComponent } from './meal-list/meal-list.component';
 import { VideoDetailComponent } from './video-detail/video-detail.component';
 import {UploadSrcListComponent} from './uploads/upload-src-list/upload-src-list.component'
+import { LittleGameComponent } from './little-game/little-game.component';
 
 
 const routes: Routes = [
@@ -51,7 +52,8 @@ const routes: Routes = [
   { path: 'create', component: MealCreateComponent },
   { path: 'editMeal/:id', component: MealEditComponent},
   { path: 'item/:id', component: MealItemComponent},
-  { path: 'list', component: MealListComponent } 
+  { path: 'list', component: MealListComponent },
+  { path: 'game', component: LittleGameComponent} 
 ];
  
 @NgModule({
